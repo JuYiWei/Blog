@@ -47,6 +47,8 @@
         <li><label>随笔</label></li>
 
           
+            <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+          
             <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
           
 
@@ -68,6 +70,8 @@
                     
                       <li class="side-title"><span>随笔</span></li>
                         
+                          <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+                        
                           <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
                         
 
@@ -84,151 +88,128 @@
 
 	
 		<div class="markdown-body">
-		<h1>Hello Blog</h1>
+		<h1>OS X Server 之 Xcode服务（iOS开发持续集成）</h1>
 
-		<p>一直没有搞搞个人博客，一直用别的网站写写记记；最早在博客园和CSDN玩，那时候还是用富文本编辑，还不知道markdown，在CSND有很多不错的下载资源，一直写文章也攒了很多积分，下载资源不用愁；后来发现markdown之后，写文章很漂亮也很简单，虽然CSDN也支持markdown，但是发现简书的文章管理以及markdown支持更好用，就转战简书了，记录了很多杂七杂八的低水平文章，也收获了一些粉丝与喜欢，建立的小交流群也陆陆续续有人来聊聊天；终于迎来了github个人博客的搭建，原本以为挺复杂还要懂点H5，看网上各种博客教程写的非常给力，也是很幸运的发现一直再用的MWeb，可以生成静态网站，一琢磨，是不是直接放到github就行了，试了试还真就行了。这就是本blog意外的由来；以后就打算再这里写一些东西了，目前打算在简书写，投稿首页成功的文章，摘录到这里（阅读与随笔除外）。</p>
+		<p>2个官方文档：<br/>
+<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html#//apple_ref/doc/uid/TP40013292-CH1-SW1">苹果开发指南</a><br/>
+<a href="https://help.apple.com/serverapp/mac/4.0/#/apd9148CA5C-96E5-43AC-97CE-CB1B1002F4DE">OS X Server 帮助</a></p>
 
-<h3 id="toc_0">MWeb快捷键</h3>
+<p>以下截图，存放在微博图床，可能存在丢失的情况；<br/>
+关于持续集成，很多都是说用Jenkins，网上的文章也是有很多，作为iOS开发自带Xcode服务，相信与Xcode的兼容性必定是自家的好用；虽然没用过Jenkins，但是OS X Server 的Xcode服务，用的还是很舒服的，对于静态分析，单元测试，打包三大功能的自动化集成，并且可以直接使用IP地址访问操作；简单实用，妈妈再也不用担心我打包浪费时间了~</p>
 
-<table>
-<thead>
-<tr>
-<th>内容</th>
-<th>快捷键</th>
-<th>标记</th>
-</tr>
-</thead>
+<h2 id="toc_0">下载 OS X Server</h2>
 
-<tbody>
-<tr>
-<td>本身操作</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>导出HTML</td>
-<td>option + command + E</td>
-<td></td>
-</tr>
-<tr>
-<td>视图模式</td>
-<td>command + 1~4</td>
-<td></td>
-</tr>
-<tr>
-<td>黑暗模式</td>
-<td>option + command + L</td>
-<td></td>
-</tr>
-<tr>
-<td>预览</td>
-<td>command + R</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>markdown相关</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>标题</td>
-<td>control + 0~6</td>
-<td>###个数</td>
-</tr>
-<tr>
-<td>倾斜</td>
-<td>command + I</td>
-<td>* 内容 *</td>
-</tr>
-<tr>
-<td>加粗</td>
-<td>command + B</td>
-<td>** 内容 **</td>
-</tr>
-<tr>
-<td>下划线</td>
-<td>command + U</td>
-<td>_ 内容 _</td>
-</tr>
-<tr>
-<td>删除线</td>
-<td>command + -</td>
-<td>~~ 内容 ~~</td>
-</tr>
-<tr>
-<td>高亮</td>
-<td>command + =</td>
-<td>== 内容 ==</td>
-</tr>
-<tr>
-<td>行内代码</td>
-<td>command +K</td>
-<td>` 内容 `</td>
-</tr>
-<tr>
-<td>代码块</td>
-<td>shift + command + K</td>
-<td>``` 内容 ```</td>
-</tr>
-<tr>
-<td>注释</td>
-<td>command + /</td>
-<td>&lt;!----&gt;</td>
-</tr>
-<tr>
-<td>引用</td>
-<td>shift + command + B</td>
-<td>&gt;</td>
-</tr>
-<tr>
-<td>链接</td>
-<td>shift + control + L</td>
-<td>[]()</td>
-</tr>
-<tr>
-<td>图片</td>
-<td>shift + control + I</td>
-<td>! []()</td>
-</tr>
-<tr>
-<td>脚注</td>
-<td>无</td>
-<td>^</td>
-</tr>
-<tr>
-<td>阅读更多</td>
-<td>command + .</td>
-<td>&lt;!-- more --&gt;</td>
-</tr>
-</tbody>
-</table>
+<p>APP Store 下载即可，只要是付费开发者，就可以免费使用服务器。功能强大有不要钱，是开发者的不要浪费，赶紧用起来；</p>
 
-<!-- more dsa -->
+<h2 id="toc_1">Server 服务器配置 Xcode服务</h2>
 
-<h3 id="toc_1">列表</h3>
+<ul>
+<li>1 选择服务器主机：一般选自身，也可以指定IP</li>
+</ul>
 
-<p>无序列表：-、*、+ 都可以<br/>
-有序列表：1.<br/>
-任务列表：- [x] 任务</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mgf3j8swj30gg0bot9l.jpg" alt="1.png"/></p>
 
-<h3 id="toc_2">表格</h3>
+<ul>
+<li>2 选择Xcode服务，关于服务器主机本身的其他设置自己玩吧。主要讲述Xcode服务部分;
 
-<pre><code>姓名|学号|分数
----|---|---
-张三|01|66
-</code></pre>
+<ul>
+<li>开启服务（右上角）</li>
+<li>权限和版本号：自己考虑，我这里默认设置不改了；</li>
+<li>开发团队：使用自己的apple ID添加；</li>
+<li>开发设备：需要用设备连接服务器后才能搜索到，初次连接，可能还需要在Status选项里面点击【Add to Teams】（比如设备不是你上面apple ID 的就需要）</li>
+<li>查看Bot：会打开网页（Bot管理页面，默认127.0.01）,可以直接静态分析测试打包等，当然需要后面配置成功才能使用。</li>
+</ul></li>
+</ul>
 
-<h3 id="toc_3">其他</h3>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mgj9fib3j30tn0iltbi.jpg" alt="2.png"/></p>
 
-<p>流程图与公式比较复杂，不写了。</p>
+<h2 id="toc_2">Xcode 配置</h2>
+
+<ul>
+<li>1 Accounts 添加 Servers：一般默认自己主机，也可以选择指定IP地址，按服务器配置时对应选择；需要填写用户名，密码，自己搞定；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mh1ncb7qj315o0ukte4.jpg" alt="3.png"/></p>
+
+<ul>
+<li>2 注意 Source Control 需要打开才能使用！具体下面的各种自动自己考虑勾选；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhb1w9skj315o0dgdiz.jpg" alt="5.png"/></p>
+
+<h2 id="toc_3">Bot 配置</h2>
+
+<p>注意：自己的项目必须是个git文件夹，比如github上clone下来的项目，或者是本地服务器git来的，总之需要git文件夹；（官方文档使用Xcode的Source Control 方式搞定，具体可以看官方指南。我直接用了第三方软件SourceTree管理的）</p>
+
+<ul>
+<li>0 创建 Bot：按图示1-2-3；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhpgnrv3j31kw0ynn5y.jpg" alt="10.png"/></p>
+
+<ul>
+<li>1 Bot命名与服务器选择，基本默认不改； </li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtb0k39j314k0nw40a.jpg" alt="11.png"/></p>
+
+<ul>
+<li>2 选择项目内容，后面的master，可选其他分支，比如develop；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhtbrug7j314k0nwabh.jpg" alt="12.png"/></p>
+
+<ul>
+<li>3 Bot 操作配置
+
+<ul>
+<li>Scheme：默认项目本身</li>
+<li>Actions：1分析；2单元测试（测试项目没开单元测试所有没的选）；3打包；</li>
+<li>Cleaning：可以选择，因为是自己的电脑做服务器的，所以选择了一周清理一次；</li>
+<li>Configuation：项目配置；</li>
+</ul></li>
+</ul>
+
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gw1f6mhtaqwfjj314k0nwtcm.jpg" alt="13.png"/></p>
+
+<ul>
+<li>4 环境变量？没用过，sorry；</li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtauto7j314k0nwabc.jpg" alt="14.png"/></p>
+
+<ul>
+<li>5 添加脚本，比如完成后发送个邮件通知；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mht9ndz7j314k0nw0ue.jpg" alt="16.png"/></p>
+
+<ul>
+<li><p>6 create！注意 需要一次验证 git 的用户名和密码！不是之前设置的用户名与密码。</p></li>
+<li><p>7 成功；各种信息以及完成的打包等；通过IP地址也可以实时整合并下载；</p></li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mi30ctr0j31kw0ynwn0.jpg" alt="17.png"/></p>
+
+<h2 id="toc_4">其他</h2>
+
+<ul>
+<li>关于代码提交，不管使用Xcode还是其他方式，是没有关系的，Xcode服务指向的是master或者其他分支的服务器资源；</li>
+<li>关于打包，项目配置里就做好证书等配置文件的选择；</li>
+<li>内测的ipa包，可以结合蒲公英等平台作分发也是很方便的；考虑是不是可以搞个脚本上传。</li>
+</ul>
+
+<h2 id="toc_5">问题？</h2>
+
+<ul>
+<li>关于设备，暂时还不知道服务器配置时选择的设备是否与分析单元测试有关？</li>
+</ul>
 
 
 		</div>
+	
+
+ 
 	
 
   
