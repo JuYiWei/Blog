@@ -47,9 +47,23 @@
         <li><label>随笔</label></li>
 
           
+            <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>iOS</label></li>
+
+          
             <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
           
-            <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+
+      
+        <li class="divider"></li>
+        <li><label>读书</label></li>
+
+          
+            <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
           
 
       
@@ -70,9 +84,19 @@
                     
                       <li class="side-title"><span>随笔</span></li>
                         
+                          <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>iOS</span></li>
+                        
                           <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
                         
-                          <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+
+                    
+                      <li class="side-title"><span>读书</span></li>
+                        
+                          <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
                         
 
                     
@@ -88,125 +112,222 @@
 
 	
 		<div class="markdown-body">
-		<h1>OS X Server 之 Xcode服务（iOS开发持续集成）</h1>
+		<h1>【图解HTTP】-上野宣</h1>
 
-		<p>2个官方文档：<br/>
-<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html#//apple_ref/doc/uid/TP40013292-CH1-SW1">苹果开发指南</a><br/>
-<a href="https://help.apple.com/serverapp/mac/4.0/#/apd9148CA5C-96E5-43AC-97CE-CB1B1002F4DE">OS X Server 帮助</a></p>
-
-<p>以下截图，存放在微博图床，可能存在丢失的情况；<br/>
-关于持续集成，很多都是说用Jenkins，网上的文章也是有很多，作为iOS开发自带Xcode服务，相信与Xcode的兼容性必定是自家的好用；虽然没用过Jenkins，但是OS X Server 的Xcode服务，用的还是很舒服的，对于静态分析，单元测试，打包三大功能的自动化集成，并且可以直接使用IP地址访问操作；简单实用，妈妈再也不用担心我打包浪费时间了~</p>
-
-<h2 id="toc_0">下载 OS X Server</h2>
-
-<p>APP Store 下载即可，只要是付费开发者，就可以免费使用服务器。功能强大有不要钱，是开发者的不要浪费，赶紧用起来；</p>
-
-<h2 id="toc_1">Server 服务器配置 Xcode服务</h2>
+		<h2 id="toc_0">了解Web及网络基础h</h2>
 
 <ul>
-<li>1 选择服务器主机：一般选自身，也可以指定IP</li>
+<li><p>1 客户端使用 URL 获取服务器文件资源。（使用HTTP协议访问Web）</p></li>
+<li><p>2 HTML：页面的文本标记语言；HTTP：文本传递协议；URL：指定文档所在地址；</p></li>
+<li><p>3 TCP/IP：互联网相关的各类协议族的总称；包括：应用层，传输层，网络层，链路层；<br/>
+应用层：向用户提供应用服务时通信的活动，FTP和DNS是其中两大类服务，（HTTP也属于该层）；<br/>
+传输层：对应用层提供网络连接中的2台计算机之间的数据传输，TCP和UDP两种不同的协议；<br/>
+网络层：处理网络上流动的数据包，在传输时选择一条传输路线，IP协议；<br/>
+链路层：处理连接网络的硬件部分；<br/>
+举个例子：发送端发送  A 数据（应用层）-&gt; 添加TCP头（传输层） -&gt; 添加IP头（网络层） -&gt; 添加以太网头（链路层） -&gt; 接收端反向操作，去除以太网头（网络层） -&gt; 去除IP头（网络层） -&gt; 去除TCP头（传输层）-&gt; 获得 A数据；</p></li>
+<li><p>4 IP协议：把数据传输给对方，但是确保送达需要很多条件，最重要的2个是IP地址和MAC地址；<br/>
+ARP协议：解析地址，根据 IP可以反查MAC地址；<br/>
+具体传输有点类似快递，需要多次使用路由器做中转；</p></li>
+<li><p>5 TCP协议：提供可靠的字节流服务；1 分割数据成报文段位单位的数据包；2 能确定数据是否送达；<br/>
+确保数据送达：TCP三次握手，</p></li>
+<li><p>6 DNS服务：域名解析，IP地址与域名的转换；</p></li>
+<li><p>7 URI：统一资源标识符，协议方案包含（http，ftp，file，tel，telnet，mailto.....）<br/>
+URL：资源地址（是URI的子集）<br/>
+绝对URI：<a href="http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1">http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1</a><br/>
+协议方案，登录认证（可选），服务器地址，服务器端口，文件路径，查询内容，片段标识符</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mgf3j8swj30gg0bot9l.jpg" alt="1.png"/></p>
+<h2 id="toc_1">简单的HTTP协议</h2>
 
 <ul>
-<li>2 选择Xcode服务，关于服务器主机本身的其他设置自己玩吧。主要讲述Xcode服务部分;
-
-<ul>
-<li>开启服务（右上角）</li>
-<li>权限和版本号：自己考虑，我这里默认设置不改了；</li>
-<li>开发团队：使用自己的apple ID添加；</li>
-<li>开发设备：需要用设备连接服务器后才能搜索到，初次连接，可能还需要在Status选项里面点击【Add to Teams】（比如设备不是你上面apple ID 的就需要）</li>
-<li>查看Bot：会打开网页（Bot管理页面，默认127.0.01）,可以直接静态分析测试打包等，当然需要后面配置成功才能使用。</li>
-</ul></li>
+<li><p>1 HTTP协议：用于客户端与服务端之间的通信；客户端发送请求，服务端响应；HTTP本身没有持久化处理，但是使用Cookie可以管理状态；</p></li>
+<li><p>2 请求URI定位资源</p></li>
+<li><p>3 HTTP方法：GET获取，POST传输实体主体，PUT传输文件，HEAD获得报文首部，DELETE删除文件，OPTIONS询问支持的方法，TRACE追踪路径（不用），CONNECT要求使用隧道协议连接代理</p></li>
+<li><p>4 HTTP长连接，建立一次连接，就可以发送请求的资源，不用每次请求都重新连接并断开；管线化，并行发送多个请求；</p></li>
+<li><p>5 Cookie：再请求响应后，服务端会返回一个cookie，如果客户端保存，那么下次请求时会添加cookie，那么服务端就会知道是哪个客户端了。</p></li>
 </ul>
 
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mgj9fib3j30tn0iltbi.jpg" alt="2.png"/></p>
-
-<h2 id="toc_2">Xcode 配置</h2>
+<h2 id="toc_2">HTTP报文内的HTTP信息</h2>
 
 <ul>
-<li>1 Accounts 添加 Servers：一般默认自己主机，也可以选择指定IP地址，按服务器配置时对应选择；需要填写用户名，密码，自己搞定；</li>
+<li><p>1 HTTP报文：报文首部 + (CR+LF) + 报文主体<br/>
+请求报文：报文首部（请求行，各种首部字段，其他）<br/>
+响应报文：状态行，各种首部字段，其他）</p></li>
+<li><p>2 编码提升传输速率：压缩传输的内容编码（gzip，compress，deflate，identity）；分割发送的分块传输编码；</p></li>
+<li><p>3 获取部分内容的范围请求：添加 Range：bytes=5000-</p></li>
+<li><p>4 内容协商返回合适内容：比如对应显示中英文；</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mh1ncb7qj315o0ukte4.jpg" alt="3.png"/></p>
+<h2 id="toc_3">返回结果的HTTP状态吗</h2>
 
 <ul>
-<li>2 注意 Source Control 需要打开才能使用！具体下面的各种自动自己考虑勾选；</li>
+<li><p>1 状态吗类别：<br/>
+1XX：Informational（信息性状态码）：接受的请求正在处理<br/>
+2XX：Success（成功状态码）：请求正常处理完毕<br/>
+3XX：Redirection（重定向状态码）：需要进行附加操作以完成请求<br/>
+4XX：Client Error（客户端错误状态码）：服务器无法处理请求<br/>
+5XX：Server Error（服务器错误状态码）：服务器处理请求出错</p></li>
+<li><p>2XX：成功<br/>
+200：正常处理<br/>
+204：没有资源<br/>
+206：范围请求</p></li>
+<li><p>3XX：重定向<br/>
+301：资源URI更新<br/>
+304：资源已找到，但是不符合条件请求</p></li>
+<li><p>4XX：客户端错误<br/>
+400：语法错误<br/>
+401：第一次401，需要认证；第二次401，认证失败<br/>
+403：资源拒绝访问<br/>
+404：没有请求的资源</p></li>
+<li><p>5XX：服务器错误<br/>
+500：内部资源异常<br/>
+503：暂时无法处理（可能超负载或者维护中）</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhb1w9skj315o0dgdiz.jpg" alt="5.png"/></p>
-
-<h2 id="toc_3">Bot 配置</h2>
-
-<p>注意：自己的项目必须是个git文件夹，比如github上clone下来的项目，或者是本地服务器git来的，总之需要git文件夹；（官方文档使用Xcode的Source Control 方式搞定，具体可以看官方指南。我直接用了第三方软件SourceTree管理的）</p>
+<h2 id="toc_4">与HTTP协作的Web服务器</h2>
 
 <ul>
-<li>0 创建 Bot：按图示1-2-3；</li>
+<li><p>1 通信数据转发程序：代理、网关、隧道<br/>
+代理：客户端与服务器的中间人，处理信息交换，主要存在两类：缓存代理，透明代理（不修改报文）<br/>
+网关：转发其他服务器通信数据的服务器，能提供非HTTP的服务，网关可以提高通信安全<br/>
+隧道：客户端与服务器中转，可以使用SSL等加密手段通信</p></li>
+<li><p>2 资源缓存：使用缓存代理实现，提示缓存有时限；客户端也可以实现缓存；</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhpgnrv3j31kw0ynn5y.jpg" alt="10.png"/></p>
+<h2 id="toc_5">HTTP首部</h2>
 
 <ul>
-<li>1 Bot命名与服务器选择，基本默认不改； </li>
+<li><p>通用首部<br/>
+Cache-Control：缓存机制，指令有很多种；<br/>
+Connection：控制不在转发给代理的首部字段，管理持久连接；<br/>
+Date：表示创建HTTP报文的日期和时间；<br/>
+Pragma：1.0遗留字段；no-cache（与Cache-Control的一个字段一样）<br/>
+Trailer：<br/>
+Transfer-Encoding：传输报文主题的编码方式<br/>
+UUpgrade：检测HTTP等协议是否可用更高的版本进行通信；<br/>
+Via：追踪传输路径；<br/>
+Warning：告知一些缓存相关的警告；</p></li>
+<li><p>请求首部字段：补充请求附加信息、对响应内容相关的优先级等；<br/>
+Accept：返回资源格式与优先级；<br/>
+Accept-Charset：字符集与优先级；<br/>
+Accept-Encoding：内容编码与优先级；<br/>
+Accept-Language：自然语言集与优先级；<br/>
+Authorization：授权信息；<br/>
+Expect：<br/>
+From：邮箱地址（也有可能再User-Agent字段内）；<br/>
+Host：主机（与单台服务器分配多个域名的虚拟主机有关）<br/>
+If-Match：字段值与资源的ETag值一致时，才处理请求；<br/>
+If-None-Match：与If-Match相反；<br/>
+If-Modified-Since：指定的日期之后，资源发送变化，才处理请求；<br/>
+If-Unmodified-Since：与If-Modified-Since相反；<br/>
+If-Range：先判断字段是否与资源的ETag或者更新日期是否匹配，一致则根据Range字段处理请求，不一致则忽略Range字段，返回全部资源；节省了一步If-March<br/>
+Max-Forwards：最多转发次数，数值变为0是返回响应；<br/>
+Proxy-Authorization：代理服务器认证；<br/>
+Range：部分资源；<br/>
+Referer：请求原始资源URI；<br/>
+TE：传输编码方式与优先级；<br/>
+User-Agent：表示浏览器种类，也会添加代理服务器名称；</p></li>
+<li><p>响应首部字段：补充响应的附加信息、服务器信息、以及客户端附加要求等；<br/>
+Accept-Ranges：告知请求范围是否正常；<br/>
+Age：源服务器上次响应时间间隔；<br/>
+ETag：资源唯一标识；<br/>
+Location：引导至另一个位置的资源；（重定向相关）<br/>
+Proxy-Authenticate：与请求类似<br/>
+Retry-After：多久后再次尝试；<br/>
+Server：当前HTTP服务器信息；<br/>
+Vary：对应的Accept-Language，<br/>
+WWW-Authenticate：</p></li>
+<li><p>实体首部字段：补充内容的更新时间等；<br/>
+Alllow：支持请求方法；<br/>
+Content-Encoding：实体的主体部分编码方式；<br/>
+Content-Language：实体的主体自然语言；<br/>
+Content-Length：实体的主体大小；<br/>
+Content-Location：主体返回资源的URI；<br/>
+Content-MD5：主体MD5<br/>
+Content-Range：主体内容范围 与 实体大小；<br/>
+Content-Type：主体对象类型；<br/>
+Expires：资源失效日期；<br/>
+Last-Modified：资源最后修改时间；</p></li>
+<li><p>Cookie服务的首部<br/>
+SetCookie<br/>
+Cookie</p></li>
+<li><p>其他</p></li>
 </ul>
 
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtb0k39j314k0nw40a.jpg" alt="11.png"/></p>
+<h2 id="toc_6">HTTPS</h2>
+
+<p>HTTPS = HTTP + 加密 + 认证 + 完整性保护</p>
 
 <ul>
-<li>2 选择项目内容，后面的master，可选其他分支，比如develop；</li>
+<li><p>HTTP 通信使用明文，可能被窃听；<br/>
+通信加密：使用SSL或者TLS与HTTP组合使用，使用SSL的就是所说的 HTTPS；<br/>
+内容加密：对报文内容加密后发送；</p></li>
+<li><p>HTTP 不验证通信方的身份，可能遭遇伪装；<br/>
+任何人可以发起请求，存在安全隐患；<br/>
+通过SSL，使用证书，验证通信方身份；</p></li>
+<li><p>HTTP 无法验证报文完整性，可能遭篡改；<br/>
+通过SSL，生成摘要，防篡改；</p></li>
+<li><p>HTTPS 混合加密机制：1 非对称加密验证身份可靠，并传输对称加密密钥K；2 使用对称加密进行通信（对称加密处理速度相对比非对称快）</p></li>
+<li><p>数字证书：（非对称加密）1 服务器A 向证书认证机构P 提出公钥申请，确认之后机构P会对服务器A的公钥做数字签名（也是非对称加密），再放入公钥证书C；2 服务器会将公钥证书C发送给客户端，客户端需要验证证书C的可靠性，所有在这里浏览器本身植入了机构P的公钥X，客户端向机构P对证书C的签名验证真实性； 3 客户端使用服务器公钥C对报文加密后发送（通信）；</p></li>
+<li><p>EV SSL 证书：验证了运营组织的真实性，比一般的更加可靠；</p></li>
+<li><p>认证机构：信誉第一，需要绝对可靠的信用（比如google 就是 由 google 签名的。）<br/>
+另外还有自签名证书和中级证书，可靠程度一般；</p></li>
+<li><p>HTTPS 通信流程：1 客户端发送开始连接（包含基本数据）；2 服务端发送1的回应数据，再发送证书，最后发送第一次握手结束；3 客户端使用收到的公钥，加密一个随机生成的密钥，发送给服务器，再发送通知消息表示以后使用这个密钥通信，随后发送已完成；4 服务器同3发送数据给客户端，完成SSL连接；5之后通信使用HTTP，但是已经有SSL保护；</p></li>
+<li><p>SSL 与 TLS：TLS是以SSL为原型设计； 统称SSL；</p></li>
+<li><p>HTTPS 速度比 HTTP 慢 2-100 倍，主要由于通信慢 与 加解密处理速度慢；</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhtbrug7j314k0nwabh.jpg" alt="12.png"/></p>
+<h2 id="toc_7">确认访问用户身份的认证</h2>
 
 <ul>
-<li>3 Bot 操作配置
-
-<ul>
-<li>Scheme：默认项目本身</li>
-<li>Actions：1分析；2单元测试（测试项目没开单元测试所有没的选）；3打包；</li>
-<li>Cleaning：可以选择，因为是自己的电脑做服务器的，所以选择了一周清理一次；</li>
-<li>Configuation：项目配置；</li>
-</ul></li>
+<li><p>HTTP认证方式：BASIC基本认证，DIGEST摘要认证，SSL客户端认证，FormBase表单认证；</p></li>
+<li><p>BASIC认证：通过HTTP Authorization首部字段，发送用户ID与密码的Base64b<br/>
+编码字符串，由于其明文不安全以及无注销操作，故不使用；</p></li>
+<li><p>DIGEST认证：BASIC的基础上，添加了服务端产生随机字段，组合之后生成MD5作为首部；增强了密码保护，但是无法防止用户伪装；</p></li>
+<li><p>SSL认证：HTTPS加密通信，一般采用双因素认证，组合表单认证；</p></li>
+<li><p>表单认证：即一般的注册登录；大部分都是表单认证；</p></li>
 </ul>
 
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79gw1f6mhtaqwfjj314k0nwtcm.jpg" alt="13.png"/></p>
+<h2 id="toc_8">基于HTTP的功能追加协议</h2>
 
 <ul>
-<li>4 环境变量？没用过，sorry；</li>
+<li>Ajax：异步JavaScript 与 XML；有效利用JavaScript和DOM（文件对象模型）的操作，局部Web页面的加载；</li>
+<li>Comet：服务器有更新，就向客户端发送推送；</li>
+<li>SPYD：解决HTTP的性能瓶颈；多路复用流，赋予请求优先级，压缩HTTP首部，推送功能；（仅单域名通信多路复用，一个Web上使用多个域名下的资源时，就会受到限制）</li>
+<li><p>WebSocket：推送功能，减少通信量（保持连接状态）；使用HTTP的Upgrade首部字段，握手修改通信协议，使用WebSocket通信；</p></li>
+<li><p>HTTP/2.0</p></li>
+<li><p>Web服务器管理文件的WebDAV</p></li>
 </ul>
 
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtauto7j314k0nwabc.jpg" alt="14.png"/></p>
+<h2 id="toc_9">构建Web内容的技术</h2>
 
 <ul>
-<li>5 添加脚本，比如完成后发送个邮件通知；</li>
+<li>HTML：超文本标记语言，构建Web基础；</li>
+<li>CSS：展现HTML内元素的样式；</li>
+<li>动态HTML：使用客户端脚本语言JacaScript，实现对HTML的Web页面的动态改造；利用DOM可指定欲发生动态变化的HTML元素；</li>
+<li><p>DOM：操作HTML文档和XML文档的API；使用JacaScript对DOM的操作可以简单的方式控制HTML；例如：document.getElementsByTagName();</p></li>
+<li><p>Web应用：通过Web功能提供的应用程序，例如购物网站，搜索引擎等；作用与动态内容之上；</p></li>
+<li><p>CGI：通用网关接口，Web服务器接收客户端发送来的请求后转发给程序，程序对请求内容做出响应的动作；</p></li>
+<li><p>Servlet：服务器上创建动态内容；执行相对轻量级，效率更高；</p></li>
+<li><p>XML：可扩展标记语言；</p></li>
+<li><p>RSS/Atom：发布更新信息，也是呀XML；</p></li>
+<li><p>JSON：由JavaScript衍生，更加轻量化的数据格式；</p></li>
 </ul>
 
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mht9ndz7j314k0nw0ue.jpg" alt="16.png"/></p>
+<h2 id="toc_10">Web的攻击技术</h2>
 
 <ul>
-<li><p>6 create！注意 需要一次验证 git 的用户名和密码！不是之前设置的用户名与密码。</p></li>
-<li><p>7 成功；各种信息以及完成的打包等；通过IP地址也可以实时整合并下载；</p></li>
-</ul>
-
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mi30ctr0j31kw0ynwn0.jpg" alt="17.png"/></p>
-
-<h2 id="toc_4">其他</h2>
-
-<ul>
-<li>关于代码提交，不管使用Xcode还是其他方式，是没有关系的，Xcode服务指向的是master或者其他分支的服务器资源；</li>
-<li>关于打包，项目配置里就做好证书等配置文件的选择；</li>
-<li>内测的ipa包，可以结合蒲公英等平台作分发也是很方便的；考虑是不是可以搞个脚本上传。</li>
-</ul>
-
-<h2 id="toc_5">问题？</h2>
-
-<ul>
-<li>关于设备，暂时还不知道服务器配置时选择的设备是否与分析单元测试有关？</li>
+<li><p>输出值转义不完全引发的安全漏洞：跨站脚本攻击（XSS），窃取用户Cookie，SQL注入，OS命令注入，HTTP首部注入，HTTP响应截断攻击，邮件首部注入攻击，目录遍历攻击，远程文件包含漏洞。</p></li>
+<li><p>设计或设置缺陷引发的漏洞：强制浏览，不正确的错误处理，开放重定向，</p></li>
+<li><p>会话管理疏忽的漏洞：会话劫持，会话固定攻击，跨站点请求伪造；</p></li>
+<li><p>其他漏洞：密码破解，点击劫持，DoS攻击，后门程序；</p></li>
 </ul>
 
 
 		</div>
+	
+
+ 
 	
 
  
