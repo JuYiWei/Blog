@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  说了是村长
   
   </title>
  <meta name="description" content="">
- <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+ <link href="atom.xml" rel="alternate" title="说了是村长" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
 
@@ -29,13 +29,13 @@
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 <div id="header">
-    <h1><a href="index.html"></a></h1>
+    <h1><a href="index.html">说了是村长</a></h1>
 </div>
 
 </nav>
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; </span>
+    <span> &nbsp; 说了是村长</span>
   </a>
 </nav>
 
@@ -52,18 +52,28 @@
 
       
         <li class="divider"></li>
+        <li><label>读书</label></li>
+
+          
+            <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>iOS</label></li>
 
+          
+            <li><a title="CoreBluetooth - 蓝牙中心管理" href="14721065971366.html">CoreBluetooth - 蓝牙中心管理</a></li>
           
             <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
           
 
       
         <li class="divider"></li>
-        <li><label>读书</label></li>
+        <li><label>Swift</label></li>
 
           
-            <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+            <li><a title="【Swift 3】Welcome to Swift（介绍预览）" href="14708922240697.html">【Swift 3】Welcome to Swift（介绍预览）</a></li>
           
 
       
@@ -88,15 +98,23 @@
                         
 
                     
+                      <li class="side-title"><span>读书</span></li>
+                        
+                          <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+                        
+
+                    
                       <li class="side-title"><span>iOS</span></li>
+                        
+                          <li><a title="CoreBluetooth - 蓝牙中心管理" href="14721065971366.html">CoreBluetooth - 蓝牙中心管理</a></li>
                         
                           <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
                         
 
                     
-                      <li class="side-title"><span>读书</span></li>
+                      <li class="side-title"><span>Swift</span></li>
                         
-                          <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+                          <li><a title="【Swift 3】Welcome to Swift（介绍预览）" href="14708922240697.html">【Swift 3】Welcome to Swift（介绍预览）</a></li>
                         
 
                     
@@ -112,225 +130,327 @@
 
 	
 		<div class="markdown-body">
-		<h1>【图解HTTP】-上野宣</h1>
+		<h1>CoreBluetooth - 蓝牙中心管理</h1>
 
-		<h2 id="toc_0">了解Web及网络基础</h2>
-
-<ul>
-<li><p>1 客户端使用 URL 获取服务器文件资源。（使用HTTP协议访问Web）</p></li>
-<li><p>2 HTML：页面的文本标记语言；HTTP：文本传递协议；URL：指定文档所在地址；</p></li>
-<li><p>3 TCP/IP：互联网相关的各类协议族的总称；包括：应用层，传输层，网络层，链路层；<br/>
-应用层：向用户提供应用服务时通信的活动，FTP和DNS是其中两大类服务，（HTTP也属于该层）；<br/>
-传输层：对应用层提供网络连接中的2台计算机之间的数据传输，TCP和UDP两种不同的协议；<br/>
-网络层：处理网络上流动的数据包，在传输时选择一条传输路线，IP协议；<br/>
-链路层：处理连接网络的硬件部分；<br/>
-举个例子：发送端发送  A 数据（应用层）-&gt; 添加TCP头（传输层） -&gt; 添加IP头（网络层） -&gt; 添加以太网头（链路层） -&gt; 接收端反向操作，去除以太网头（网络层） -&gt; 去除IP头（网络层） -&gt; 去除TCP头（传输层）-&gt; 获得 A数据；</p></li>
-<li><p>4 IP协议：把数据传输给对方，但是确保送达需要很多条件，最重要的2个是IP地址和MAC地址；<br/>
-ARP协议：解析地址，根据 IP可以反查MAC地址；<br/>
-具体传输有点类似快递，需要多次使用路由器做中转；</p></li>
-<li><p>5 TCP协议：提供可靠的字节流服务；1 分割数据成报文段位单位的数据包；2 能确定数据是否送达；<br/>
-确保数据送达：TCP三次握手，</p></li>
-<li><p>6 DNS服务：域名解析，IP地址与域名的转换；</p></li>
-<li><p>7 URI：统一资源标识符，协议方案包含（http，ftp，file，tel，telnet，mailto.....）<br/>
-URL：资源地址（是URI的子集）<br/>
-绝对URI：<a href="http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1">http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1</a><br/>
-协议方案，登录认证（可选），服务器地址，服务器端口，文件路径，查询内容，片段标识符</p></li>
+		<ul>
+<li>
+<a href="#toc_0">简述内容框架流程之一</a>
+</li>
+<li>
+<a href="#toc_1">CBCentralManager 中心管理</a>
+</li>
+<li>
+<a href="#toc_2">CBPeripheral 周边设备</a>
+</li>
+<li>
+<a href="#toc_3">其他</a>
+</li>
 </ul>
 
-<h2 id="toc_1">简单的HTTP协议</h2>
+
+<p>CoreBluetooth：主要分为2大部分<br/>
+1.作为中心，搜索周边设备<br/>
+2.作为设备，发送广播被中心搜索</p>
+
+<h2 id="toc_0">简述内容框架流程之一</h2>
+
+<p>1 centerManager 实例化，并检查设备蓝牙状态，通过代理回调<br/>
+2 蓝牙可用时，开始搜索周边设备，每次搜索到都会触发回调（注，将已搜索到的设备，实例化存本地，不然好像会一直搜索到）<br/>
+3 选择某个扫描到的设备进行连接，代理回调</p>
+
+<p>4 连接成功后，搜索设备包含的服务，代理回调<br/>
+5 选择某个服务，搜索服务包含的特征，代理回调（注：服务也可能包含服务）（注2：一般对特征进行订阅与读写，注意属性）<br/>
+6 选择某个特征，搜索特征包含的描述，代理回调</p>
+
+<p>注：不管是设备还是服务等，都有特定的 UUID 区别</p>
+
+<h2 id="toc_1">CBCentralManager 中心管理</h2>
+
+<p>职责：检查蓝牙状态，扫描设备，连接设备</p>
 
 <ul>
-<li><p>1 HTTP协议：用于客户端与服务端之间的通信；客户端发送请求，服务端响应；HTTP本身没有持久化处理，但是使用Cookie可以管理状态；</p></li>
-<li><p>2 请求URI定位资源</p></li>
-<li><p>3 HTTP方法：GET获取，POST传输实体主体，PUT传输文件，HEAD获得报文首部，DELETE删除文件，OPTIONS询问支持的方法，TRACE追踪路径（不用），CONNECT要求使用隧道协议连接代理</p></li>
-<li><p>4 HTTP长连接，建立一次连接，就可以发送请求的资源，不用每次请求都重新连接并断开；管线化，并行发送多个请求；</p></li>
-<li><p>5 Cookie：再请求响应后，服务端会返回一个cookie，如果客户端保存，那么下次请求时会添加cookie，那么服务端就会知道是哪个客户端了。</p></li>
+<li>1 创建蓝牙管理</li>
 </ul>
 
-<h2 id="toc_2">HTTP报文内的HTTP信息</h2>
+<pre><code>// 一般使用第二种，简单粗暴自带代理 
+self.centerManager = [[CBCentralManager alloc] init];
+self.centerManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+ 
+// 这个....初始化特定的中心，可能与后台使用有关，确实不了解，请告知，谢谢；
+self.centerManager = [[CBCentralManager alloc] initWithDelegate:self
+                                                          queue:nil
+                                                        options:@{CBCentralManagerOptionShowPowerAlertKey:@(YES),
+                                                                  CBCentralManagerOptionRestoreIdentifierKey:@&quot;UUID&quot;}];
+
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    if (central.state == CBCentralManagerStatePoweredOn) {
+        // 蓝牙打开，则开始搜索
+    } else {
+        NSLog(@&quot;蓝牙 异常&quot;);
+    }
+}
+
+// 注意，这个代理有毒，可能与后台蓝牙有关
+- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary&lt;NSString *, id&gt; *)dict {
+
+}
+
+</code></pre>
 
 <ul>
-<li><p>1 HTTP报文：报文首部 + (CR+LF) + 报文主体<br/>
-请求报文：报文首部（请求行，各种首部字段，其他）<br/>
-响应报文：状态行，各种首部字段，其他）</p></li>
-<li><p>2 编码提升传输速率：压缩传输的内容编码（gzip，compress，deflate，identity）；分割发送的分块传输编码；</p></li>
-<li><p>3 获取部分内容的范围请求：添加 Range：bytes=5000-</p></li>
-<li><p>4 内容协商返回合适内容：比如对应显示中英文；</p></li>
+<li>2 扫描周边设备</li>
 </ul>
 
-<h2 id="toc_3">返回结果的HTTP状态吗</h2>
+<pre><code> // 条件扫描 设备 
+[self.centerManager scanForPeripheralsWithServices:nil options:nil];
+
+// 判断 并 停止扫描
+if ([self.centerManager isScanning]) {
+    [self.centerManager stopScan];
+}
+  
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI {
+     NSLog(@&quot;扫描到一个设备设备：%@&quot;,peripheral.name);  
+    // RSSI 是设备信号强度
+    // advertisementData 设备广告标识
+    // 一般把新扫描到的设备添加到一个数组中，并更新列表
+}
+</code></pre>
 
 <ul>
-<li><p>1 状态吗类别：<br/>
-1XX：Informational（信息性状态码）：接受的请求正在处理<br/>
-2XX：Success（成功状态码）：请求正常处理完毕<br/>
-3XX：Redirection（重定向状态码）：需要进行附加操作以完成请求<br/>
-4XX：Client Error（客户端错误状态码）：服务器无法处理请求<br/>
-5XX：Server Error（服务器错误状态码）：服务器处理请求出错</p></li>
-<li><p>2XX：成功<br/>
-200：正常处理<br/>
-204：没有资源<br/>
-206：范围请求</p></li>
-<li><p>3XX：重定向<br/>
-301：资源URI更新<br/>
-304：资源已找到，但是不符合条件请求</p></li>
-<li><p>4XX：客户端错误<br/>
-400：语法错误<br/>
-401：第一次401，需要认证；第二次401，认证失败<br/>
-403：资源拒绝访问<br/>
-404：没有请求的资源</p></li>
-<li><p>5XX：服务器错误<br/>
-500：内部资源异常<br/>
-503：暂时无法处理（可能超负载或者维护中）</p></li>
+<li>3 连接、取消连接 设备 </li>
 </ul>
 
-<h2 id="toc_4">与HTTP协作的Web服务器</h2>
+<pre><code>[self.centerManager connectPeripheral:currentPer options:nil];
+[self.centerManager cancelPeripheralConnection:currentPer];
+
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+    NSLog(@&quot;链接成功&quot;);
+}
+
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
+    NSLog(@&quot;链接失败&quot;);
+}
+
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
+    NSLog(@&quot;设备断开链接&quot;);
+}
+</code></pre>
 
 <ul>
-<li><p>1 通信数据转发程序：代理、网关、隧道<br/>
-代理：客户端与服务器的中间人，处理信息交换，主要存在两类：缓存代理，透明代理（不修改报文）<br/>
-网关：转发其他服务器通信数据的服务器，能提供非HTTP的服务，网关可以提高通信安全<br/>
-隧道：客户端与服务器中转，可以使用SSL等加密手段通信</p></li>
-<li><p>2 资源缓存：使用缓存代理实现，提示缓存有时限；客户端也可以实现缓存；</p></li>
+<li>4 其他</li>
 </ul>
 
-<h2 id="toc_5">HTTP首部</h2>
+<pre><code>// 检索 设备
+NSArray *arr1 =  [self.centerManager retrievePeripheralsWithIdentifiers:@[@&quot;50088781-A05B-32CA-8BA0-F87365960D27&quot;]];
+
+NSArray *arr2 =  [self.centerManager retrieveConnectedPeripheralsWithServices:@[@&quot;ECB0&quot;]];
+</code></pre>
+
+<h2 id="toc_2">CBPeripheral 周边设备</h2>
+
+<p>职责：提供设备信息，服务，特征，描述<br/>
+注：中间涉及  CBService，CBCharacteristic，CBDescriptor的 内容，所以穿插在里面了。</p>
 
 <ul>
-<li><p>通用首部<br/>
-Cache-Control：缓存机制，指令有很多种；<br/>
-Connection：控制不在转发给代理的首部字段，管理持久连接；<br/>
-Date：表示创建HTTP报文的日期和时间；<br/>
-Pragma：1.0遗留字段；no-cache（与Cache-Control的一个字段一样）<br/>
-Trailer：<br/>
-Transfer-Encoding：传输报文主题的编码方式<br/>
-UUpgrade：检测HTTP等协议是否可用更高的版本进行通信；<br/>
-Via：追踪传输路径；<br/>
-Warning：告知一些缓存相关的警告；</p></li>
-<li><p>请求首部字段：补充请求附加信息、对响应内容相关的优先级等；<br/>
-Accept：返回资源格式与优先级；<br/>
-Accept-Charset：字符集与优先级；<br/>
-Accept-Encoding：内容编码与优先级；<br/>
-Accept-Language：自然语言集与优先级；<br/>
-Authorization：授权信息；<br/>
-Expect：<br/>
-From：邮箱地址（也有可能再User-Agent字段内）；<br/>
-Host：主机（与单台服务器分配多个域名的虚拟主机有关）<br/>
-If-Match：字段值与资源的ETag值一致时，才处理请求；<br/>
-If-None-Match：与If-Match相反；<br/>
-If-Modified-Since：指定的日期之后，资源发送变化，才处理请求；<br/>
-If-Unmodified-Since：与If-Modified-Since相反；<br/>
-If-Range：先判断字段是否与资源的ETag或者更新日期是否匹配，一致则根据Range字段处理请求，不一致则忽略Range字段，返回全部资源；节省了一步If-March<br/>
-Max-Forwards：最多转发次数，数值变为0是返回响应；<br/>
-Proxy-Authorization：代理服务器认证；<br/>
-Range：部分资源；<br/>
-Referer：请求原始资源URI；<br/>
-TE：传输编码方式与优先级；<br/>
-User-Agent：表示浏览器种类，也会添加代理服务器名称；</p></li>
-<li><p>响应首部字段：补充响应的附加信息、服务器信息、以及客户端附加要求等；<br/>
-Accept-Ranges：告知请求范围是否正常；<br/>
-Age：源服务器上次响应时间间隔；<br/>
-ETag：资源唯一标识；<br/>
-Location：引导至另一个位置的资源；（重定向相关）<br/>
-Proxy-Authenticate：与请求类似<br/>
-Retry-After：多久后再次尝试；<br/>
-Server：当前HTTP服务器信息；<br/>
-Vary：对应的Accept-Language，<br/>
-WWW-Authenticate：</p></li>
-<li><p>实体首部字段：补充内容的更新时间等；<br/>
-Alllow：支持请求方法；<br/>
-Content-Encoding：实体的主体部分编码方式；<br/>
-Content-Language：实体的主体自然语言；<br/>
-Content-Length：实体的主体大小；<br/>
-Content-Location：主体返回资源的URI；<br/>
-Content-MD5：主体MD5<br/>
-Content-Range：主体内容范围 与 实体大小；<br/>
-Content-Type：主体对象类型；<br/>
-Expires：资源失效日期；<br/>
-Last-Modified：资源最后修改时间；</p></li>
-<li><p>Cookie服务的首部<br/>
-SetCookie<br/>
-Cookie</p></li>
-<li><p>其他</p></li>
+<li>1  CBPeripheral之一：获取设备信息</li>
 </ul>
 
-<h2 id="toc_6">HTTPS</h2>
+<pre><code>    peripheral.delegate = self;// 代理
+    NSString *identify = peripheral.identifier.UUIDString;// id
+    NSString *deviceName = peripheral.name;// 设备名称
+    NSNumber *powerState = peripheral.RSSI;// 设备信号（ios8 开始使用，方法+代理的方式获取）
+    if (peripheral.state == CBPeripheralStateConnected) {
+        NSLog(@&quot;已连接&quot;);
+    } else {
+        NSLog(@&quot;其他状态&quot;);
+    }
+    
+    NSArray *services = peripheral.services;// 需要扫描服务成功后才会有
+    
+    [peripheral readRSSI];// 获取信号，代理回调
 
-<p>HTTPS = HTTP + 加密 + 认证 + 完整性保护</p>
+- (void)peripheralDidUpdateName:(CBPeripheral *)peripheral NS_AVAILABLE(NA, 6_0) {
+    NSLog(@&quot;设备名称变化&quot;);
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray&lt;CBService *&gt; *)invalidatedServices NS_AVAILABLE(NA, 7_0) {
+    NSLog(@&quot;设备服务变化&quot;);
+}
+
+- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(nullable NSError *)error NS_DEPRECATED(NA, NA, 5_0, 8_0) {
+    NSLog(@&quot;获取到设备信号强度变化：%zi&quot;,peripheral.RSSI);
+}
+
+// 对应 readRSSI 方法
+- (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(nullable NSError *)error NS_AVAILABLE(NA, 8_0) {
+    NSLog(@&quot;获取到设备信号强度：%zi&quot;,RSSI);
+
+</code></pre>
 
 <ul>
-<li><p>HTTP 通信使用明文，可能被窃听；<br/>
-通信加密：使用SSL或者TLS与HTTP组合使用，使用SSL的就是所说的 HTTPS；<br/>
-内容加密：对报文内容加密后发送；</p></li>
-<li><p>HTTP 不验证通信方的身份，可能遭遇伪装；<br/>
-任何人可以发起请求，存在安全隐患；<br/>
-通过SSL，使用证书，验证通信方身份；</p></li>
-<li><p>HTTP 无法验证报文完整性，可能遭篡改；<br/>
-通过SSL，生成摘要，防篡改；</p></li>
-<li><p>HTTPS 混合加密机制：1 非对称加密验证身份可靠，并传输对称加密密钥K；2 使用对称加密进行通信（对称加密处理速度相对比非对称快）</p></li>
-<li><p>数字证书：（非对称加密）1 服务器A 向证书认证机构P 提出公钥申请，确认之后机构P会对服务器A的公钥做数字签名（也是非对称加密），再放入公钥证书C；2 服务器会将公钥证书C发送给客户端，客户端需要验证证书C的可靠性，所有在这里浏览器本身植入了机构P的公钥X，客户端向机构P对证书C的签名验证真实性； 3 客户端使用服务器公钥C对报文加密后发送（通信）；</p></li>
-<li><p>EV SSL 证书：验证了运营组织的真实性，比一般的更加可靠；</p></li>
-<li><p>认证机构：信誉第一，需要绝对可靠的信用（比如google 就是 由 google 签名的。）<br/>
-另外还有自签名证书和中级证书，可靠程度一般；</p></li>
-<li><p>HTTPS 通信流程：1 客户端发送开始连接（包含基本数据）；2 服务端发送1的回应数据，再发送证书，最后发送第一次握手结束；3 客户端使用收到的公钥，加密一个随机生成的密钥，发送给服务器，再发送通知消息表示以后使用这个密钥通信，随后发送已完成；4 服务器同3发送数据给客户端，完成SSL连接；5之后通信使用HTTP，但是已经有SSL保护；</p></li>
-<li><p>SSL 与 TLS：TLS是以SSL为原型设计； 统称SSL；</p></li>
-<li><p>HTTPS 速度比 HTTP 慢 2-100 倍，主要由于通信慢 与 加解密处理速度慢；</p></li>
+<li>2  CBPeripheral之二：设备服务</li>
 </ul>
 
-<h2 id="toc_7">确认访问用户身份的认证</h2>
+<pre><code>
+ // 服务相关，需要连接设备之后 需要主动扫描服务（一一对应代理）
+    [peripheral discoverServices:nil];
+    [peripheral discoverIncludedServices:nil forService:obj];
+
+
+// 对应 discoverServices 方法
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error {
+    NSLog(@&quot;成功扫描到设备的 服务&quot;);
+    [peripheral.services enumerateObjectsUsingBlock:^(CBService * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@&quot;第%zi个服务id是：%@&quot;,idx,obj.UUID.UUIDString);
+    }];
+}
+
+// 对应 discoverIncludedServices 方法
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverIncludedServicesForService:(CBService *)service error:(nullable NSError *)error {
+    NSLog(@&quot;成功扫描到设备的 服务 内部的 服务&quot;);
+    [service.includedServices enumerateObjectsUsingBlock:^(CBService * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@&quot;第%zi个内部的服务id是：%@&quot;,idx,obj.UUID.UUIDString);
+    }];
+}
+
+</code></pre>
+
+<p><strong><em>CBService 设备服务</em></strong><br/>
+主要2部分：1被搜索的服务；2主动创建服务<br/>
+注：搜索周边服务，仅使用1；</p>
+
+<pre><code>    CBPeripheral *currentPeripheral = obj.peripheral;// 提供服务的设备
+    BOOL primary = obj.isPrimary;// 是否主要服务
+    NSArray *includeServices = obj.includedServices;// 服务包含的服务（需要二次主动扫描，才能发现）
+    NSArray *characteristics = obj.characteristics;// 服务包含的特征（同上）
+</code></pre>
+
+<p><strong><em>CBAttribute 服务，特征，描述 的 父类</em></strong><br/>
+提供唯一标识 UUID，由CBUUID 创建</p>
+
+<p><strong><em>CBUUID UUID 的类型</em></strong><br/>
+这个不具体展开了：举个最简单的栗子：</p>
+
+<pre><code>[CBUUID UUIDWithString:@&quot;ECB0&quot;]
+</code></pre>
 
 <ul>
-<li><p>HTTP认证方式：BASIC基本认证，DIGEST摘要认证，SSL客户端认证，FormBase表单认证；</p></li>
-<li><p>BASIC认证：通过HTTP Authorization首部字段，发送用户ID与密码的Base64b<br/>
-编码字符串，由于其明文不安全以及无注销操作，故不使用；</p></li>
-<li><p>DIGEST认证：BASIC的基础上，添加了服务端产生随机字段，组合之后生成MD5作为首部；增强了密码保护，但是无法防止用户伪装；</p></li>
-<li><p>SSL认证：HTTPS加密通信，一般采用双因素认证，组合表单认证；</p></li>
-<li><p>表单认证：即一般的注册登录；大部分都是表单认证；</p></li>
+<li>3  CBPeripheral之三：设备服务特征</li>
 </ul>
 
-<h2 id="toc_8">基于HTTP的功能追加协议</h2>
+<pre><code>    // 服务特征相关，需要扫描到服务之后 主动扫描特征（一一对应代理）
+    [peripheral discoverCharacteristics:nil forService:obj];
+
+    // 读取 特征
+    [peripheral readValueForCharacteristic:obj];
+
+    // 写入 特征
+    [peripheral writeValue:[NSData data] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+
+    // 订阅特征
+    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
+
+// 对应 discoverCharacteristics 方法
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error {
+    NSLog(@&quot;扫描到当前设备的服务特征：%@&quot;,service.characteristics);
+}
+
+// 对应 readValueForCharacteristic 同时，更新也会回调
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
+    NSLog(@&quot;特征数据更新：%@&quot;,characteristic.value);
+}
+
+// 对应 writeValue forCharacteristic 方法
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
+    NSLog(@&quot;写入特征：%@&quot;,characteristic.value);
+}
+
+// 对应 setNotifyValue forCharacteristic 方法
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
+    NSLog(@&quot;订阅特征 返回：%@&quot;,characteristic.value);
+}
+
+</code></pre>
+
+<p><strong><em>CBCharacteristic 设备服务特征</em></strong><br/>
+同样包含2部分：1被搜索的服务特征；2主动创建服务特征<br/>
+注：搜索周边服务，仅使用1；</p>
+
+<pre><code>    CBService *service = characteristic.service;// 特征上级服务
+    NSData *data = characteristic.value;// 特征数据
+    CBCharacteristicProperties state = characteristic.properties;// 特征属性
+    BOOL isNotifying = characteristic.isNotifying;// 订阅状态
+    
+    NSArray *descriptors = characteristic.descriptors;// 需要主动扫描特征描述之后才能获取
+    
+
+// 特征状态 - 常见的 write 和 nofify，注意在特征操作时，关注其属性
+typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
+ CBCharacteristicPropertyBroadcast            = 0x01,
+ CBCharacteristicPropertyRead             = 0x02,
+ CBCharacteristicPropertyWriteWithoutResponse         = 0x04,
+ CBCharacteristicPropertyWrite             = 0x08,
+ CBCharacteristicPropertyNotify             = 0x10,
+ CBCharacteristicPropertyIndicate            = 0x20,
+ CBCharacteristicPropertyAuthenticatedSignedWrites        = 0x40,
+ CBCharacteristicPropertyExtendedProperties          = 0x80,
+ CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)  = 0x100,
+ CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x200
+};
+
+</code></pre>
 
 <ul>
-<li>Ajax：异步JavaScript 与 XML；有效利用JavaScript和DOM（文件对象模型）的操作，局部Web页面的加载；</li>
-<li>Comet：服务器有更新，就向客户端发送推送；</li>
-<li>SPYD：解决HTTP的性能瓶颈；多路复用流，赋予请求优先级，压缩HTTP首部，推送功能；（仅单域名通信多路复用，一个Web上使用多个域名下的资源时，就会受到限制）</li>
-<li><p>WebSocket：推送功能，减少通信量（保持连接状态）；使用HTTP的Upgrade首部字段，握手修改通信协议，使用WebSocket通信；</p></li>
-<li><p>HTTP/2.0</p></li>
-<li><p>Web服务器管理文件的WebDAV</p></li>
+<li>4  CBPeripheral之四：设备服务特征的描述
+与特征类似，而且用的比较少</li>
 </ul>
 
-<h2 id="toc_9">构建Web内容的技术</h2>
+<pre><code>    // 服务特征描述相关，需要扫描到服务特征之后 主动扫描描述（一一对应代理）
+    [peripheral discoverDescriptorsForCharacteristic:characteristic];
+    // 读取
+    [peripheral readValueForDescriptor:descriptor];
+    // 写入
+    [peripheral writeValue:[NSData data] forDescriptor:descriptor];
 
-<ul>
-<li>HTML：超文本标记语言，构建Web基础；</li>
-<li>CSS：展现HTML内元素的样式；</li>
-<li>动态HTML：使用客户端脚本语言JacaScript，实现对HTML的Web页面的动态改造；利用DOM可指定欲发生动态变化的HTML元素；</li>
-<li><p>DOM：操作HTML文档和XML文档的API；使用JacaScript对DOM的操作可以简单的方式控制HTML；例如：document.getElementsByTagName();</p></li>
-<li><p>Web应用：通过Web功能提供的应用程序，例如购物网站，搜索引擎等；作用与动态内容之上；</p></li>
-<li><p>CGI：通用网关接口，Web服务器接收客户端发送来的请求后转发给程序，程序对请求内容做出响应的动作；</p></li>
-<li><p>Servlet：服务器上创建动态内容；执行相对轻量级，效率更高；</p></li>
-<li><p>XML：可扩展标记语言；</p></li>
-<li><p>RSS/Atom：发布更新信息，也是呀XML；</p></li>
-<li><p>JSON：由JavaScript衍生，更加轻量化的数据格式；</p></li>
-</ul>
 
-<h2 id="toc_10">Web的攻击技术</h2>
+// 对应 discoverDescriptorsForCharacteristic 方法
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
+    NSLog(@&quot;成功扫描到设备的 服务-特征 的 描述：%@&quot;,characteristic.descriptors);
+}
 
-<ul>
-<li><p>输出值转义不完全引发的安全漏洞：跨站脚本攻击（XSS），窃取用户Cookie，SQL注入，OS命令注入，HTTP首部注入，HTTP响应截断攻击，邮件首部注入攻击，目录遍历攻击，远程文件包含漏洞。</p></li>
-<li><p>设计或设置缺陷引发的漏洞：强制浏览，不正确的错误处理，开放重定向，</p></li>
-<li><p>会话管理疏忽的漏洞：会话劫持，会话固定攻击，跨站点请求伪造；</p></li>
-<li><p>其他漏洞：密码破解，点击劫持，DoS攻击，后门程序；</p></li>
-</ul>
+// 对应 readValueForDescriptor 方法
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(nullable NSError *)error {
+    NSLog(@&quot;获取的特征的描述：%@&quot;,descriptor.value);
+}
+
+// 对应 writeValue forDescriptor 方法
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForDescriptor:(CBDescriptor *)descriptor error:(nullable NSError *)error {
+    NSLog(@&quot;成功写入特征的描述&quot;);
+}
+
+</code></pre>
+
+<p><strong><em>CBDescriptor 设备服务特征描述</em></strong><br/>
+同样包含2部分：1被搜索的服务特征描述；2主动创建服务特征描述<br/>
+注：搜索周边服务，仅使用1；</p>
+
+<pre><code>    CBCharacteristic *characteristic = descriptor.characteristic;// 描述的上级特征
+    NSData *data = descriptor.value; // 描述数据
+</code></pre>
+
+<h2 id="toc_3">其他</h2>
+
+<p>注：基本上的API与相互关系，大致如此；实际使用还需要做逻辑处理 与 交互数据处理；</p>
+
+<p>注2：github 有个第三方库，将代理变成了 block形式，支持链式编程（实际开发我并没有使用，感觉差不多）<br/>
+<a href="https://github.com/coolnameismy/BabyBluetooth">https://github.com/coolnameismy/BabyBluetooth</a><br/>
+有兴趣的可以用用</p>
 
 
 		</div>
-	
-
- 
-	
-
- 
 	
 
   

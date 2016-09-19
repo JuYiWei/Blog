@@ -1,0 +1,753 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  【Swift 3】Welcome to Swift（介绍预览） - 说了是村长
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="说了是村长" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">说了是村长</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 说了是村长</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>随笔</label></li>
+
+          
+            <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>读书</label></li>
+
+          
+            <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>iOS</label></li>
+
+          
+            <li><a title="CoreBluetooth - 蓝牙中心管理" href="14721065971366.html">CoreBluetooth - 蓝牙中心管理</a></li>
+          
+            <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Swift</label></li>
+
+          
+            <li><a title="【Swift 3】Welcome to Swift（介绍预览）" href="14708922240697.html">【Swift 3】Welcome to Swift（介绍预览）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>随笔</span></li>
+                        
+                          <li><a title="Hello Blog" href="14703031851211.html">Hello Blog</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>读书</span></li>
+                        
+                          <li><a title="【图解HTTP】-上野宣" href="14718500111444.html">【图解HTTP】-上野宣</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>iOS</span></li>
+                        
+                          <li><a title="CoreBluetooth - 蓝牙中心管理" href="14721065971366.html">CoreBluetooth - 蓝牙中心管理</a></li>
+                        
+                          <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Swift</span></li>
+                        
+                          <li><a title="【Swift 3】Welcome to Swift（介绍预览）" href="14708922240697.html">【Swift 3】Welcome to Swift（介绍预览）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>【Swift 3】Welcome to Swift（介绍预览）</h1>
+
+<ul>
+<li>
+<a href="#toc_0">关于 Swift</a>
+</li>
+<li>
+<a href="#toc_1">Swift 预览</a>
+<ul>
+<li>
+<a href="#toc_2">hello world</a>
+</li>
+<li>
+<a href="#toc_3">简答值</a>
+</li>
+<li>
+<a href="#toc_4">控制流</a>
+</li>
+<li>
+<a href="#toc_5">函数与闭包</a>
+</li>
+<li>
+<a href="#toc_6">对象与类</a>
+</li>
+<li>
+<a href="#toc_7">枚举与结构体</a>
+</li>
+<li>
+<a href="#toc_8">协议与拓展</a>
+</li>
+<li>
+<a href="#toc_9">异常处理</a>
+</li>
+<li>
+<a href="#toc_10">泛型</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p><a href="https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0">Swift 3 官方文档</a><br/>
+也可以下载iBooks阅读。</p>
+
+<p>之前只是对swift2.2简单的了解过，看了个大概，也没有去研究整理。现在3.0正式出炉了，据说4.0，API不会有大改动，而是在此基础上优化新增，希望3.0是一个比较稳定的版本吧。今天开动，学习整理一下官方文档，自己用用的笔记，大家可以直接看官方文档。</p>
+
+<h2 id="toc_0">关于 Swift</h2>
+
+<ul>
+<li>Swift是一种新的编程语言，基于C和OC，采用安全类型的编程模式，支持原有的cocoa框架，目标重新定义软件开发。</li>
+<li>苹果基于原有的开发经验，比如OC中的ARC，block，framework等，都将推进Swift在未来等发展。</li>
+<li>Swift类似OC等命名以及动态对象，无缝链接现有cocoa框架，支持混编OC，C，C++， </li>
+<li>Swift的未来，被十分重视与看好。</li>
+<li>总之，大概就是说，Swift是十分优秀的编程语言，将在未来占有一席之地，赶紧好好学习！</li>
+</ul>
+
+<h2 id="toc_1">Swift 预览</h2>
+
+<h3 id="toc_2">hello world</h3>
+
+<pre><code>print(&quot;Hello World!&quot;)
+不再需要分号结尾
+</code></pre>
+
+<h3 id="toc_3">简答值</h3>
+
+<ul>
+<li>常量/变量：</li>
+</ul>
+
+<pre><code>let myConstant = 18
+var myVariable ＝ 18
+自动判断数据类型
+</code></pre>
+
+<ul>
+<li>指定数据类型</li>
+</ul>
+
+<pre><code>var aDouble:Double = 18
+</code></pre>
+
+<ul>
+<li>字符串</li>
+</ul>
+
+<pre><code>let firstName = &quot;Li&quot;
+let lastName = &quot;Lie&quot;
+let name ＝ firstName + lastName
+</code></pre>
+
+<ul>
+<li>类型转换</li>
+</ul>
+
+<pre><code>let age ＝ 18
+let ageStr ＝ String(age)
+</code></pre>
+
+<ul>
+<li>字符串格式化</li>
+</ul>
+
+<pre><code>let name = &quot;Li Lei&quot;
+let age = 18
+
+let info = &quot;\(name) 的年龄是\(age)&quot;
+</code></pre>
+
+<ul>
+<li>数组</li>
+</ul>
+
+<pre><code>var shopList ＝ [&quot;apple&quot;, &quot;orange&quot;, &quot;water&quot;]
+var first = shopList[0]
+shopList[0] = &quot;iphone 7&quot;
+</code></pre>
+
+<ul>
+<li>字典</li>
+</ul>
+
+<pre><code>var info = [&quot;name&quot;:&quot;Li Lei&quot;, &quot;age&quot;:&quot;18&quot;]
+var naem = info[&quot;name&quot;]
+info[&quot;name&quot;] = &quot;Han Meimei&quot;
+</code></pre>
+
+<h3 id="toc_4">控制流</h3>
+
+<p>条件 if/switch <br/>
+循环 for-in/for/while/repeat-while</p>
+
+<ul>
+<li>可选类型</li>
+</ul>
+
+<pre><code>var optionalName : String? = &quot;Li Lei&quot;
+if let name = optionalName {
+        print(&quot;yes \(name)&quot;)
+}
+可选类型存在时，赋值并条件成立，反之不成立
+</code></pre>
+
+<ul>
+<li>可选类型2 </li>
+</ul>
+
+<pre><code>var optionalName : String? = nil
+var defaultName = &quot;Li Lei&quot;
+let name ＝ optionalName ?? defaultName
+类型三元运算
+</code></pre>
+
+<ul>
+<li>switch</li>
+</ul>
+
+<pre><code>let index = 2;
+switch index {
+case 0 : 
+case 1 :
+case 2 :
+default :
+比较特殊的是，不需要break（默认加了break），而且没有default时会有提示，在使用自定义的emnu时建议不要使用default。
+</code></pre>
+
+<ul>
+<li>for-in</li>
+</ul>
+
+<pre><code>let info = [
+                &quot;class1&quot;:[1,2,3,4,5],
+                &quot;class2&quot;:[2,2,2,2,2]
+                ]
+for (key, values) in info {
+    for (index, value) in values {
+        print(\(vlue))
+    }
+}
+// 可以直接提取 key 和 value
+</code></pre>
+
+<ul>
+<li>while/repeat-while</li>
+</ul>
+
+<pre><code>var n = 2
+while n &lt; 10 {
+    n += 2
+}
+
+var m = 2
+repeat {
+    m += 2
+} while m &lt; 10
+</code></pre>
+
+<ul>
+<li>for</li>
+</ul>
+
+<pre><code>var n = 2
+for i in 0..&lt;4 {
+    n += i
+}
+与原for 差别比较大
+</code></pre>
+
+<h3 id="toc_5">函数与闭包</h3>
+
+<ul>
+<li>基本结构</li>
+</ul>
+
+<pre><code>// 定义 函数名称（参数：参数类型，参数2:参数2类型） -&gt; 返回类型 ｛...｝
+func add(a:Int, b:Int) -&gt; Int {
+    return a + b;
+}
+
+let sum = add(a: 2, b: 3)
+</code></pre>
+
+<ul>
+<li>为函数参数自定义名称</li>
+</ul>
+
+<pre><code>func add(aa a:Int, bb b:Int) -&gt; Int {
+  return a + b;
+}
+    
+add(aa: 2, bb: 3);
+
+// 使用  _  表示忽略
+
+</code></pre>
+
+<ul>
+<li>元组，函数多数据返回（元素组合，有点类似对象属性）</li>
+</ul>
+
+<pre><code>func calculate(scores: [Int]) -&gt; (min: Int, max: Int, sum: Int) {
+  // do something
+  
+  return (1,2,3)
+}
+    
+let result = calculate(scores: [1,2,3])
+let min = result.min
+let max = result.max
+let sum = result.sum
+</code></pre>
+
+<ul>
+<li>元组，函数多数据参数</li>
+</ul>
+
+<pre><code>func calculate(scores: Int...) -&gt; (min: Int, max: Int, sum: Int) {
+  // do something
+ return (1,2,3)
+}
+    
+let result = calculate(scores: 1,2,3)
+</code></pre>
+
+<ul>
+<li>函数嵌套，注意函数作用域即可</li>
+</ul>
+
+<pre><code>func calculate(a:Int) -&gt; Int {
+  
+  func dou(a:Int) -&gt; Int {
+      return a * 2
+  }
+  
+  return a * dou(a: a)
+}
+ 
+let x = calculate(a: 3)
+</code></pre>
+
+<ul>
+<li>函数 返回函数，有点类似对象函数</li>
+</ul>
+
+<pre><code>// 函数 返回的函数 是Int入参，返回Int
+func makeIncrementer() -&gt; ((Int) -&gt; Int) {
+  
+  func addOne(number: Int) -&gt; Int {
+      return 1 + number
+  }
+  
+  return addOne
+}
+   
+let increment = makeIncrementer()// 获取的是该函数返回的函数
+let a = increment(7)
+</code></pre>
+
+<ul>
+<li>函数 作为函数参数</li>
+</ul>
+
+<pre><code>func pass(a:Int) -&gt; Bool {
+        return a&gt;=60
+}
+        
+func allPass(list:[Int], passHandler:(Int) -&gt; Bool) -&gt; Bool {
+  
+  for score in list {
+      if !passHandler(score) {
+          return false
+      }
+  }
+  
+  return true
+}
+   
+let a = allPass(list: [100,20,60], passHandler: pass)
+   
+</code></pre>
+
+<ul>
+<li>闭包 - 需要仔细研究下，跟block还是有区别啊，这里只是用了数组的系统map闭包，没有自己写一个不好理解。</li>
+</ul>
+
+<pre><code>// 使用  in 分割参数与返回值
+let mapped = numbers.map({
+  (number: Int) -&gt; Int in
+  let result = 3 * number
+  return result
+})
+   
+// 简写
+let mapped2 = numbers.map({ number in 3 * number })
+</code></pre>
+
+<h3 id="toc_6">对象与类</h3>
+
+<ul>
+<li>普通对象与方法</li>
+</ul>
+
+<pre><code>class User: NSObject {
+    
+    // 对象 属性
+    var name:String
+    var age = 0
+    
+    // 对象初始化，添加可选参数
+    init(name:String) {
+        self.name = name 
+    }
+    
+    // 对象方法
+    func info() -&gt; String {
+        return &quot;\(name) 今年 \(age)&quot;
+    }
+    
+    // 重写 get set
+    var sideLength: Double = 0.0
+    var perimeter: Double {
+        get {
+            return 4.0 * sideLength
+        }
+        set {
+            sideLength = newValue / 4.0
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li>其他</li>
+</ul>
+
+<pre><code>willSer／didSet：暂时没理解神马意思，后面详细研究
+</code></pre>
+
+<h3 id="toc_7">枚举与结构体</h3>
+
+<ul>
+<li>Enumerations
+基础枚举大致差不多，特殊在于可以添加函数</li>
+</ul>
+
+<pre><code>enum Rank:UInt {
+    case ace = 1
+    case two, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king
+    
+    
+    func desc() -&gt; String {
+        switch self {
+        case .ace:
+            return &quot;Ace&quot;
+            
+        case .jack:
+            return &quot;Jack&quot;
+            
+        case .queen:
+            return &quot;Queen&quot;
+            
+        case .king:
+            return &quot;King&quot;
+            
+        default:
+            return String(self.rawValue)
+        }
+    }
+}
+</code></pre>
+
+<pre><code>let ace = Rank.ace
+let aceIndex = Rank.ace.rawValue
+let aceDecs = Rank.ace.desc()
+
+// 使用指定值获取枚举值时，是可选类型
+if let card = Rank(rawValue: 3) {
+  print(card.desc())
+}
+</code></pre>
+
+<ul>
+<li>Structures</li>
+</ul>
+
+<pre><code>struct User {
+    var name: String
+    var age: Int
+    func desc() -&gt; String {
+        return &quot;The \(name) and \(age)&quot;
+    }
+}
+</code></pre>
+
+<pre><code>let user = User(name: &quot;Li Lei&quot;, age: 28)
+let desc = user.desc()
+let name = user.name
+let age = user.age
+</code></pre>
+
+<h3 id="toc_8">协议与拓展</h3>
+
+<ul>
+<li>Protocols</li>
+</ul>
+
+<pre><code>protocol TestProtocol {
+    var desc:String {get}
+    mutating func adjust()
+}
+
+class testClass: TestProtocol {
+    var desc: String = &quot;test class&quot;
+    func adjust() {
+        desc = desc + &quot;1&quot;
+    }
+}
+
+struct 和 enum 都可以使用协议
+</code></pre>
+
+<pre><code>let test = testClass()
+test.adjust()
+let desc = test.desc   
+</code></pre>
+
+<ul>
+<li>Extensions</li>
+</ul>
+
+<pre><code>extension Int: TestProtocol {
+    var desc: String {
+        return &quot;The number \(self)&quot;
+    }
+    mutating func adjust() {
+        self += 1
+    }
+}
+</code></pre>
+
+<h3 id="toc_9">异常处理</h3>
+
+<ul>
+<li>异常处理 try-catch。</li>
+</ul>
+
+<pre><code>// 定义异常类型
+enum myError: Error {
+  case error1
+}
+   
+// 可能抛出异常的函数，添加异常抛出
+func testErrorFunc() throws {
+  throw myError.error1
+}
+   
+   
+// do - try - catch：需要补充一个空catch，这里不太理解，待 Error Handling 部分详细研究
+do {
+  try testErrorFunc()
+  print(&quot;ok&quot;)
+} catch myError.error1 {
+  print(&quot;error&quot;)
+} catch {
+  print(&quot;?????&quot;)
+}
+</code></pre>
+
+<ul>
+<li>函数相关，感觉跟异常处理无关啊
+使用defer 延迟处理</li>
+</ul>
+
+<pre><code>var fridgeIsOpen = false
+let fridgeContent = [&quot;milk&quot;, &quot;eggs&quot;, &quot;leftovers&quot;]
+ 
+func fridgeContains(_ food: String) -&gt; Bool {
+    fridgeIsOpen = true
+    defer {
+        fridgeIsOpen = false
+    }
+    
+    let result = fridgeContent.contains(food)
+    return result
+}
+fridgeContains(&quot;banana&quot;)
+print(fridgeIsOpen)
+</code></pre>
+
+<h3 id="toc_10">泛型</h3>
+
+<p>泛型，指定类型。</p>
+
+<pre><code>// 指定了数组元素是 String
+var names = Array&lt;String&gt;()
+
+
+// 定义函数申明了一种类型T，一般也用V，U等，参数与返回指定了类型T。这里就是说我入参什么类型，返回就是什么类型
+func makeArray&lt;T&gt;(info: T, num: Int) -&gt; [T] {
+  
+  var result = [T]()
+  for _ in 0..&lt;num {
+      result.append(info)
+  }
+  
+  return result
+}
+   
+</code></pre>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="14718500111444.html"  title="Previous Post: 【图解HTTP】-上野宣">&laquo; 【图解HTTP】-上野宣</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html" 
+	        title="Next Post: OS X Server 之 Xcode服务（iOS开发持续集成）">OS X Server 之 Xcode服务（iOS开发持续集成） &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '14708922240697.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
