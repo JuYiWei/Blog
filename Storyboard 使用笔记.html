@@ -1,0 +1,440 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Storyboard 使用笔记 - 说了是村长
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="说了是村长" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">说了是村长</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 说了是村长</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>iOS</label></li>
+
+          
+            <li><a title="Xcode 8 快捷键" href="Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 8 快捷键</a></li>
+          
+            <li><a title="Xcode 输出官方文档" href="Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></li>
+          
+            <li><a title="openssl 打包使用" href="openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></li>
+          
+            <li><a title="iOS 开发调试" href="iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></li>
+          
+            <li><a title="iOS 常见的 error" href="iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></li>
+          
+            <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+          
+            <li><a title="OC 代码规范简单整理" href="OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></li>
+          
+            <li><a title="Block 再次研究 - 循环引用" href="Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></li>
+          
+            <li><a title="Block" href="Block.html">Block</a></li>
+          
+            <li><a title="Delegate" href="Delegate.html">Delegate</a></li>
+          
+            <li><a title="GCD" href="GCD.html">GCD</a></li>
+          
+            <li><a title="Storyboard 使用笔记" href="Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></li>
+          
+            <li><a title="CoreBluetooth - 蓝牙中心管理" href="CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></li>
+          
+            <li><a title="QuartzCore - 绘图" href="QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></li>
+          
+            <li><a title="AddressBook 旧版的通讯录" href="AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></li>
+          
+            <li><a title="MessageUI - 消息" href="MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></li>
+          
+            <li><a title="LocalAuthentication - 指纹识别" href="LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></li>
+          
+            <li><a title="友盟统计" href="%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></li>
+          
+            <li><a title="iOS 质量跟踪 Bugly 集成" href="iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Andriod</label></li>
+
+          
+            <li><a title="Android Studio 真机调试（mac）" href="Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Web</label></li>
+
+          
+            <li><a title="UglifyJS 压缩 JS 文件" href="UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>数据库</label></li>
+
+          
+            <li><a title="mac 安装 MYSQL" href="mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></li>
+          
+            <li><a title="sqlite3 简单使用" href="sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>php</label></li>
+
+          
+            <li><a title="phpStorm 安装 Connect/J 连接 MySQL 数据库插件" href="phpStorm%20%E5%AE%89%E8%A3%85%20Connect/J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%0A.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>其他</label></li>
+
+          
+            <li><a title="APP需求分析文档" href="APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></li>
+          
+            <li><a title="git SSH" href="git%20SSH%20.html">git SSH</a></li>
+          
+            <li><a title="git 简单使用" href="git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></li>
+          
+            <li><a title="web 服务器配置 (mac OS Server)" href="web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></li>
+          
+            <li><a title="阿里云虚拟机建站（mac）" href="%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>iOS</span></li>
+                        
+                          <li><a title="Xcode 8 快捷键" href="Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 8 快捷键</a></li>
+                        
+                          <li><a title="Xcode 输出官方文档" href="Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></li>
+                        
+                          <li><a title="openssl 打包使用" href="openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></li>
+                        
+                          <li><a title="iOS 开发调试" href="iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></li>
+                        
+                          <li><a title="iOS 常见的 error" href="iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></li>
+                        
+                          <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+                        
+                          <li><a title="OC 代码规范简单整理" href="OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></li>
+                        
+                          <li><a title="Block 再次研究 - 循环引用" href="Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></li>
+                        
+                          <li><a title="Block" href="Block.html">Block</a></li>
+                        
+                          <li><a title="Delegate" href="Delegate.html">Delegate</a></li>
+                        
+                          <li><a title="GCD" href="GCD.html">GCD</a></li>
+                        
+                          <li><a title="Storyboard 使用笔记" href="Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></li>
+                        
+                          <li><a title="CoreBluetooth - 蓝牙中心管理" href="CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></li>
+                        
+                          <li><a title="QuartzCore - 绘图" href="QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></li>
+                        
+                          <li><a title="AddressBook 旧版的通讯录" href="AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></li>
+                        
+                          <li><a title="MessageUI - 消息" href="MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></li>
+                        
+                          <li><a title="LocalAuthentication - 指纹识别" href="LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></li>
+                        
+                          <li><a title="友盟统计" href="%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></li>
+                        
+                          <li><a title="iOS 质量跟踪 Bugly 集成" href="iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Andriod</span></li>
+                        
+                          <li><a title="Android Studio 真机调试（mac）" href="Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Web</span></li>
+                        
+                          <li><a title="UglifyJS 压缩 JS 文件" href="UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>数据库</span></li>
+                        
+                          <li><a title="mac 安装 MYSQL" href="mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></li>
+                        
+                          <li><a title="sqlite3 简单使用" href="sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>php</span></li>
+                        
+                          <li><a title="phpStorm 安装 Connect/J 连接 MySQL 数据库插件" href="phpStorm%20%E5%AE%89%E8%A3%85%20Connect/J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%0A.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>其他</span></li>
+                        
+                          <li><a title="APP需求分析文档" href="APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></li>
+                        
+                          <li><a title="git SSH" href="git%20SSH%20.html">git SSH</a></li>
+                        
+                          <li><a title="git 简单使用" href="git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></li>
+                        
+                          <li><a title="web 服务器配置 (mac OS Server)" href="web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></li>
+                        
+                          <li><a title="阿里云虚拟机建站（mac）" href="%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>Storyboard 使用笔记</h1>
+
+<ul>
+<li>
+<a href="#toc_0">xcode 标签内容</a>
+</li>
+<li>
+<a href="#toc_1">结合代码使用</a>
+</li>
+<li>
+<a href="#toc_2">其他 个人总结</a>
+</li>
+</ul>
+
+
+<h3 id="toc_0">xcode 标签内容</h3>
+
+<p>command + option 1~6 快速切换 xcode storyboard（xib）编辑内容(注：下面不强调xib)</p>
+
+<ul>
+<li>1 文件信息（.h.m全都有，略微不同），基本上不怎么修改，Size Class 可能会放弃选择。</li>
+<li>2 Quick Help 快速帮助（.h.m全都有），选中类的描述，一般也不怎么看。</li>
+<li>3 类别说明，一般也就改个Class 对应.h.m文件。</li>
+</ul>
+
+<pre><code>1 关于indentify，不填写，默认就好，也方便使用 NSStringFromClass()。
+2 Attributes,可以添加属性，KVC吧，一般也不用。
+3 Document 和 Accessibility 基本没用过，sorry了。
+
+</code></pre>
+
+<ul>
+<li>4 类的各种属性设置：从上到下可能会分几个模块，第一个是本身，往下是父类，父类的父类...不同的类有不同的属性可以设置，比较多，不一一介绍了。</li>
+<li>5 约束：注意 Constraints！</li>
+</ul>
+
+<pre><code>1 直接鼠标右键拉约束。
+2 整个storyboard 右下角 4 个小按钮添加约束
+    第一个：不熟！
+    第二个：添加与父视图的约束；
+    第三个：添加相邻控件的约束；（注意margins 这个属性，自动留边）
+    第四个：更新约束、位置。
+
+3 添加完约束，在Constraints 中，对应增加约束，
+    1 Edit 可以快速修改：
+      constraints 大小关系 &gt;=&lt; n
+      priority 优先级
+      Multiplier 倍数关系
+    2 双击约束，可以详细修改：比较多但是内容差不多，不写了。
+
+4 Content Hugging 和 Compression Resistance （内容紧凑优先级 和 压缩优先级）不多介绍了，masonry 里写了一点点。
+
+
+5 Intrinsic Size 默认大小，一般给没有图片的imageView 写一个。
+</code></pre>
+
+<ul>
+<li>6 链接 Outlet
+对于上面3步对应的Class，可以将storyboard 中各类，以右键方式拖至.h.m文件，IBOutlet 链接。链接会展示在对应 Outlets</li>
+</ul>
+
+<pre><code>1 拖至接口处，形成对象；
+2 (UIControl类)拖至实现文件下，形成事件；
+3 约束本身也可以拖至接口处，2次调整；
+
+4 注意修改outlet 时，检查 6标签中是否对应修改，避免产生！必崩！
+</code></pre>
+
+<ul>
+<li>7 添加转场 </li>
+</ul>
+
+<pre><code>1 UIControl 类，链接另一个ViewController，对应事件触发转场。
+2 ViewController 本身，链接另一个ViewController，需要代码支持。
+3 链接成功，command + shift + 4 需要设置，转场标记 indentifier，用于代码使用。
+4 也可以不添加，标记，直接使用代码进行push。
+</code></pre>
+
+<ul>
+<li>8 其他 
+control + command + option + 3 快速搜索控件，上下键切换，回车即添加。</li>
+</ul>
+
+<h3 id="toc_1">结合代码使用</h3>
+
+<p>关于自动布局本身就比较复杂，可能遇到的问题也比较多，没用好就会很多红线哦，注意安全。</p>
+
+<ul>
+<li>1 awakeFrimNib：nib加载初始化。</li>
+<li>2 代码加载nib</li>
+</ul>
+
+<pre><code>// storyboard
+    UIViewController *testViewController = [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:nil]instantiateViewControllerWithIdentifier:@&quot;TestViewController&quot;];
+
+// nib
+    UIView *testView = [[NSBundle mainBundle] loadNibNamed:@&quot;TestView&quot; owner:self options:nil].lastObject;
+// TestView 类，并不是 init 初始化，而是 awakeFrimNib。
+</code></pre>
+
+<ul>
+<li>3 代码转场传值</li>
+</ul>
+
+<pre><code>1 直接通过2获取ViewControllerV push
+
+2 通过转场标记转场
+// 打算 使用标记转场，并添加参数 sender
+    [self performSegueWithIdentifier:@&quot;gotoDetail&quot; sender:@&quot;message&quot;];
+
+// 转场传参数
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [segue.destinationViewController setValue:sender forKey:@&quot;message&quot;];
+}
+
+</code></pre>
+
+<h3 id="toc_2">其他 个人总结</h3>
+
+<p>在固定frame的view上面添加自动布局的view - ok；<br/>
+在自动布局的view上添加固定frame的view - error；</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="GCD.html"  title="Previous Post: GCD">&laquo; GCD</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html" 
+	        title="Next Post: CoreBluetooth - 蓝牙中心管理">CoreBluetooth - 蓝牙中心管理 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = 'Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
