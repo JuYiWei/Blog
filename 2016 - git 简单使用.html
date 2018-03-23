@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Archives - 【博客】说了是村长
+  git 简单使用 - 【博客】说了是村长
   
   </title>
  <meta name="description" content="">
@@ -220,508 +220,118 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-	
-		 
-		  	<h2>2018</h2>
-		
-		
-			<div>
-				<h3><a href="2018%20-%20123.html">2018</a></h3>
-				<p>
-					<time datetime="2018-03-23T09:30:53+08:00" pubdate><span class='month'>3月</span> <span class='day'>23</span> <span class='year'>2018</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2018.html'>2018</a>&nbsp;
-				   
-				  </span>
+<h1>git 简单使用</h1>
 
-				</p>
-			</div>
- 	
-		 
-		  	<h2>2017</h2>
-		
-		
-			<div>
-				<h3><a href="2016%20-%20%E7%99%BE%E5%BA%A6%20/%20google%20%E6%90%9C%E7%B4%A2%E6%8C%87%E5%8D%97.html">百度 / google 搜索指南</a></h3>
-				<p>
-					<time datetime="2017-07-19T14:15:43+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p>大神网址：很详细的教程，git指令挺深入的。<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/</a></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:22:32+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<h2 id="toc_0">简单梳理一下，知识量太大不好消化</h2>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:20:22+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<hr/>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:19:33+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p>*** 简单流程 ***</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20git%20SSH%20.html">git SSH</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:17:35+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>1 创建仓库</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:17:19+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<pre><code>    - 一般情况下，我们是从URL 克隆远程仓库到本地。(URL是git服务器的地址，例如GitHub、GitLab的也是一样的)
+    - 远程就是远端的仓库，克隆到本地就是本地仓库。远程仓库就是大家文件大集合的地方，互相可以看到对方的文件。本地仓库则是自己的，不与他人交集。
+    - 如果远程时隔空仓库，那么我们就塞点东西，提交并推送到master。然后远程就有了master，本地也会有个master分支。（提交，推送下面再讲）
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 快捷键</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:16:22+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>2 任务分发</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:57:51+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<pre><code>    - master 分支一般用作所谓的版本管理，开发期间，我们就需要从master 拉出一个分支去做develop_1.0。开发完成上线时，合并到master 并打tag就好了。
+    - 因为是多人开发，所有又从 develop_1.0 分支拉出几个develop_A_1.0,develop_B_1.0 等。这样每个人都有各自的分支，想怎么弄就怎么弄。最后合并到develop_1.0分支就可以了。
+    - 任务分发完了，每个人都有自己的分支，切换到自己的分支，那么本地的工作仓库就是自己的，不论修改提交推送，都不影响别人工作。
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:56:28+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>3 个人开发</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:52:50+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<pre><code>    - 最初的时候，每个人的分支，与master是保持一致的，但是随着开发的进行，自己的分支，保持最新的代码，Develop 分支，偶尔更新一些完成的小模块，master 主分支则一直是最初，直到提交一个版本并打tag。
+    - 个人分支，在本地显示的内容就是工作区，修改之后，就需要分2不提交到本地仓库，（1. 将修改的文件放入暂存区。2.暂存区文件与本地仓库合并）。
+    - 完成模块功能时，切换到develop_1.0分支，将自己的分支，合并上去，然后推送到远端，相当于共享，大家都能看到。
+    - 如果别人推送了新的develop_1.0，我也可以拉去新代码，然后合并到自己的分支，当然也可以不合并（按需要）。
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:49:47+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>4 提交版本</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:39:02+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<pre><code>    - 团队开发完成，develop_1.0 分支合并完成，决定提交版本时，合并到master分支，并打个tag-&gt;1.0。
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:34:17+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>5 紧急修复，或者新功能测试，</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:30:53+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<pre><code>    - 可以拉出一个新分支，修改或者测试，最后觉得合并，或者 丢弃。
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Block.html">Block</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:29:53+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<h2 id="toc_1">好用的软件 sourceTree</h2>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Delegate.html">Delegate</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:29:14+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p>官网链接： <a href="https://www.sourcetreeapp.com">https://www.sourcetreeapp.com</a><br/>
+可能需要梯子，自备。或者密我。<br/>
+初次使用需要去注册，获取许可证：<a href="https://id.atlassian.com/login">https://id.atlassian.com/login</a></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20GCD.html">GCD</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:26:48+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p>可视化界面，操作比 命令行简单了无数倍。主要流程与上面说的大致类似。</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:26:02+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p><img src="http://upload-images.jianshu.io/upload_images/1442951-a3486d0225d9094e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20160322-1.png"/></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:21:18+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>1 克隆仓库</li>
+<li>2 建分支，每人一个</li>
+<li>注意在自己的分支干活，每次提交前，先添加修改文件到暂存区，然后提交到本地仓库。</li>
+<li>完成主要模块，切换到develop_1.0 分支，合并自己的代码.</li>
+<li>然后推送到远程，可以给大伙看到。</li>
+<li>类似的循序渐进，不断的往前滚。</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:19:33+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p>注：<a href="https://github.com">https://github.com</a> 可以自己弄个仓库玩。现在免费的git仓库有很多</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:18:37+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:18:19+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+</div>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:17:28+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<br /><br />
+<hr />
 
-				</p>
-			</div>
- 	
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
 		
+	        <a href="2016%20-%20git%20SSH%20.html"  title="Previous Post: git SSH">&laquo; git SSH</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
 		
-			<div>
-				<h3><a href="2017%20-%20phpStorm%20%E5%AE%89%E8%A3%85%20Connect/J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%0A.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></h3>
-				<p>
-					<time datetime="2017-07-11T10:46:56+08:00" pubdate><span class='month'>7月</span> <span class='day'>11</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+	        <a href="2016%20-%20%E7%99%BE%E5%BA%A6%20/%20google%20%E6%90%9C%E7%B4%A2%E6%8C%87%E5%8D%97.html" 
+	        title="Next Post: 百度 / google 搜索指南">百度 / google 搜索指南 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></h3>
-				<p>
-					<time datetime="2017-06-23T09:11:53+08:00" pubdate><span class='month'>6月</span> <span class='day'>23</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></h3>
-				<p>
-					<time datetime="2017-06-07T20:19:19+08:00" pubdate><span class='month'>6月</span> <span class='day'>07</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></h3>
-				<p>
-					<time datetime="2017-06-07T19:48:07+08:00" pubdate><span class='month'>6月</span> <span class='day'>07</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></h3>
-				<p>
-					<time datetime="2017-05-09T14:55:08+08:00" pubdate><span class='month'>5月</span> <span class='day'>09</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></h3>
-				<p>
-					<time datetime="2017-04-04T21:33:01+08:00" pubdate><span class='month'>4月</span> <span class='day'>04</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></h3>
-				<p>
-					<time datetime="2017-03-31T20:34:48+08:00" pubdate><span class='month'>3月</span> <span class='day'>31</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
-
-				</p>
-			</div>
- 	 
-</div>  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '2016%20-%20git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

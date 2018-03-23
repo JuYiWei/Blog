@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Archives - 【博客】说了是村长
+  iOS 开发调试 - 【博客】说了是村长
   
   </title>
  <meta name="description" content="">
@@ -220,508 +220,203 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-	
-		 
-		  	<h2>2018</h2>
-		
-		
-			<div>
-				<h3><a href="2018%20-%20123.html">2018</a></h3>
-				<p>
-					<time datetime="2018-03-23T09:30:53+08:00" pubdate><span class='month'>3月</span> <span class='day'>23</span> <span class='year'>2018</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2018.html'>2018</a>&nbsp;
-				   
-				  </span>
+<h1>iOS 开发调试</h1>
 
-				</p>
-			</div>
- 	
-		 
-		  	<h2>2017</h2>
-		
-		
-			<div>
-				<h3><a href="2016%20-%20%E7%99%BE%E5%BA%A6%20/%20google%20%E6%90%9C%E7%B4%A2%E6%8C%87%E5%8D%97.html">百度 / google 搜索指南</a></h3>
-				<p>
-					<time datetime="2017-07-19T14:15:43+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>
+<a href="#toc_0">一、断点</a>
+<ul>
+<li>
+<ul>
+<li>
+<a href="#toc_1">1 异常断点（全局断点） ：Exception Breakpoint</a>
+</li>
+<li>
+<a href="#toc_2">2 符号断点</a>
+</li>
+<li>
+<a href="#toc_3">3 直接打断点</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_4">二、LLDB</a>
+</li>
+<li>
+<a href="#toc_5">三、NSAsset</a>
+</li>
+<li>
+<a href="#toc_6">四、Log</a>
+</li>
+<li>
+<a href="#toc_7">五、Reveal UI调试</a>
+</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:22:32+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:20:22+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<h1 id="toc_0">一、断点</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:19:33+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p>command + 7 直接到 断点控制页。左下角+ 可以添加...</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20git%20SSH%20.html">git SSH</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:17:35+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<h3 id="toc_1">1 异常断点（全局断点） ：Exception Breakpoint</h3>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:17:19+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>一般情况下，我们就直接添加这玩意，就能发现真是好用，本来都死在main中，现在基本上就是在代码异常处了。</li>
+<li>当然有时候添加其他文件多了，尤其是C/C++ 文件的时候，发现有时候断点去那边了，但是下一步又不崩溃。这时就需要研究一下，它的几个属性了。</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 快捷键</a></h3>
-				<p>
-					<time datetime="2017-07-19T13:16:22+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p><img src="http://upload-images.jianshu.io/upload_images/1442951-55d67a46f7a76b0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="全局断点"/></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:57:51+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>Exception ：All / Object-C / C++, 选择OC 时，就不会断点断到C++，那边了。</li>
+<li>Break ：Throw / Catch </li>
+<li>Action ：断点时 追加方法：有几种可以选择，也可以多选。</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:56:28+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<h3 id="toc_2">2 符号断点</h3>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:52:50+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p><img src="http://upload-images.jianshu.io/upload_images/1442951-8e09053eb862b082.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="符号断点"/></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:49:47+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>对符号：可以是方法，执行断点，可以添加一些属性。大致与上面的类似。</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:39:02+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<h3 id="toc_3">3 直接打断点</h3>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:34:17+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li><p>用的比较方便，举个简单的例子：for 循环中，添加简单的条件，条件为真是开始断点</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:30:53+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p><img src="http://upload-images.jianshu.io/upload_images/1442951-8ebdf1af21e116af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="简单断点"/></p></li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Block.html">Block</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:29:53+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<h1 id="toc_4">二、LLDB</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Delegate.html">Delegate</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:29:14+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p>一般结合断点，在控制台 p / po ，直接打印一些数据。</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20GCD.html">GCD</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:26:48+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p><img src="http://upload-images.jianshu.io/upload_images/1442951-579b7f09ac600bb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="调试 - lldb"/></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:26:02+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li><p>分别是 p  po  NSLog  的打印</p></li>
+<li><p>为了 po一些数据结构：CGRect 等，需要修改lldb，终端输入<br/>
+(注：使用 p (CGRect)testRect) 也可以输出结构体，但是不能识别bounds等..）</p></li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:21:18+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<pre><code>使 lldb 支持 UIKit
+1. touch ~/.lldbinit
+2. echo display @import UIKit &gt;&gt; ~/.lldbinit
+3. echo target stop-hook add -o \&quot;target stop-hook disable\&quot; &gt;&gt; ~/.lldbinit
+4. 打开 Xcode 运行时,随便大哥断点 ，控制台就打印 以下两行，就成功了。
+- Hook 1 (expr -- @import UIKit)
+- Hook 2 (target stop-hook disable)
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:19:33+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+删除初始化：rm ~/.lldbinit
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:18:37+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<blockquote>
+<p>LLDB 不仅仅 po ，可以临时修改赋值等... 水很深，需要具体深入研究</p>
+</blockquote>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:18:19+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<h1 id="toc_5">三、NSAsset</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></h3>
-				<p>
-					<time datetime="2017-07-19T11:17:28+08:00" pubdate><span class='month'>7月</span> <span class='day'>19</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>断言 跟 条件断点 效果类似。这里是：<strong>条件为假，触发断言</strong>。</li>
+<li>这个可以跟 DLog 类似，也宏定义，DEBUG 时才使用。</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20phpStorm%20%E5%AE%89%E8%A3%85%20Connect/J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%0A.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></h3>
-				<p>
-					<time datetime="2017-07-11T10:46:56+08:00" pubdate><span class='month'>7月</span> <span class='day'>11</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<pre><code>    NSAssert([@&quot;a&quot; isEqualToString:@&quot;b&quot;], @&quot;不一样啊&quot;);
+// 前面的条件肯定是 NO，所以会在此处断言了。
+</code></pre>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></h3>
-				<p>
-					<time datetime="2017-06-23T09:11:53+08:00" pubdate><span class='month'>6月</span> <span class='day'>23</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<h1 id="toc_6">四、Log</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></h3>
-				<p>
-					<time datetime="2017-06-07T20:19:19+08:00" pubdate><span class='month'>6月</span> <span class='day'>07</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p>个人觉得第三库  CocoaLumberjack 很好用。看另一篇文章。此处不写了。</p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></h3>
-				<p>
-					<time datetime="2017-06-07T19:48:07+08:00" pubdate><span class='month'>6月</span> <span class='day'>07</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<h1 id="toc_7">五、Reveal UI调试</h1>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2016%20-%20%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></h3>
-				<p>
-					<time datetime="2017-05-09T14:55:08+08:00" pubdate><span class='month'>5月</span> <span class='day'>09</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2016.html'>2016</a>&nbsp;
-				   
-				  </span>
+<p><a href="http://revealapp.com/">Reveal 下载网址</a></p>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></h3>
-				<p>
-					<time datetime="2017-04-04T21:33:01+08:00" pubdate><span class='month'>4月</span> <span class='day'>04</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<ul>
+<li>简单使用</li>
+</ul>
 
-				</p>
-			</div>
- 	
-		
-		
-			<div>
-				<h3><a href="2017%20-%20Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></h3>
-				<p>
-					<time datetime="2017-03-31T20:34:48+08:00" pubdate><span class='month'>3月</span> <span class='day'>31</span> <span class='year'>2017</span></time>
-					&nbsp;&nbsp;
-				  <span class="categories">posted in 
-				  
-					    <a class='category' href='2017.html'>2017</a>&nbsp;
-				   
-				  </span>
+<p>-ObjC -lz -framework Reveal</p>
 
-				</p>
-			</div>
- 	 
-</div>  
+<pre><code>1.help - show Reveal Library in Finder - 获取 Reveal.framework
+1.Reveal.framework 加入项目
+2.other link 添加   -ObjC -lz -framework Reveal
+
+3.Reveal 左上角，选择项目就可以查看模拟器（真机）的当前页面的图层。
+4.右上角刷新
+5.左边是层级
+6.右边是控件的各种属性，而且可以随意调节（连约束都可以！）
+</code></pre>
+
+<ul>
+<li><p>lldb 先进使用（新学的一招）</p></li>
+<li><p>不添加framework（省 15 多 M）使用lldb，不会侵入工程，不用添加 -ObjC -lz -framework Reveal</p></li>
+</ul>
+
+<pre><code>// 执行命令，需要每次运行工程时打断点，输入下面lldb指令
+注1：/Users/juyiwei/Desktop/Reveal.app 因为我把reveal 放在桌面没有复制到应用程序中，所以路径自己修改
+注2：第二条指令，复制ok。然后断点继续，就实现了上面的简单使用的功能！
+expr (Class)NSClassFromString(@&quot;IBARevealLoader&quot;) == nil ? (void *)dlopen(&quot;/Users/juyiwei/Desktop/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&quot;, 0x2) : ((void*)0)
+expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&quot;IBARevealRequestStart&quot; object:nil];
+
+
+// 为了方便使用，修改lldb指令的俗名：类似宏定义
+touch ~/.lldbinit
+open ~/.lldbinit
+command alias reveal_load expr (Class)NSClassFromString(@&quot;IBARevealLoader&quot;) == nil ? (void *)dlopen(&quot;/Users/juyiwei/Desktop/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&quot;, 0x2) : ((void*)0)
+command alias reveal_start expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&quot;IBARevealRequestStart&quot; object:nil];
+
+
+以后使用只要：
+reveal_load
+reveal_start
+就ok了。注意app路径不要变。
+</code></pre>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="2016%20-%20openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html"  title="Previous Post: openssl 打包使用">&laquo; openssl 打包使用</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html" 
+	        title="Next Post: iOS 常见的 error">iOS 常见的 error &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 
