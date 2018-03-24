@@ -1,0 +1,434 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  OS X Server 之 Xcode服务（iOS开发持续集成） - 【博客】说了是村长
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="【博客】说了是村长" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">【博客】说了是村长</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 【博客】说了是村长</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>2018</label></li>
+
+          
+            <li><a title="2018" href="2018%20-%20123.html">2018</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>2017</label></li>
+
+          
+            <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="2017%20-%20OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+          
+            <li><a title="CoreBluetooth - 蓝牙中心管理" href="2017%20-%20CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></li>
+          
+            <li><a title="phpStorm 安装 Connect/J 连接 MySQL 数据库插件" href="2017%20-%20phpStorm%20%E5%AE%89%E8%A3%85%20Connect%20J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></li>
+          
+            <li><a title="阿里云虚拟机建站（mac）" href="2017%20-%20%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></li>
+          
+            <li><a title="APP需求分析文档" href="2017%20-%20APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></li>
+          
+            <li><a title="mac 安装 MYSQL" href="2017%20-%20mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></li>
+          
+            <li><a title="sqlite3 简单使用" href="2017%20-%20sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></li>
+          
+            <li><a title="web 服务器配置 (mac OS Server)" href="2017%20-%20web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></li>
+          
+            <li><a title="Block 再次研究 - 循环引用" href="2017%20-%20Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></li>
+          
+            <li><a title="QuartzCore - 绘图" href="2017%20-%20QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></li>
+          
+            <li><a title="LocalAuthentication - 指纹识别" href="2017%20-%20LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></li>
+          
+            <li><a title="UglifyJS 压缩 JS 文件" href="2017%20-%20UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></li>
+          
+            <li><a title="iOS 质量跟踪 Bugly 集成" href="2017%20-%20iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></li>
+          
+            <li><a title="Android Studio 真机调试（mac）" href="2017%20-%20Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>2016</label></li>
+
+          
+            <li><a title="Xcode 输出官方文档" href="2016%20-%20Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></li>
+          
+            <li><a title="git SSH" href="2016%20-%20git%20SSH%20.html">git SSH</a></li>
+          
+            <li><a title="git 简单使用" href="2016%20-%20git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></li>
+          
+            <li><a title="百度 / google 搜索指南" href="2016%20-%20%E7%99%BE%E5%BA%A6%20google%20%E6%90%9C%E7%B4%A2%E6%8C%87%E5%8D%97.html">百度 / google 搜索指南</a></li>
+          
+            <li><a title="Xcode 快捷键" href="2016%20-%20Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 快捷键</a></li>
+          
+            <li><a title="openssl 打包使用" href="2016%20-%20openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></li>
+          
+            <li><a title="iOS 开发调试" href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></li>
+          
+            <li><a title="iOS 常见的 error" href="2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></li>
+          
+            <li><a title="OC 代码规范简单整理" href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></li>
+          
+            <li><a title="Block" href="2016%20-%20Block.html">Block</a></li>
+          
+            <li><a title="Delegate" href="2016%20-%20Delegate.html">Delegate</a></li>
+          
+            <li><a title="GCD" href="2016%20-%20GCD.html">GCD</a></li>
+          
+            <li><a title="Storyboard 使用笔记" href="2016%20-%20Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></li>
+          
+            <li><a title="AddressBook 旧版的通讯录" href="2016%20-%20AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></li>
+          
+            <li><a title="MessageUI - 消息" href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></li>
+          
+            <li><a title="友盟统计" href="2016%20-%20%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>2018</span></li>
+                        
+                          <li><a title="2018" href="2018%20-%20123.html">2018</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>2017</span></li>
+                        
+                          <li><a title="OS X Server 之 Xcode服务（iOS开发持续集成）" href="2017%20-%20OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html">OS X Server 之 Xcode服务（iOS开发持续集成）</a></li>
+                        
+                          <li><a title="CoreBluetooth - 蓝牙中心管理" href="2017%20-%20CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html">CoreBluetooth - 蓝牙中心管理</a></li>
+                        
+                          <li><a title="phpStorm 安装 Connect/J 连接 MySQL 数据库插件" href="2017%20-%20phpStorm%20%E5%AE%89%E8%A3%85%20Connect%20J%20%E8%BF%9E%E6%8E%A5%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6.html">phpStorm 安装 Connect/J 连接 MySQL 数据库插件</a></li>
+                        
+                          <li><a title="阿里云虚拟机建站（mac）" href="2017%20-%20%E9%98%BF%E9%87%8C%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BB%BA%E7%AB%99%EF%BC%88mac%EF%BC%89.html">阿里云虚拟机建站（mac）</a></li>
+                        
+                          <li><a title="APP需求分析文档" href="2017%20-%20APP%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%87%E6%A1%A3.html">APP需求分析文档</a></li>
+                        
+                          <li><a title="mac 安装 MYSQL" href="2017%20-%20mac%20%E5%AE%89%E8%A3%85%20MYSQL.html">mac 安装 MYSQL</a></li>
+                        
+                          <li><a title="sqlite3 简单使用" href="2017%20-%20sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">sqlite3 简单使用</a></li>
+                        
+                          <li><a title="web 服务器配置 (mac OS Server)" href="2017%20-%20web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html">web 服务器配置 (mac OS Server)</a></li>
+                        
+                          <li><a title="Block 再次研究 - 循环引用" href="2017%20-%20Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html">Block 再次研究 - 循环引用</a></li>
+                        
+                          <li><a title="QuartzCore - 绘图" href="2017%20-%20QuartzCore%20-%20%E7%BB%98%E5%9B%BE.html">QuartzCore - 绘图</a></li>
+                        
+                          <li><a title="LocalAuthentication - 指纹识别" href="2017%20-%20LocalAuthentication%20-%20%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB.html">LocalAuthentication - 指纹识别</a></li>
+                        
+                          <li><a title="UglifyJS 压缩 JS 文件" href="2017%20-%20UglifyJS%20%E5%8E%8B%E7%BC%A9%20JS%20%E6%96%87%E4%BB%B6.html">UglifyJS 压缩 JS 文件</a></li>
+                        
+                          <li><a title="iOS 质量跟踪 Bugly 集成" href="2017%20-%20iOS%20%E8%B4%A8%E9%87%8F%E8%B7%9F%E8%B8%AA%20Bugly%20%E9%9B%86%E6%88%90.html">iOS 质量跟踪 Bugly 集成</a></li>
+                        
+                          <li><a title="Android Studio 真机调试（mac）" href="2017%20-%20Android%20Studio%20%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%EF%BC%88mac%EF%BC%89.html">Android Studio 真机调试（mac）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>2016</span></li>
+                        
+                          <li><a title="Xcode 输出官方文档" href="2016%20-%20Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html">Xcode 输出官方文档</a></li>
+                        
+                          <li><a title="git SSH" href="2016%20-%20git%20SSH%20.html">git SSH</a></li>
+                        
+                          <li><a title="git 简单使用" href="2016%20-%20git%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html">git 简单使用</a></li>
+                        
+                          <li><a title="百度 / google 搜索指南" href="2016%20-%20%E7%99%BE%E5%BA%A6%20google%20%E6%90%9C%E7%B4%A2%E6%8C%87%E5%8D%97.html">百度 / google 搜索指南</a></li>
+                        
+                          <li><a title="Xcode 快捷键" href="2016%20-%20Xcode%208%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html">Xcode 快捷键</a></li>
+                        
+                          <li><a title="openssl 打包使用" href="2016%20-%20openssl%20%E6%89%93%E5%8C%85%E4%BD%BF%E7%94%A8.html">openssl 打包使用</a></li>
+                        
+                          <li><a title="iOS 开发调试" href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html">iOS 开发调试</a></li>
+                        
+                          <li><a title="iOS 常见的 error" href="2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html">iOS 常见的 error</a></li>
+                        
+                          <li><a title="OC 代码规范简单整理" href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html">OC 代码规范简单整理</a></li>
+                        
+                          <li><a title="Block" href="2016%20-%20Block.html">Block</a></li>
+                        
+                          <li><a title="Delegate" href="2016%20-%20Delegate.html">Delegate</a></li>
+                        
+                          <li><a title="GCD" href="2016%20-%20GCD.html">GCD</a></li>
+                        
+                          <li><a title="Storyboard 使用笔记" href="2016%20-%20Storyboard%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html">Storyboard 使用笔记</a></li>
+                        
+                          <li><a title="AddressBook 旧版的通讯录" href="2016%20-%20AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html">AddressBook 旧版的通讯录</a></li>
+                        
+                          <li><a title="MessageUI - 消息" href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html">MessageUI - 消息</a></li>
+                        
+                          <li><a title="友盟统计" href="2016%20-%20%E5%8F%8B%E7%9B%9F%E7%BB%9F%E8%AE%A1.html">友盟统计</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>OS X Server 之 Xcode服务（iOS开发持续集成）</h1>
+
+<ul>
+<li>
+<a href="#toc_0">下载 OS X Server</a>
+</li>
+<li>
+<a href="#toc_1">Server 服务器配置 Xcode服务</a>
+</li>
+<li>
+<a href="#toc_2">Xcode 配置</a>
+</li>
+<li>
+<a href="#toc_3">Bot 配置</a>
+</li>
+<li>
+<a href="#toc_4">其他</a>
+</li>
+<li>
+<a href="#toc_5">问题</a>
+</li>
+</ul>
+
+
+<p>2个官方文档：<br/>
+<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html#//apple_ref/doc/uid/TP40013292-CH1-SW1">苹果开发指南</a><br/>
+<a href="https://help.apple.com/serverapp/mac/4.0/#/apd9148CA5C-96E5-43AC-97CE-CB1B1002F4DE">OS X Server 帮助</a></p>
+
+<p>关于持续集成，很多都是说用Jenkins，网上的文章也是有很多，作为iOS开发自带Xcode服务，相信与Xcode的兼容性必定是自家的好用；虽然没用过Jenkins，但是OS X Server 的Xcode服务，用的还是很舒服的，对于静态分析，单元测试，打包三大功能的自动化集成，并且可以直接使用IP地址访问操作；简单实用，妈妈再也不用担心我打包浪费时间了~</p>
+
+<h3 id="toc_0">下载 OS X Server</h3>
+
+<p>APP Store 下载即可，只要是付费开发者，就可以免费使用服务器。功能强大有不要钱，是开发者的不要浪费，赶紧用起来；</p>
+
+<h3 id="toc_1">Server 服务器配置 Xcode服务</h3>
+
+<ul>
+<li>1 选择服务器主机：一般选自身，也可以指定IP</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mgf3j8swj30gg0bot9l.jpg" alt="1.png"/></p>
+
+<ul>
+<li>2 选择Xcode服务，关于服务器主机本身的其他设置自己玩吧。主要讲述Xcode服务部分;
+
+<ul>
+<li>开启服务（右上角）</li>
+<li>权限和版本号：自己考虑，我这里默认设置不改了；</li>
+<li>开发团队：使用自己的apple ID添加；</li>
+<li>开发设备：需要用设备连接服务器后才能搜索到，初次连接，可能还需要在Status选项里面点击【Add to Teams】（比如设备不是你上面apple ID 的就需要）</li>
+<li>查看Bot：会打开网页（Bot管理页面，默认127.0.01）,可以直接静态分析测试打包等，当然需要后面配置成功才能使用。</li>
+</ul></li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mgj9fib3j30tn0iltbi.jpg" alt="2.png"/></p>
+
+<h3 id="toc_2">Xcode 配置</h3>
+
+<ul>
+<li>1 Accounts 添加 Servers：一般默认自己主机，也可以选择指定IP地址，按服务器配置时对应选择；需要填写用户名，密码，自己搞定；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mh1ncb7qj315o0ukte4.jpg" alt="3.png"/></p>
+
+<ul>
+<li>2 注意 Source Control 需要打开才能使用！具体下面的各种自动自己考虑勾选；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhb1w9skj315o0dgdiz.jpg" alt="5.png"/></p>
+
+<h3 id="toc_3">Bot 配置</h3>
+
+<p>注意：自己的项目必须是个git文件夹，比如github上clone下来的项目，或者是本地服务器git来的，总之需要git文件夹；（官方文档使用Xcode的Source Control 方式搞定，具体可以看官方指南。我直接用了第三方软件SourceTree管理的）</p>
+
+<ul>
+<li>0 创建 Bot：按图示1-2-3；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhpgnrv3j31kw0ynn5y.jpg" alt="10.png"/></p>
+
+<ul>
+<li>1 Bot命名与服务器选择，基本默认不改； </li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtb0k39j314k0nw40a.jpg" alt="11.png"/></p>
+
+<ul>
+<li>2 选择项目内容，后面的master，可选其他分支，比如develop；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mhtbrug7j314k0nwabh.jpg" alt="12.png"/></p>
+
+<ul>
+<li>3 Bot 操作配置
+
+<ul>
+<li>Scheme：默认项目本身</li>
+<li>Actions：1分析；2单元测试（测试项目没开单元测试所有没的选）；3打包；</li>
+<li>Cleaning：可以选择，因为是自己的电脑做服务器的，所以选择了一周清理一次；</li>
+<li>Configuation：项目配置；</li>
+</ul></li>
+</ul>
+
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gw1f6mhtaqwfjj314k0nwtcm.jpg" alt="13.png"/></p>
+
+<ul>
+<li>4 环境变量？没用过，sorry；</li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mhtauto7j314k0nwabc.jpg" alt="14.png"/></p>
+
+<ul>
+<li>5 添加脚本，比如完成后发送个邮件通知；</li>
+</ul>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f6mht9ndz7j314k0nw0ue.jpg" alt="16.png"/></p>
+
+<ul>
+<li><p>6 create！注意 需要一次验证 git 的用户名和密码！不是之前设置的用户名与密码。</p></li>
+<li><p>7 成功；各种信息以及完成的打包等；通过IP地址也可以实时整合并下载；</p></li>
+</ul>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1f6mi30ctr0j31kw0ynwn0.jpg" alt="17.png"/></p>
+
+<h3 id="toc_4">其他</h3>
+
+<ul>
+<li>关于代码提交，不管使用Xcode还是其他方式，是没有关系的，Xcode服务指向的是master或者其他分支的服务器资源；</li>
+<li>关于打包，项目配置里就做好证书等配置文件的选择；</li>
+<li>内测的ipa包，可以结合蒲公英等平台作分发也是很方便的；考虑是不是可以搞个脚本上传。</li>
+</ul>
+
+<h3 id="toc_5">问题</h3>
+
+<ul>
+<li>关于设备，暂时还不知道服务器配置时选择的设备是否与分析单元测试有关？</li>
+</ul>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="2016%20-%20Xcode%20%E8%BE%93%E5%87%BA%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.html"  title="Previous Post: Xcode 输出官方文档">&laquo; Xcode 输出官方文档</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="2017%20-%20CoreBluetooth%20-%20%E8%93%9D%E7%89%99%E4%B8%AD%E5%BF%83%E7%AE%A1%E7%90%86.html" 
+	        title="Next Post: CoreBluetooth - 蓝牙中心管理">CoreBluetooth - 蓝牙中心管理 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '2017%20-%20OS%20X%20Server%20%E4%B9%8B%20Xcode%E6%9C%8D%E5%8A%A1%EF%BC%88iOS%E5%BC%80%E5%8F%91%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%89.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
