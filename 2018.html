@@ -47,9 +47,9 @@
         <li><label>2018</label></li>
 
           
-            <li><a title="iOS 11 之后 iPad 分屏适配探究" href="2018%20-%20iOS%2011%20%E4%B9%8B%E5%90%8E%20iPad%20%E5%88%86%E5%B1%8F%E9%80%82%E9%85%8D%E6%8E%A2%E7%A9%B6.html">iOS 11 之后 iPad 分屏适配探究</a></li>
+            <li><a title="iOS 本地化 - 包括插件的本地化" href="2018-iOS%20%E6%9C%AC%E5%9C%B0%E5%8C%96%20-%20%E5%8C%85%E6%8B%AC%E6%8F%92%E4%BB%B6%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%8C%96.html">iOS 本地化 - 包括插件的本地化</a></li>
           
-            <li><a title="2018" href="2018%20-%20123.html">2018</a></li>
+            <li><a title="iOS 11 之后 iPad 分屏适配探究" href="2018%20-%20iOS%2011%20%E4%B9%8B%E5%90%8E%20iPad%20%E5%88%86%E5%B1%8F%E9%80%82%E9%85%8D%E6%8E%A2%E7%A9%B6.html">iOS 11 之后 iPad 分屏适配探究</a></li>
           
 
       
@@ -142,9 +142,9 @@
                     
                       <li class="side-title"><span>2018</span></li>
                         
-                          <li><a title="iOS 11 之后 iPad 分屏适配探究" href="2018%20-%20iOS%2011%20%E4%B9%8B%E5%90%8E%20iPad%20%E5%88%86%E5%B1%8F%E9%80%82%E9%85%8D%E6%8E%A2%E7%A9%B6.html">iOS 11 之后 iPad 分屏适配探究</a></li>
+                          <li><a title="iOS 本地化 - 包括插件的本地化" href="2018-iOS%20%E6%9C%AC%E5%9C%B0%E5%8C%96%20-%20%E5%8C%85%E6%8B%AC%E6%8F%92%E4%BB%B6%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%8C%96.html">iOS 本地化 - 包括插件的本地化</a></li>
                         
-                          <li><a title="2018" href="2018%20-%20123.html">2018</a></li>
+                          <li><a title="iOS 11 之后 iPad 分屏适配探究" href="2018%20-%20iOS%2011%20%E4%B9%8B%E5%90%8E%20iPad%20%E5%88%86%E5%B1%8F%E9%80%82%E9%85%8D%E6%8E%A2%E7%A9%B6.html">iOS 11 之后 iPad 分屏适配探究</a></li>
                         
 
                     
@@ -228,417 +228,102 @@
 
 	
 		<div class="markdown-body">
-		<h1>iOS 11 之后 iPad 分屏适配探究</h1>
+		<h1>iOS 本地化 - 包括插件的本地化</h1>
 
 		<ul>
 <li>
-<a href="#toc_0">体验分屏</a>
+<a href="#toc_0">基础配置</a>
 </li>
 <li>
-<a href="#toc_1">开发问题</a>
+<a href="#toc_1">APP 名称本地化</a>
 </li>
 <li>
-<a href="#toc_2">初探</a>
-<ul>
-<li>
-<a href="#toc_3">分辨率表</a>
+<a href="#toc_2">项目内文本本地化</a>
 </li>
 <li>
-<a href="#toc_4">100% 使用自动布局 ？</a>
+<a href="#toc_3">storyboard 本地化</a>
 </li>
 <li>
-<a href="#toc_5">字体</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_6">使用 sizeClass</a>
-<ul>
-<li>
-<a href="#toc_7">苹果的分类</a>
-</li>
-<li>
-<a href="#toc_8">代码实现</a>
-</li>
-<li>
-<a href="#toc_9">相关思考</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_10">总结</a>
+<a href="#toc_4">今日插件名称本地化</a>
 </li>
 </ul>
 
 
-<h3 id="toc_0">体验分屏</h3>
+<h3 id="toc_0">基础配置</h3>
+
+<ul>
+<li>PROJECT - Localizations - language - 添加需要的本地化语言</li>
+<li>使用 storyboard&amp;xib，必须 <code>Use Base Internationalization</code></li>
+</ul>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fqixfvx5baj30k60cr3zv.jpg" alt=""/></p>
 
 <blockquote>
-<p>分屏方式就是：打开第一个程序，上滑展示程序坞，按住第二个程序拖入屏幕（此时是悬浮模式），悬浮模式顶部‘-’长按拖动可以实现分屏模式（也可以用于切换）<br/>
-分屏模式与悬浮模式可以共存，也就是可以同时开 3 个程序，在一个屏幕上</p>
-
-<p>mac 分屏，长按左上角绿色那个就行（按一下是全屏）</p>
-</blockquote>
-
-<h3 id="toc_1">开发问题</h3>
-
-<ul>
-<li>需要使用 launch Screen File 才行，使用 Launch Images Sourc 是不行的（坑了好久，网上也搜不到什么答案）</li>
-<li>如果要用到这个分屏，自动布局就要求很牛逼了（关于自动布局，又可以进一步提升）</li>
-<li>iOS 11 之前的分屏（悬浮分屏），宽度基本是定死的（320 或 375）</li>
-<li>iOS 11 之后，有 2种分屏，一种就是悬浮分屏；另一种是真分屏，同时使用 APP，会存在 3 中分配方式（小+大、大+小、平分）（注：并不是平分屏幕，因为中间有个分割线，实测为 10pt）</li>
-</ul>
-
-<blockquote>
-<p>竖屏时，只有左右分屏，小的部分为 320 或者 375（就是塞了个 5s 或者 8 的屏幕宽度）<br/>
-横屏时，存在平分，除去分割线之后平分<br/>
-xcode 9.3 已经在 sb 中体现了，分屏预览，直接用 sb 开发也是很有好处啊，为啥都不喜欢呢，不觉得冲突很多啊</p>
+<p>本地化有 <code>Base</code> 和 <code>具体语言</code> 可以选择<br/>
+<code>Base</code> 就是通用语言，没有本地化处理的就用 <code>Base</code><br/>
+<code>Base</code> &lt;= <code>English</code>，当设置 <code>English</code> 本地化时，<code>Base</code> 就被 <code>English</code> 取代</p>
 </blockquote>
 
 <ul>
-<li>分屏得注意（不要以 pad 的尺寸，写死了一些约束值）（以前都是以屏幕尺寸来判断屏幕尺寸的，在分屏的情况下可能不适用了，得想办法根据当前视图大小来适配了）</li>
-<li>如果开发 iPhone，不支持 iPad 的话，APP 在 iPad 上依旧可以打开，但是不能使用分屏的，那么就不用仔细适配（至少保证能用，不然审核还是不过）</li>
+<li>默认项目文件应该存在 <code>Base.lproj</code> 文件夹，存放 <code>Base</code> 本地资源</li>
+<li>每新增一个本地化语言，都会多一个相关的文件夹，存放本地资源，比如 <code>zh-Hans.lproj</code> 为简体中文</li>
 </ul>
 
-<h3 id="toc_2">初探</h3>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqixgwl05fj30be07374i.jpg" alt=""/></p>
 
-<h4 id="toc_3">分辨率表</h4>
+<h3 id="toc_1">APP 名称本地化</h3>
 
 <ul>
-<li>iPhone</li>
+<li>即对 <code>info.plist</code> 做本地化处理</li>
+<li><code>info.plist</code> 作为 <code>plist</code> 文件，本身可以直接添加本地化处理，但是作为系统级别的不能直接处理</li>
+<li>对应的措施是，添加 <code>InfoPlist.string</code> 作为过渡，此文件可以本地化处理，属性中添加 <code>Localization</code></li>
 </ul>
 
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>开发尺寸</th>
-<th>倍数</th>
-<th>sizeClass</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>竖屏</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPhone4/4s</td>
-<td>320x480</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPhone5/5s/se</td>
-<td>320x568</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPhone6/7/8</td>
-<td>375x667</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPhone6+/7+/8+</td>
-<td>414x736</td>
-<td>@3x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPhoneX</td>
-<td>375x812</td>
-<td>@3x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>横屏</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPhone4/4s</td>
-<td>480x320</td>
-<td>@2x</td>
-<td>CC</td>
-</tr>
-<tr>
-<td>iPhone5/5s/se</td>
-<td>568x320</td>
-<td>@2x</td>
-<td>CC</td>
-</tr>
-<tr>
-<td>iPhone6/7/8</td>
-<td>667x375</td>
-<td>@2x</td>
-<td>CC</td>
-</tr>
-<tr>
-<td>iPhone6+/7+/8+</td>
-<td>736x414</td>
-<td>@3x</td>
-<td>RC</td>
-</tr>
-<tr>
-<td>iPhoneX</td>
-<td>812x375</td>
-<td>@3x</td>
-<td>CC</td>
-</tr>
-</tbody>
-</table>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqixjb3mwrj310l0mbdlx.jpg" alt=""/></p>
 
 <ul>
-<li>iPad</li>
+<li><code>InfoPlist.string</code> 会生成多个本地化文件，对应各个语言</li>
+<li><code>info.plist</code> 可以 <code>Open As</code> - <code>Source Code</code>，查看很多的 <code>Key</code>，比如 <code>CFBundleDisplayName</code> 是 APP 显示名称</li>
+<li>编辑 <code>InfoPlist.string</code>，key-value 的形式，不同语言编辑不同文本即可</li>
 </ul>
 
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>开发尺寸</th>
-<th>倍数</th>
-<th>sizeClass</th>
-</tr>
-</thead>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqizfd1syej30lq07amzc.jpg" alt=""/></p>
 
-<tbody>
-<tr>
-<td>竖屏</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7</td>
-<td>768x1024</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 10.5</td>
-<td>834x1112</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 12.9</td>
-<td>1024x1366</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>横屏</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7</td>
-<td>768x1024</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 10.5</td>
-<td>834x1112</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 12.9</td>
-<td>1024x1366</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<p>Info.plist 本身文件，猜测就是 English 语言的，所有设置 Base 并不会生效</p>
+</blockquote>
+
+<h3 id="toc_2">项目内文本本地化</h3>
 
 <ul>
-<li>iPad 分屏</li>
+<li>新建 <code>Localizable.string</code>，操作与 <code>InfoPlist.string</code> 一致，key-value 形式编辑</li>
+<li>项目中使用，<code>NSLocalizedString(key, commom)</code>，类似的宏定义还有 3 个，具体可以参考 <code>NSBundle.h</code> 内的 API</li>
 </ul>
 
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>开发尺寸</th>
-<th>倍数</th>
-<th>sizeClass</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>iPad 7.9/9.7 横屏 大</td>
-<td>694x768</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7 横屏 中</td>
-<td>507x768</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7 横屏 小</td>
-<td>320x768</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7 竖屏 大</td>
-<td>438x1024</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 7.9/9.7 竖屏 小</td>
-<td>320x1024</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPad 10.5 横屏 大</td>
-<td>782x834</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 10.5 横屏 中</td>
-<td>551x834</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 10.5 横屏 小</td>
-<td>320x834</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 10.5 竖屏 大</td>
-<td>504x1112</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 10.5 竖屏 小</td>
-<td>320x1112</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>iPad 12.9 横屏 大</td>
-<td>981x1024</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 12.9 横屏 中</td>
-<td>678x1024</td>
-<td>@2x</td>
-<td>RR</td>
-</tr>
-<tr>
-<td>iPad 12.9 横屏 小</td>
-<td>375x1024</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 12.9 竖屏 大</td>
-<td>639x1366</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-<tr>
-<td>iPad 12.9 竖屏 小</td>
-<td>375x1366</td>
-<td>@2x</td>
-<td>CR</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="toc_4">100% 使用自动布局 ？</h4>
-
-<ul>
-<li>想要针对性布局肯定不靠谱啊</li>
-<li>参考 h5 使用流动布局</li>
-</ul>
-
-<p>宽：完全按比例，包括间隔，使用容器百分制宽度<br/>
-高：从上往下堆叠，下面留白，适当使用 footer</p>
-
-<h4 id="toc_5">字体</h4>
-
-<ul>
-<li>不方便，只能特殊设置，很难受，考虑别的办法</li>
-</ul>
-
-<h3 id="toc_6">使用 sizeClass</h3>
-
-<ul>
-<li>iOS 8 就开始有了，现在用很舒服，以前基本没用过啊</li>
-<li>width：compact，regular，any</li>
-<li>height：compact，regular，any</li>
-</ul>
-
-<h4 id="toc_7">苹果的分类</h4>
-
-<ul>
-<li>按分类补充了上面的分辨率表</li>
-<li>简单理解：</li>
-</ul>
-
-<pre><code>手机横屏：CC
-类似手机：CR
-类似平板：RR
-特殊 plus 横屏：RC
+<pre><code>    self.testLabel.text = NSLocalizedString(@&quot;test&quot;, nil);
 </code></pre>
 
-<h4 id="toc_8">代码实现</h4>
-
 <ul>
-<li>纯代码：使用 <code>UITraitCollection</code> 类即可，已经更新在 UIKit API 部分</li>
-<li>sb：很方便，大部分属性边上就可以 <code>+</code>，跟按钮一样设置状态即可</li>
+<li>如果项目比较大，也可以自定义个 <code>string</code> 文件，比如 <code>Test.string</code></li>
 </ul>
 
-<h4 id="toc_9">相关思考</h4>
+<pre><code>    self.myLabel.text = NSLocalizedStringFromTable(@&quot;my-test&quot;, @&quot;Test&quot;, nil);
+</code></pre>
+
+<h3 id="toc_3">storyboard 本地化</h3>
 
 <ul>
-<li>根据苹果的分类，compact，regular，any</li>
-<li>组合后就是 4 种</li>
-<li>那么不论是 UI 适配，还是 字体 适配等， 都使用统一的分类适配方案即可</li>
-<li>如果 iPhone 仅竖屏，iPad 4 周旋转，只需要 2 套 适配方案 CR 和 RR</li>
+<li>同理，storyboard 也可以设置本地化文件，自带可视化即为 Base，添加的同样已 <code>.string</code> 文件形式</li>
+<li>较为坑爹的是，如果不是已拉线的方式拖出控件，并用代码的方式本地化的话，必须在每个 storyboard 的本地化文件中修改，且每次修改 storyboard，对应的 string 文件不会修改，还得删掉重新生成，重新生成那么原来的本地化配置又得重新弄，很不舒服</li>
+<li>storyboard 还是建议拉线处理吧，不然太坑了</li>
 </ul>
 
-<h3 id="toc_10">总结</h3>
+<h3 id="toc_4">今日插件名称本地化</h3>
 
 <ul>
-<li>iOS 11 之后，iPad 有完全分屏之后，sizeClass 就十分有用，仅 iPad 上就需要 2 中布局，仅使用设备判断的方式，肯定不满足适配要求</li>
-<li>使用 iPhone 竖屏，iPad 4 周旋转，适配 CR 和 RR 2 套方案即可适配 iPhone 和 iPad，而且支持 分屏</li>
-<li>针对 iPhone 内部 5、6、6p、X 的特殊适配另讲</li>
+<li>一开始忽略了项目文件结构，导致插件的本地化不好处理</li>
+<li>针对插件 TARGET，同理创建 <code>InfoPlist.string</code> 和 <code>Localizable.string</code> 即可；</li>
+<li>注意创建时的目录结构即可，每个 TARGET 对应一套本地化资源（第一次尝试时，搞在项目目录导致异常，现在理一理一下子竟然清晰了）</li>
 </ul>
 
 

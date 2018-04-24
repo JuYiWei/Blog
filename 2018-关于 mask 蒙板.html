@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  AddressBook 旧版的通讯录 - 【个人博客】居然是村长
+  关于 mask 蒙板 - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -224,402 +224,114 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>AddressBook 旧版的通讯录</h1>
+<h1>关于 mask 蒙板</h1>
 
 <ul>
 <li>
-<a href="#toc_0">通讯录 ABAddressBook</a>
+<a href="#toc_0">Layer Mask</a>
 <ul>
 <li>
-<ul>
-<li>
-<a href="#toc_1">简单介绍</a>
+<a href="#toc_1">普通</a>
 </li>
 <li>
-<a href="#toc_2">授权</a>
-</li>
-<li>
-<a href="#toc_3">创建通讯录</a>
-</li>
-<li>
-<a href="#toc_4">通讯录操作</a>
-</li>
-<li>
-<a href="#toc_5">通知</a>
-</li>
-<li>
-<a href="#toc_6">其他</a>
-</li>
-</ul>
+<a href="#toc_2">渐变（alpha 渐变）</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_7">联系人ABPerson、信息ABRecord</a>
+<a href="#toc_3">View Mask</a>
 <ul>
 <li>
-<ul>
-<li>
-<a href="#toc_8">ABRecord 联系人信息（Base）</a>
+<a href="#toc_4">普通图片（只用透明-非透明）</a>
 </li>
 <li>
-<a href="#toc_9">ABPerson</a>
-</li>
-<li>
-<a href="#toc_10">大量的 常量</a>
+<a href="#toc_5">渐变图片（alpha 渐变）</a>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<a href="#toc_11">复杂信息 ABMultiValue</a>
-</li>
-<li>
-<a href="#toc_12">AddressBook 的其他API</a>
-</li>
-</ul>
 
 
-<h1 id="toc_0">通讯录 ABAddressBook</h1>
+<blockquote>
+<p>一句话理解：使用 mask 层的 alpha，替换原视图的 aplha<br/>
+为了搞图片蒙板，还得用 ps 搞个图，结果 ps 的蒙板，其实是一个东西<br/>
+技术这个东西，很多都是相通的，多学习</p>
+</blockquote>
 
-<h3 id="toc_1">简单介绍</h3>
+<h3 id="toc_0">Layer Mask</h3>
 
-<pre><code>ABAddressBook：通讯录
-ABRecord：信息（联系人信息）
-ABPerson：个人
-ABGroup：组
-ABMultiValue：多个数据（例如：手机号）
-</code></pre>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fqns3hxiy6j308c0euabj.jpg" alt=""/></p>
 
-<h3 id="toc_2">授权</h3>
+<h4 id="toc_1">普通</h4>
 
-<pre><code> // 授权状态
-    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-
-    typedef CF_ENUM(CFIndex, ABAuthorizationStatus) {
-        kABAuthorizationStatusNotDetermined = 0,   // 未知
-        kABAuthorizationStatusRestricted,          // 限制
-        kABAuthorizationStatusDenied,              // 拒绝
-        kABAuthorizationStatusAuthorized           // 允许
-    };
-    
-    ABAddressBookRef addressBook = NULL;
-    if (status == kABAuthorizationStatusNotDetermined) {
-        // 如果是未知状态：获取权限
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-            if (granted) {
-                //权限得到允许
-            }
-        });
-    } else {
-        // 其他状态，再判断提示...
-    }
-    CFRelease(addressBook);
-
-</code></pre>
-
-<h3 id="toc_3">创建通讯录</h3>
-
-<pre><code>    // 创建通讯录实例
-    ABAddressBookRef addressBook = ABAddressBookCreate();    
-    ABAddressBookRef add = ABAddressBookCreateWithOptions(NULL, NULL);
-
-    // 创建成功 回调
-    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-        if (granted) {
-            NSLog(@&quot;创建通讯录成功&quot;);
-        }
-    });
-
-    // 使用通讯录实例，可以查询各种信息了
-</code></pre>
-
-<h3 id="toc_4">通讯录操作</h3>
-
-<ul>
-<li>修改信息</li>
-</ul>
-
-<pre><code>    // 检查修改信息后，是否保存（修改 ABRecordSetValue...）
-    if (ABAddressBookHasUnsavedChanges(addressBook)) {
-        NSLog(@&quot;存在为保存的记录&quot;);
-    }
-
- // 保存
-    if (ABAddressBookSave(addressBook, NULL)) {
-        NSLog(@&quot;保存成功&quot;);
-    }
-</code></pre>
-
-<ul>
-<li>新增 移除</li>
-</ul>
-
-<pre><code>        ABAddressBookAddRecord(addressBook, person, NULL);
-        ABAddressBookRemoveRecord(addressBook, person, NULL);
-</code></pre>
-
-<h3 id="toc_5">通知</h3>
-
-<pre><code>// 通知 通讯录变化
-void (externalChangeCallback)(ABAddressBookRef addressBook, CFDictionaryRef info, void *context) {
-    NSLog(@&quot;变化了？&quot;);
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.baseView.layer.mask = [self avatorMask:self.baseView];
 }
 
-    // 注册通知
-    ABAddressBookRegisterExternalChangeCallback(addressBook, externalChangeCallback, NULL);
-    
-    // 移除通知
-    ABAddressBookUnregisterExternalChangeCallback(addressBook, externalChangeCallback, NULL);
+- (CALayer *)avatorMask:(UIView *)baseView {
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = baseView.bounds;
+    CGFloat w = baseView.bounds.size.width;
+    CGFloat h = baseView.bounds.size.height;
+    CGFloat radius = h &gt; w ? w/2.0 : h/2.0;
+    maskLayer.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius) radius:radius startAngle:0 endAngle:2*M_PI clockwise:YES].CGPath;
+    maskLayer.fillColor = [UIColor whiteColor].CGColor;
+    
+    return maskLayer;
+}
 </code></pre>
 
-<h3 id="toc_6">其他</h3>
+<h4 id="toc_2">渐变（alpha 渐变）</h4>
 
-<pre><code>// 添加本地化
-  AB_EXTERN CFStringRef ABAddressBookCopyLocalizedLabel(CFStringRef label) AB_DEPRECATED(&quot;use [CNLabeledValue localizedStringForLabel:]&quot;);
- 
-// 回滚
-AB_EXTERN void ABAddressBookRevert(ABAddressBookRef addressBook) AB_DEPRECATED(&quot;refetch CN objects&quot;);
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.baseView.layer.mask = [self avatorMask:self.baseView];
+}
+
+- (CALayer *)gradientMask:(UIView *)baseView {
+    CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
+    gradientLayer.frame = baseView.bounds;
+    gradientLayer.colors = @[(__bridge id)[UIColor colorWithWhite:1 alpha:0.2].CGColor,
+                            (__bridge id)[UIColor colorWithWhite:1 alpha:1].CGColor,
+                             (__bridge id)[UIColor colorWithWhite:1 alpha:0.5].CGColor,
+                            ];
+    gradientLayer.locations = @[@(0.2), @(0.5), @(0.8)];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 1);
+    gradientLayer.type = kCAGradientLayerAxial;
+
+    return gradientLayer;
+}
 </code></pre>
 
-<h1 id="toc_7">联系人ABPerson、信息ABRecord</h1>
+<h3 id="toc_3">View Mask</h3>
 
-<p>ABRecord：联系人信息 基本记录<br/>
-ABPerson：联系人详细 信息帮助</p>
+<blockquote>
+<p>iOS 8 新属性 maskView，使用起来还算方便吧，代码可以少写很多</p>
+</blockquote>
 
-<h3 id="toc_8">ABRecord 联系人信息（Base）</h3>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqns3gj5f0j308c0eudh8.jpg" alt=""/></p>
 
-<ul>
-<li>获取信息</li>
-</ul>
+<h4 id="toc_4">普通图片（只用透明-非透明）</h4>
 
-<pre><code>    // 信息 id
-    ABRecordID recordId = ABRecordGetRecordID(person);
-        
-    // 信息 类型
-    ABRecordType recordType = ABRecordGetRecordType(person);
-        
-    // 获取信息内部某条数据
-    CFTypeRef firstName2 = ABRecordCopyValue(person, kABPersonFirstNameProperty);
-
-    // 全名
-    CFStringRef na = ABRecordCopyCompositeName(person);
+<pre><code>    UIImageView *maskView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;mask&quot;]];
+    maskView.frame = self.baseView.bounds;
+    self.baseView.maskView = maskView;
 </code></pre>
 
-<ul>
-<li>内部信息操作</li>
-</ul>
+<h4 id="toc_5">渐变图片（alpha 渐变）</h4>
 
-<pre><code>    CFTypeRef name = @&quot;名字&quot;;
-    if (ABRecordSetValue(person, kABPersonFirstNameProperty, name, NULL)) {
-        NSLog(@&quot;修改信息 kABPersonFirstNameProperty 的属性&quot;);
-    };
-        
-    if (ABRecordRemoveValue(person, kABPersonFirstNameProperty, NULL)) {
-        NSLog(@&quot;移除信息&quot;);
-     }
+<pre><code>    UIImageView *maskView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;mask2&quot;]];
+    maskView2.frame = self.baseView2.bounds;
+    self.baseView2.maskView = maskView2;
 </code></pre>
 
-<h3 id="toc_9">ABPerson</h3>
+<blockquote>
+<p>附录</p>
+</blockquote>
 
-<ul>
-<li>创建 联系人 记录</li>
-</ul>
-
-<pre><code>    // 创建 联系人 基本记录
-    ABRecordRef aRecordRef = ABPersonCreate();
-    ABPersonCreateInSource(aRecordRef);
-    ABPersonCopySource(aRecordRef);
-</code></pre>
-
-<ul>
-<li>获取联系人 记录</li>
-</ul>
-
-<pre><code>    // 获取所有的联系人数量
-    CFIndex count = ABAddressBookGetPersonCount(addressBook);
-
-    // 根据 ID 获取联系人 记录
-    ABRecordRef recordRef = ABAddressBookGetPersonWithRecordID(addressBook, 123);
-
-    // 获取所有联系人 记录
-    CFArrayRef peopleArray = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    
-    //
-    CFArrayRef parr = ABAddressBookCopyArrayOfAllPeopleInSource(addressBook, aRecordRef);
-    
-    // 新排序 的所有 联系人 记录
-    CFArrayRef parrr = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook, aRecordRef, kABPersonSortByFirstName);
-    
-    // 根据 名 搜索联系人
-    CFArrayRef par = ABAddressBookCopyPeopleWithName(addressBook, (__bridge CFStringRef)@&quot;祎炜&quot;);
-    
-</code></pre>
-
-<ul>
-<li>详细联系人 记录</li>
-</ul>
-
-<pre><code>    // 根据上面获取的联系人 记录数组获取某个联系人    
-    ABRecordRef person = CFArrayGetValueAtIndex(peopleArray, i);
-
-    // 单个数据（例：姓名）
-    NSString *lastName = (__bridge_transfer NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-    
-    // 多个数据（例：电话号码）
-    ABMultiValueRef phones = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    // 遍历获取数据
-    CFIndex phoneCount = ABMultiValueGetCount(phones);
-    for (int i = 0; i &lt; phoneCount; i++) {
-        // 1.获取电话对应的key
-        NSString *phoneLabel = (__bridge_transfer NSString *)ABMultiValueCopyLabelAtIndex(phones, i);        
-        NSString *phoneValue = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(phones, i);
-        NSLog(@&quot;%@ %@&quot;, phoneLabel, phoneValue);
-    }
-    
-    CFRelease(phones);
-</code></pre>
-
-<ul>
-<li>联系人 头像 处理</li>
-</ul>
-
-<pre><code>    if (ABPersonHasImageData(person)) {
-        NSLog(@&quot;改联系人有头像哦&quot;);
-        
-        CFDataRef head = ABPersonCopyImageData(person);
-        CFDataRef headOption = ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
-        
-        if (ABPersonRemoveImageData(person, NULL)) {
-            NSLog(@&quot;移除头像成功&quot;);
-        }
-        
-        if (ABPersonSetImageData(person, headOption, NULL)) {
-            NSLog(@&quot;设置头像成功&quot;);
-        }
-    }
-</code></pre>
-
-<ul>
-<li>生成名片（比如说发送给人家的名片）</li>
-</ul>
-
-<pre><code>    // 联系人记录 转 名片数据
-    CFDataRef cd = ABPersonCreateVCardRepresentationWithPeople(peopleArray);
-
-    // 名片数据 转 联系人记录
-    CFArrayRef ca = ABPersonCreatePeopleInSourceWithVCardRepresentation(NULL, cd);
-</code></pre>
-
-<ul>
-<li>其他</li>
-</ul>
-
-<pre><code>    // 信息属性
-    ABPropertyType type = ABPersonGetTypeOfProperty(kABPersonFirstNameProperty);
-    // 本地化属性标签
-    CFStringRef local =  ABPersonCopyLocalizedPropertyName(kABPersonFirstNameProperty);
-    // 排序?
-    ABPersonSortOrdering order = ABPersonGetSortOrdering();
-    
-    // 人名显示顺序？？
-    ABPersonCompositeNameFormat nf = ABPersonGetCompositeNameFormat();
-    // 人名显示顺序？？
-    ABPersonCompositeNameFormat nf2 = ABPersonGetCompositeNameFormatForRecord(person);
-    
-    // ？？？
-    CFStringRef de = ABPersonCopyCompositeNameDelimiterForRecord(person);
-</code></pre>
-
-<h3 id="toc_10">大量的 常量</h3>
-
-<p>基本都是用作 key 的作用，不贴代码了<br/>
-例如：<br/>
-kABPersonFirstNameProperty - 姓<br/>
-kABPersonPhoneProperty - 手机s</p>
-
-<h1 id="toc_11">复杂信息 ABMultiValue</h1>
-
-<p>其实还是 CFTypeRef 类型，添加类似多个手机号的多信息；依旧使用ABRecord 类添加</p>
-
-<ul>
-<li>创建</li>
-</ul>
-
-<pre><code>    ABMutableMultiValueRef muRef = ABMultiValueCreateMutable(kABStringPropertyType);
-//    ABMutableMultiValueRef muRefCopy = ABMultiValueCreateMutableCopy(phones);
-</code></pre>
-
-<ul>
-<li>操作</li>
-</ul>
-
-<pre><code>    if (ABMultiValueAddValueAndLabel(muRef, @&quot;13456990987&quot;, (__bridge CFStringRef)@&quot;测试标题&quot;, NULL)) {
-        NSLog(@&quot;添加&quot;);
-    }
-    
-    if (ABMultiValueInsertValueAndLabelAtIndex(muRef, @&quot;13456990987&quot;, (__bridge CFStringRef)@&quot;测试标题&quot;, 0, NULL)) {
-        NSLog(@&quot;指定位置添加&quot;);
-    }
-    
-    if (ABMultiValueRemoveValueAndLabelAtIndex(muRef, 0)) {
-       NSLog(@&quot;指定位置移除&quot;);
-    }
-    
-    if (ABMultiValueReplaceValueAtIndex(muRef, @&quot;13456990987&quot;, 0)) {
-        NSLog(@&quot;指定位置，替换内容&quot;);
-    }
-    
-    if (ABMultiValueReplaceLabelAtIndex(muRef, (__bridge CFStringRef)@&quot;测试标题啊啊啊&quot;, 0)) {
-        NSLog(@&quot;指定位置，替换标题&quot;);
-    }
-    
-    // 这个是 ABRecord 类的 基础添加信息
-    if (ABRecordSetValue(person, kABPersonPhoneProperty, muRef, NULL)) {
-        NSLog(@&quot;修改信息&quot;);
-    };
-</code></pre>
-
-<ul>
-<li>获取</li>
-</ul>
-
-<pre><code>    // 复制
-    ABMultiValueRef phones = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    
-    // 属性类型
-    ABPropertyType pType = ABMultiValueGetPropertyType(phones);
-    
-    // 数据条数（例如：联系号码条数）
-    CFIndex count = ABMultiValueGetCount(phones);
-    
-    // 取所有值 （）
-    CFArrayRef array = ABMultiValueCopyArrayOfAllValues(phones);
-    
-    // 取某条值（187-6711-xxxx）
-    CFTypeRef value = ABMultiValueCopyValueAtIndex(phones, 0);
-    
-    // 值的 标题（浙江 杭州 移动）
-    CFStringRef str = ABMultiValueCopyLabelAtIndex(phones, 0);
-    
-    // 某位置的id
-    ABMultiValueIdentifier idindex = ABMultiValueGetIdentifierAtIndex(phones, 0);
-
-    // 某id 的位置
-    CFIndex idValue = ABMultiValueGetIndexForIdentifier(phones, idindex);
-    
-    // 查找 某个值的index -1 不存在
-    CFIndex indexOfValue = ABMultiValueGetFirstIndexOfValue(phones, @&quot;123&quot;);
-    1
-</code></pre>
-
-<h1 id="toc_12">AddressBook 的其他API</h1>
-
-<pre><code>#include &lt;AddressBook/ABGroup.h&gt;
-#include &lt;AddressBook/ABSource.h&gt;
-这两个 还是没搞清楚 搞什么玩意，好像也没怎么用到；；
-</code></pre>
+<p><a href="https://github.com/JuYiWei/demos/tree/master/maskDemo">demo 地址</a></p>
 
 
 </div>
@@ -631,15 +343,13 @@ kABPersonPhoneProperty - 手机s</p>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="2017%20-%20sqlite3%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html"  title="Previous Post: sqlite3 简单使用">&laquo; sqlite3 简单使用</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html" 
-	        title="Next Post: MessageUI - 消息">MessageUI - 消息 &raquo;</a>
+	        <a href="2018-iOS%20%E6%9C%AC%E5%9C%B0%E5%8C%96%20-%20%E5%8C%85%E6%8B%AC%E6%8F%92%E4%BB%B6%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%8C%96.html" 
+	        title="Next Post: iOS 本地化 - 包括插件的本地化">iOS 本地化 - 包括插件的本地化 &raquo;</a>
 	    
 	</div>
   </div>
@@ -652,7 +362,7 @@ kABPersonPhoneProperty - 手机s</p>
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '2016%20-%20AddressBook%20%E6%97%A7%E7%89%88%E7%9A%84%E9%80%9A%E8%AE%AF%E5%BD%95.html';
+		var currentURL = '2018-%E5%85%B3%E4%BA%8E%20mask%20%E8%92%99%E6%9D%BF.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
