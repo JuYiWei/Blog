@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  web 服务器配置 (mac OS Server) - 【个人博客】居然是村长
+  物联网无限技术相关方案简要 - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -236,89 +236,105 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>web 服务器配置 (mac OS Server)</h1>
+<h1>物联网无限技术相关方案简要</h1>
 
 <ul>
 <li>
-<a href="#toc_0">购买域名</a>
+<a href="#toc_0">近场</a>
+<ul>
+<li>
+<a href="#toc_1">BLE</a>
 </li>
 <li>
-<a href="#toc_1">域名解析</a>
+<a href="#toc_2">ZigBee</a>
 </li>
 <li>
-<a href="#toc_2">SSL 腾讯云获取1年免费</a>
+<a href="#toc_3">WiFi</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_4">远程</a>
+<ul>
+<li>
+<a href="#toc_5">2|3|4|5G</a>
+</li>
+<li>
+<a href="#toc_6">LoRa</a>
+</li>
+<li>
+<a href="#toc_7">NB-IoT</a>
+</li>
+</ul>
 </li>
 </ul>
 
 
-<h3 id="toc_0">购买域名</h3>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqsbffkuh5j30hs0em75c.jpg" alt=""/></p>
 
-<p><a href="https://wanwang.aliyun.com/domain/searchresult/">阿里云 万网</a></p>
+<blockquote>
+<p>主要分为「近场通信」和「远程通信」<br/>
+以下资源均手动整理，图片「Sketch」绘制~</p>
+</blockquote>
 
-<h3 id="toc_1">域名解析</h3>
+<h3 id="toc_0">近场</h3>
 
-<ul>
-<li>前往管理控制台，找到购买的域名；</li>
-</ul>
-
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fdvq3ic90gj31kw0hu0zx.jpg" alt=""/></p>
-
-<ul>
-<li>解析，前往域名控制台；</li>
-</ul>
-
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fdvq3lqb8cj31kw0se130.jpg" alt=""/></p>
+<h4 id="toc_1">BLE</h4>
 
 <ul>
-<li>网站服务器，修改主机记录 <code>www</code> 的记录值，记录值为服务器的外网 ip；</li>
+<li>传统 BLE：传输距离短、传输速率中等（1Mbps）、功耗中等</li>
+<li>BLE4.0：提高了传输距离、降低功耗、降低传输速率</li>
 </ul>
 
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdvrrmfuarj31kw0zo7aq.jpg" alt=""/></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqsdo42s3lj30ef06q3ym.jpg" alt=""/></p>
+
+<h4 id="toc_2">ZigBee</h4>
 
 <ul>
-<li>修改主机名称，按要求一步一步来；</li>
+<li>自组网（链式组网，很适合智能家居）、传输距离中等、传输速率较低（250kbps）、功耗低</li>
 </ul>
 
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdvrxpwsoqj310w0mkn0t.jpg" alt=""/></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqsdo7d4drj30gm0fb752.jpg" alt=""/></p>
+
+<h4 id="toc_3">WiFi</h4>
 
 <ul>
-<li>开启网站服务；</li>
+<li>应用广泛、传输距离中等、传输速率高（300 Mbps）、功耗也高</li>
 </ul>
 
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdvs31h6nyj31kw0zo47m.jpg" alt=""/></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqsdo6p8wqj30e807ndga.jpg" alt=""/></p>
+
+<h3 id="toc_4">远程</h3>
+
+<h4 id="toc_5">2|3|4|5G</h4>
 
 <ul>
-<li>替换网站文档；</li>
+<li>就用来手机上网，搞物联网成本太高了。</li>
 </ul>
 
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdvs3cp4mzj31kw0zo7fn.jpg" alt=""/></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqsdo61cjaj30at0aidg2.jpg" alt=""/></p>
+
+<h4 id="toc_6">LoRa</h4>
 
 <ul>
-<li>此时还只能通过本地访问（localhost），还需要配置路由器（192.168.1.1）转发才能外网访问，端口 80、443 2个都需要开放；</li>
+<li><a href="https://lora-alliance.org/">LoRa 联盟官网</a></li>
+<li><a href="http://www.zteclaa.com/">中兴推的 CCLA（中国 LoRa 联盟）</a></li>
+<li>「Long Range」扩频技术的超远距离无线传输方案</li>
+<li>独立建网（数据私有）、自由频段（非授权判断 470-518MHz）、低功耗</li>
 </ul>
 
-<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fdvsaenectj31cg0siahr.jpg" alt=""/></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqsdo5gq4vj30ar0ejweu.jpg" alt=""/></p>
+
+<h4 id="toc_7">NB-IoT</h4>
 
 <ul>
-<li>静态地址分配；</li>
+<li><a href="https://open.iot.10086.cn/">中国移动 OneNet（NBIoT 平台）</a></li>
+<li>基于「蜂窝」的窄带宽物联网。</li>
+<li>华为主推，融合 NB OFDMA 和 NB-LTE 后，在 2016 年 6 月，冻结协议后，运营商也开始大力推广。</li>
+<li>广覆盖（基于蜂窝基站，数据流入运营商中转（运营商应该有补贴））、超低功耗（10 年？）</li>
 </ul>
 
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdvsf53y4hj31d40hw437.jpg" alt=""/></p>
-
-<ul>
-<li>这样就可以访问了，但是 SLL 用的是自签名，外网访问，提示不安全的链接，或者直接打不开；</li>
-</ul>
-
-<h3 id="toc_2">SSL 腾讯云获取1年免费</h3>
-
-<p><a href="https://www.qcloud.com/product/ssl">腾讯云 SSL 免费获取</a></p>
-
-<ul>
-<li><p>申请迅速，略；</p></li>
-<li><p>申请成功后，下载证书；我用的时 mac OS Server；（一开始按照 Apache 的配置，结果苹果都给你搞好了）</p></li>
-<li><p>mac OS Server 管理证书；</p></li>
-<li><p>网站服务修改即可；</p></li>
-</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqsdo4qqg5j30db0jgaaq.jpg" alt=""/></p>
 
 
 </div>
@@ -330,15 +346,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20MessageUI%20-%20%E6%B6%88%E6%81%AF.html"  title="Previous Post: MessageUI - 消息">&laquo; MessageUI - 消息</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="2017%20-%20Block%20%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6%20-%20%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8.html" 
-	        title="Next Post: Block 再次研究 - 循环引用">Block 再次研究 - 循环引用 &raquo;</a>
+	        <a href="2018-Object-C%20%E5%85%B3%E4%BA%8E%E3%80%8C%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E4%B8%8E%E3%80%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5.html" 
+	        title="Next Post: Object-C 关于「链式编程」与「函数式编程」简单实践">Object-C 关于「链式编程」与「函数式编程」简单实践 &raquo;</a>
 	    
 	</div>
   </div>
@@ -351,7 +365,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '2017%20-%20web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%20(mac%20OS%20Server).html';
+		var currentURL = '2018-%E7%89%A9%E8%81%94%E7%BD%91%E6%97%A0%E9%99%90%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3%E6%96%B9%E6%A1%88%E7%AE%80%E8%A6%81.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
