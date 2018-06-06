@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  2016 - 【个人博客】居然是村长
+  iOS 自动化构建 xcodebuild - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -239,163 +239,195 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>iOS 自动化构建 xcodebuild</h1>
 
-
-	
-		<div class="markdown-body">
-		<h1>Xcode 输出官方文档</h1>
-
-		<ul>
+<ul>
 <li>
-<a href="#toc_0">简介</a>
+<a href="#toc_0">xcidebuild</a>
+<ul>
+<li>
+<a href="#toc_1">project 自动签名</a>
 </li>
 <li>
-<a href="#toc_1">安装 文档输出工具</a>
+<a href="#toc_2">workspace 手动签名</a>
 </li>
 <li>
-<a href="#toc_2">以后可以愉快的使用</a>
+<a href="#toc_3">相关说明</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#toc_3">注 命令说明</a>
+<a href="#toc_4">附录1：上传蒲公英</a>
+</li>
+<li>
+<a href="#toc_5">附录2：jenkins 补充</a>
+</li>
+<li>
+<a href="#toc_6">附录3：sh 运行权限</a>
 </li>
 </ul>
 
 
-<h3 id="toc_0">简介</h3>
+<h3 id="toc_0">xcidebuild</h3>
 
-<p>输出文档：<a href="https://github.com/tomaz/appledoc">https://github.com/tomaz/appledoc</a></p>
+<p><a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">apple 官网 xcodebuild 文档</a></p>
 
-<p>注：需要使用下面格式的注释才行(xcode 8 默认 option + command + / 即可，不需要 VVDocumenter 插件了)</p>
-
-<pre><code>/*!
- *  字符串拼接
- *
- *  @param aString 需要拼接的字符串
- *
- *  @return 新的字符串
- */
-- (NSString *)stringByAppendingString:(NSString *)aString;
-
-或者
-
-/*! 名字 */
-@property (nonatomic, copy) NSString *name;
-</code></pre>
-
-<h3 id="toc_1">安装 文档输出工具</h3>
+<blockquote>
+<p>使用 shell 实现 clean、build、archive、export 等功能<br/>
+自动化构建主要还是使用 clean、archive、export</p>
+</blockquote>
 
 <ul>
-<li>1 下载 appledoc</li>
+<li>先用 xcode 手动打个包，比如 ad_hot 的包并导出，可以得到 ipa 包，以及「ExportOptions.plist」以供后续使用（打 appstore 包，也会有一个）</li>
 </ul>
 
-<pre><code>https://github.com/tomaz/appledoc
+<h4 id="toc_1">project 自动签名</h4>
+
+<pre><code>#!/bin/bash
+
+# jenkins 下，默认是项目文件夹，也是默认参数（此处用以本机测试）
+WORKSPACE=~/Desktop/test
+
+# 项目路径
+PROJECT_NAME=&quot;test&quot;
+TARGET_NAME=&quot;test&quot;
+PROJECT_PATH=${WORKSPACE}/$PROJECT_NAME.xcodeproj
+
+# 输出配置
+# EXPORT_OPTIONS_PLIST 的 plist 就是打包来的 ExportOptions.plist，修改了名字
+EXPORT_OPTIONS_PLIST=${WORKSPACE}/export/export_ad_hot.plist
+RES_DIR=~/Desktop/${TARGET_NAME}pack
+RES_ARCHIVE_PATH=${RES_DIR}/ach.xcarchive
+RES_IPA_DIR=${RES_DIR}/ipa
+RES_IPA_PATH=${RES_IPA_DIR}/${TARGET_NAME}.ipa
+
+
+# clean
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; clean -project $PROJECT_PATH -scheme $TARGET_NAME
+
+# archive
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; archive -archivePath $RES_ARCHIVE_PATH  -project $PROJECT_PATH -scheme $TARGET_NAME
+
+# export
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; -exportArchive -archivePath $RES_ARCHIVE_PATH -exportPath $RES_IPA_DIR -exportOptionsPlist $EXPORT_OPTIONS_PLIST
+
+echo &quot;打包成功：${RES_IPA_PATH}&quot;
 </code></pre>
 
-<ul>
-<li>2 前往文件夹</li>
-</ul>
+<h4 id="toc_2">workspace 手动签名</h4>
 
-<pre><code>cd /Users/juyiwei/Desktop/appledoc-master 
+<pre><code>#!/bin/bash
+
+# jenkins 下，默认是项目文件夹，也是默认参数（此处用以本机测试）
+WORKSPACE=~/Desktop/qiakr
+
+export LC_ALL=zh_CN.GB2312;export LANG=zh_CN.GB2312
+
+# 项目路径
+WORKSPACE_NAME=&quot;xxx&quot;
+TARGET_NAME=&quot;xxx&quot;
+WORKSPACE_PATH=${WORKSPACE}/RealCloud/xxxx/${WORKSPACE_NAME}.xcworkspace
+
+# 项目配置
+BUILD_CONFIG=&quot;Release&quot;
+PRODUCT_BUNDLE_IDENTIFIER=&quot;com.xxx.xxxx.app&quot;
+CODE_SIGN_IDENTITY=&quot;iPhone Distribution: Hangzhou xxxx Technology Co, Ltd. (xxxx)&quot;
+PROVISIONING_PROFILE=&quot;xxxx-e40b-487b-8a2c-xxxxx&quot;
+ENABLE_BITCODE=&quot;YES&quot;
+
+# 输出配置
+EXPORT_OPTIONS_PLIST=~/Desktop/ad_hot_qa.plist
+RES_DIR=~/Desktop/${TARGET_NAME}-pack
+RES_ARCHIVE_PATH=${RES_DIR}/ach.xcarchive
+RES_IPA_DIR=${RES_DIR}/ipa
+RES_IPA_PATH=${RES_IPA_DIR}/${TARGET_NAME}.ipa
+
+# clean
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; clean -workspace $WORKSPACE_PATH -scheme $TARGET_NAME
+
+# archive
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; archive -archivePath $RES_ARCHIVE_PATH -workspace $WORKSPACE_PATH -scheme $TARGET_NAME -configuration $BUILD_CONFIG CODE_SIGN_IDENTITY=&quot;${CODE_SIGN_IDENTITY}&quot; PROVISIONING_PROFILE=${PROVISIONING_PROFILE} PRODUCT_BUNDLE_IDENTIFIER=${PRODUCT_BUNDLE_IDENTIFIER} ENABLE_BITCODE=${ENABLE_BITCODE}
+
+# export
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; -exportArchive -archivePath $RES_ARCHIVE_PATH -exportPath $RES_IPA_DIR -exportOptionsPlist $EXPORT_OPTIONS_PLIST
+
+echo &quot;打包成功：${RES_IPA_PATH}&quot;
 </code></pre>
 
-<ul>
-<li>3 安装</li>
-</ul>
+<h4 id="toc_3">相关说明</h4>
 
-<pre><code>$ sudo sh install-appledoc.sh 
+<blockquote>
+<p>project 和 workspace 都是可以手动和自动的，手动的话需要配置证书和配置文件<br/>
+pod 之后的就对应使用 workspace，不使用 project</p>
+</blockquote>
+
+<h3 id="toc_4">附录1：上传蒲公英</h3>
+
+<p><a href="https://www.pgyer.com/doc/view/api#errorCode">蒲公英文档</a></p>
+
+<blockquote>
+<p>很简单，注意 path 即可</p>
+</blockquote>
+
+<pre><code>path=$RES_IPA_PATH
+API_KEY=742cd3ecae1032adc45a6ce59d759c7f
+MSG=&quot;QA 测试包-正式环境&quot;
+
+a=$(curl -F &quot;file=@$path&quot; -F &quot;_api_key=$API_KEY&quot; -F &quot;buildUpdateDescription=${MSG}&quot; https://www.pgyer.com/apiv2/app/upload)
 </code></pre>
 
-<h3 id="toc_2">以后可以愉快的使用</h3>
+<h3 id="toc_5">附录2：jenkins 补充</h3>
 
-<ul>
-<li>1 先cd 到 项目路径</li>
-</ul>
-
-<pre><code>cd /Users/juyiwei/Desktop/appledocTest
+<pre><code># 构建后操作：补充个二维码下载安装链接
+# set build description
+# &quot;appQRCodeURL&quot;:&quot;(.*)&quot;
+# &lt;img src=&#39;\1&#39; width=144 height=144&gt; &lt;a href=&#39;\1&#39;&gt;二维码&lt;/a&gt;
 </code></pre>
 
-<ul>
-<li>2 输出</li>
-</ul>
+<h3 id="toc_6">附录3：sh 运行权限</h3>
 
-<pre><code>// 简写
-appledoc -p XXXX -c &quot;YYYY&quot; --company-id ZZZZ -o ~/doc  ./
-
-注：
-XXXX：项目名称
-YYYY：公司名称：主要体现在：Copyright © 2016 YYYY. All rights reserved. Updated: 2016-04-14
-ZZZZ：公司ID：例如com.apple
-
-注2：
-文档存放位置：~/Library/Developer/Shared/Documentation/DocSets
-生成的文档名称：ZZZZ.XXXX.docset
-显示包内容进去找到index 的网页进入文档主页。
-</code></pre>
-
-<h3 id="toc_3">注 命令说明</h3>
-
-<pre><code>appledoc --project-name myproject111 --project-company &quot;surgeyohoo&quot; --company-id www.surge --output ~/doc  ./Appledoc
-
-命令说明：
---project-name &quot;项目名称&quot;
---project-company &quot;公司名称&quot;
---company-id &quot;工程ID&quot;
---output &quot;生成路径（亲测无效，是我使用方式不对？）&quot;
-./Appledoc  &quot;扫描路径&quot;
+<pre><code>添加本地 sh 文件运行权限
+chmod u+x ~/Desktop/test.sh
 </code></pre>
 
 
-		</div>
-	
+</div>
 
- 
-	
+<br /><br />
+<hr />
 
- 
-	
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="2018-%E7%89%A9%E8%81%94%E7%BD%91%E6%97%A0%E9%99%90%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3%E6%96%B9%E6%A1%88%E7%AE%80%E8%A6%81.html" 
+	        title="Next Post: 物联网无限技术相关方案简要">物联网无限技术相关方案简要 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
- 
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '2018-iOS%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%20xcodebuild.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

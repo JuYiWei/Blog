@@ -47,6 +47,10 @@
         <li><label>2018</label></li>
 
           
+            <li><a title="iOS 自动化构建 xcodebuild" href="2018-iOS%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%20xcodebuild.html">iOS 自动化构建 xcodebuild</a></li>
+          
+            <li><a title="物联网无限技术相关方案简要" href="2018-%E7%89%A9%E8%81%94%E7%BD%91%E6%97%A0%E9%99%90%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3%E6%96%B9%E6%A1%88%E7%AE%80%E8%A6%81.html">物联网无限技术相关方案简要</a></li>
+          
             <li><a title="Object-C 关于「链式编程」与「函数式编程」简单实践" href="2018-Object-C%20%E5%85%B3%E4%BA%8E%E3%80%8C%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E4%B8%8E%E3%80%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5.html">Object-C 关于「链式编程」与「函数式编程」简单实践</a></li>
           
             <li><a title="关于 mask 蒙板" href="2018-%E5%85%B3%E4%BA%8E%20mask%20%E8%92%99%E6%9D%BF.html">关于 mask 蒙板</a></li>
@@ -146,6 +150,10 @@
                     
                       <li class="side-title"><span>2018</span></li>
                         
+                          <li><a title="iOS 自动化构建 xcodebuild" href="2018-iOS%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%20xcodebuild.html">iOS 自动化构建 xcodebuild</a></li>
+                        
+                          <li><a title="物联网无限技术相关方案简要" href="2018-%E7%89%A9%E8%81%94%E7%BD%91%E6%97%A0%E9%99%90%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3%E6%96%B9%E6%A1%88%E7%AE%80%E8%A6%81.html">物联网无限技术相关方案简要</a></li>
+                        
                           <li><a title="Object-C 关于「链式编程」与「函数式编程」简单实践" href="2018-Object-C%20%E5%85%B3%E4%BA%8E%E3%80%8C%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E4%B8%8E%E3%80%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E3%80%8D%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5.html">Object-C 关于「链式编程」与「函数式编程」简单实践</a></li>
                         
                           <li><a title="关于 mask 蒙板" href="2018-%E5%85%B3%E4%BA%8E%20mask%20%E8%92%99%E6%9D%BF.html">关于 mask 蒙板</a></li>
@@ -236,241 +244,165 @@
 
 	
 		<div class="markdown-body">
-		<h1>Object-C 关于「链式编程」与「函数式编程」简单实践</h1>
+		<h1>iOS 自动化构建 xcodebuild</h1>
 
 		<ul>
 <li>
-<a href="#toc_0">OC 实现「函数编程」与「链式编程」</a>
-</li>
-<li>
-<a href="#toc_1">抛开实例，只关注函数结果</a>
-</li>
-<li>
-<a href="#toc_2">block 回顾</a>
+<a href="#toc_0">xcidebuild</a>
 <ul>
 <li>
-<a href="#toc_3">内部 block</a>
+<a href="#toc_1">project 自动签名</a>
 </li>
 <li>
-<a href="#toc_4">实例 block</a>
+<a href="#toc_2">workspace 手动签名</a>
+</li>
+<li>
+<a href="#toc_3">相关说明</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_5">block 的 getter 与 setter</a>
-<ul>
-<li>
-<a href="#toc_6">getter</a>
+<a href="#toc_4">附录1：上传蒲公英</a>
 </li>
 <li>
-<a href="#toc_7">setter（正常实例）</a>
+<a href="#toc_5">附录2：jenkins 补充</a>
 </li>
 <li>
-<a href="#toc_8">setter 2（内部调用）</a>
-</li>
-</ul>
+<a href="#toc_6">附录3：sh 运行权限</a>
 </li>
 </ul>
 
+
+<h3 id="toc_0">xcidebuild</h3>
+
+<p><a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">apple 官网 xcodebuild 文档</a></p>
 
 <blockquote>
-<p><a href="https://baike.baidu.com/item/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/4035031?fr=aladdin">「函数式编程」</a>：每个函数都有返回，函数作为第一类对象<br/>
-「链式编程」：函数返回的对象继续进行函数，组成一串长链（函数式编程的体现？）</p>
+<p>使用 shell 实现 clean、build、archive、export 等功能<br/>
+自动化构建主要还是使用 clean、archive、export</p>
 </blockquote>
 
 <ul>
-<li>拿 jQuery 简单举个例子</li>
+<li>先用 xcode 手动打个包，比如 ad_hot 的包并导出，可以得到 ipa 包，以及「ExportOptions.plist」以供后续使用（打 appstore 包，也会有一个）</li>
 </ul>
 
-<pre><code>    var text = $(&#39;#content&#39;).children().eq(1).children().eq(0).text();
+<h4 id="toc_1">project 自动签名</h4>
+
+<pre><code>#!/bin/bash
+
+# jenkins 下，默认是项目文件夹，也是默认参数（此处用以本机测试）
+WORKSPACE=~/Desktop/test
+
+# 项目路径
+PROJECT_NAME=&quot;test&quot;
+TARGET_NAME=&quot;test&quot;
+PROJECT_PATH=${WORKSPACE}/$PROJECT_NAME.xcodeproj
+
+# 输出配置
+# EXPORT_OPTIONS_PLIST 的 plist 就是打包来的 ExportOptions.plist，修改了名字
+EXPORT_OPTIONS_PLIST=${WORKSPACE}/export/export_ad_hot.plist
+RES_DIR=~/Desktop/${TARGET_NAME}pack
+RES_ARCHIVE_PATH=${RES_DIR}/ach.xcarchive
+RES_IPA_DIR=${RES_DIR}/ipa
+RES_IPA_PATH=${RES_IPA_DIR}/${TARGET_NAME}.ipa
+
+
+# clean
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; clean -project $PROJECT_PATH -scheme $TARGET_NAME
+
+# archive
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; archive -archivePath $RES_ARCHIVE_PATH  -project $PROJECT_PATH -scheme $TARGET_NAME
+
+# export
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; -exportArchive -archivePath $RES_ARCHIVE_PATH -exportPath $RES_IPA_DIR -exportOptionsPlist $EXPORT_OPTIONS_PLIST
+
+echo &quot;打包成功：${RES_IPA_PATH}&quot;
 </code></pre>
 
-<ul>
-<li>对比 Object-C，</li>
-</ul>
+<h4 id="toc_2">workspace 手动签名</h4>
 
-<pre><code>    // 执行方法，而不是函数，没有返回，虽然参数部分有返回，但是毕竟是面向对象
-   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
-    
-    // 就算使用返回 self，写链式也很难受
-    [[[person eat] run] eat];
+<pre><code>#!/bin/bash
+
+# jenkins 下，默认是项目文件夹，也是默认参数（此处用以本机测试）
+WORKSPACE=~/Desktop/qiakr
+
+export LC_ALL=zh_CN.GB2312;export LANG=zh_CN.GB2312
+
+# 项目路径
+WORKSPACE_NAME=&quot;xxx&quot;
+TARGET_NAME=&quot;xxx&quot;
+WORKSPACE_PATH=${WORKSPACE}/RealCloud/xxxx/${WORKSPACE_NAME}.xcworkspace
+
+# 项目配置
+BUILD_CONFIG=&quot;Release&quot;
+PRODUCT_BUNDLE_IDENTIFIER=&quot;com.xxx.xxxx.app&quot;
+CODE_SIGN_IDENTITY=&quot;iPhone Distribution: Hangzhou xxxx Technology Co, Ltd. (xxxx)&quot;
+PROVISIONING_PROFILE=&quot;xxxx-e40b-487b-8a2c-xxxxx&quot;
+ENABLE_BITCODE=&quot;YES&quot;
+
+# 输出配置
+EXPORT_OPTIONS_PLIST=~/Desktop/ad_hot_qa.plist
+RES_DIR=~/Desktop/${TARGET_NAME}-pack
+RES_ARCHIVE_PATH=${RES_DIR}/ach.xcarchive
+RES_IPA_DIR=${RES_DIR}/ipa
+RES_IPA_PATH=${RES_IPA_DIR}/${TARGET_NAME}.ipa
+
+# clean
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; clean -workspace $WORKSPACE_PATH -scheme $TARGET_NAME
+
+# archive
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; archive -archivePath $RES_ARCHIVE_PATH -workspace $WORKSPACE_PATH -scheme $TARGET_NAME -configuration $BUILD_CONFIG CODE_SIGN_IDENTITY=&quot;${CODE_SIGN_IDENTITY}&quot; PROVISIONING_PROFILE=${PROVISIONING_PROFILE} PRODUCT_BUNDLE_IDENTIFIER=${PRODUCT_BUNDLE_IDENTIFIER} ENABLE_BITCODE=${ENABLE_BITCODE}
+
+# export
+xcodebuild OTHER_CFLAGS=&quot;-fembed-bitcode&quot; -exportArchive -archivePath $RES_ARCHIVE_PATH -exportPath $RES_IPA_DIR -exportOptionsPlist $EXPORT_OPTIONS_PLIST
+
+echo &quot;打包成功：${RES_IPA_PATH}&quot;
 </code></pre>
 
-<h3 id="toc_0">OC 实现「函数编程」与「链式编程」</h3>
+<h4 id="toc_3">相关说明</h4>
 
-<ul>
-<li><code>.</code> 语法使用，是对象属性</li>
-<li>使属性拥有参数，需要 block 函数闭包作为属性</li>
-</ul>
+<blockquote>
+<p>project 和 workspace 都是可以手动和自动的，手动的话需要配置证书和配置文件<br/>
+pod 之后的就对应使用 workspace，不使用 project</p>
+</blockquote>
 
-<pre><code>// 定义 block
-typedef Person* (^eatBlock)(NSString *name);
-// block 作为属性
-@property (nonatomic, copy) eatBlock eat;
-// block 的 getter 方法，本身是函数，可以引入参数，而函数又返回 self，得以继续
-- (eatBlock)eat {
-    return ^Person* (NSString *a) {
-        NSLog(@&quot;吃了：%@&quot;,a);
-        return self;
-    };
-}
+<h3 id="toc_4">附录1：上传蒲公英</h3>
 
-Person *person = [[Person alloc] init];
-person.eat(@&quot;苹果&quot;).eat(@&quot;橘子&quot;).eat(@&quot;香蕉&quot;);
+<p><a href="https://www.pgyer.com/doc/view/api#errorCode">蒲公英文档</a></p>
+
+<blockquote>
+<p>很简单，注意 path 即可</p>
+</blockquote>
+
+<pre><code>path=$RES_IPA_PATH
+API_KEY=742cd3ecae1032adc45a6ce59d759c7f
+MSG=&quot;QA 测试包-正式环境&quot;
+
+a=$(curl -F &quot;file=@$path&quot; -F &quot;_api_key=$API_KEY&quot; -F &quot;buildUpdateDescription=${MSG}&quot; https://www.pgyer.com/apiv2/app/upload)
 </code></pre>
 
-<h3 id="toc_1">抛开实例，只关注函数结果</h3>
+<h3 id="toc_5">附录2：jenkins 补充</h3>
 
-<ul>
-<li>可以把实例本身封装起来</li>
-</ul>
-
-<pre><code>    NSString *resMessage = [Person makeMessage:^(Person *person) {
-        person.eat(@&quot;橘子&quot;).run(12).pause.eat(@&quot;苹果&quot;);
-    }];
+<pre><code># 构建后操作：补充个二维码下载安装链接
+# set build description
+# &quot;appQRCodeURL&quot;:&quot;(.*)&quot;
+# &lt;img src=&#39;\1&#39; width=144 height=144&gt; &lt;a href=&#39;\1&#39;&gt;二维码&lt;/a&gt;
 </code></pre>
 
-<ul>
-<li>部分代码</li>
-</ul>
+<h3 id="toc_6">附录3：sh 运行权限</h3>
 
-<pre><code>@implementation Person
-
-- (NSMutableArray *)infoList {
-    if (!_infoList) {
-        _infoList = [NSMutableArray array];
-    }
-    return _infoList;
-}
-
-+ (NSString *)makeMessage:(void(^)(Person *person))block {
-    if (block) {
-        Person *person = [[Person alloc] init];
-        block(person);
-        return [person.infoList componentsJoinedByString:@&quot;,&quot;];
-    }
-    return nil;
-}
-
-- (eatBlock)eat {
-    return ^Person* (NSString *a) {
-        NSLog(@&quot;吃了：%@&quot;,a);
-        [self.infoList addObject:[NSString stringWithFormat:@&quot;吃了 %@&quot;, a]];
-        return self;
-    };
-}
-
-- (runBlock)run {
-    return ^Person *(NSInteger step) {
-        NSLog(@&quot;走了：%zi 步&quot;, step);
-        [self.infoList addObject:[NSString stringWithFormat:@&quot;走了 %zi 步&quot;, step]];
-        return self;
-    };
-}
-
-- (Person *)pause {
-    NSLog(@&quot;休息一下&quot;);
-    [self.infoList addObject:@&quot;休息以下&quot;];
-    return self;
-}
-@end
-</code></pre>
-
-<p><a href="https://github.com/JuYiWei/demos/tree/master/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5">Demo 地址</a></p>
-
-<hr/>
-
-<h3 id="toc_2">block 回顾</h3>
-
-<h4 id="toc_3">内部 block</h4>
-
-<pre><code>// 定义方法
-- (NSInteger)sumWithA:(NSInteger)a b:(NSInteger)b {
-    return a + b;
-}
-
-// 定义 block
-NSInteger (^sum)(NSInteger, NSInteger) = ^(NSInteger a, NSInteger b) {
-    return a + b;
-};
-
-
-NSInteger res1 = [self sumWithA:1 b:2];
-NSInteger res2 = sum(1, 2);
-</code></pre>
-
-<h4 id="toc_4">实例 block</h4>
-
-<pre><code>@property (nonatomic, copy) NSInteger(^block)(NSInteger a, NSInteger b);
-
-self.block = ^(NSInteger a, NSInteger b) {
-    return a + b;
-};    
-
-NSInteger res = self.block(1, 2);
-</code></pre>
-
-<h3 id="toc_5">block 的 getter 与 setter</h3>
-
-<pre><code>typedef NSInteger(^typeOfBlock)(NSInteger a, NSInteger b);
-@property (nonatomic, copy) typeOfBlock typeBlock;
-</code></pre>
-
-<h4 id="toc_6">getter</h4>
-
-<ul>
-<li>实际获取了 block 函数本身，可以当成函数使用（向里传参）</li>
-</ul>
-
-<pre><code>- (typeOfBlock)typeBlock {
-    return ^NSInteger(NSInteger a, NSInteger b) {
-        return a + b;// 此处是 block 函数执行体
-    };
-}
-
-NSInteger res4 = self.typeBlock(2, 3);
-</code></pre>
-
-<h4 id="toc_7">setter（正常实例）</h4>
-
-<ul>
-<li>给实例指定 block 函数（与实例一样的 get 和 set）</li>
-<li>这个应该不怎么用吧，仅仅把函数执行体，放到外面而已</li>
-</ul>
-
-<pre><code>- (void)setTypeBlock:(typeOfBlock)typeBlock {
-    if (!_typeBlock) {
-        _typeBlock = typeBlock;
-    }
-}
-
-[self setTypeBlock:^NSInteger(NSInteger a, NSInteger b) {
-    return a + b;// 此处是 block 函数执行体
-}];
-</code></pre>
-
-<h4 id="toc_8">setter 2（内部调用）</h4>
-
-<ul>
-<li>内部使用了 block，即可反向传参，因为执行体在外面（向外传参）</li>
-<li>这个很多时候用来代替了 delegate 传参的方式</li>
-</ul>
-
-<pre><code>- (void)setTypeBlock:(typeOfBlock)typeBlock {
-    if (typeBlock) {
-        NSInteger res = typeBlock(2, 3);// 实际就是执行了 block 函数一次，但作用可以反向传参
-        NSLog(@&quot;这里是 res：%zi&quot;, res);
-    }
-}
-
-[self setTypeBlock:^NSInteger(NSInteger a, NSInteger b) {
-    NSLog(@&quot;%zi,%zi&quot;, a, b);
-    return a + b;// 此处是 block 函数执行体
-}];
+<pre><code>添加本地 sh 文件运行权限
+chmod u+x ~/Desktop/test.sh
 </code></pre>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
 	
 
  
