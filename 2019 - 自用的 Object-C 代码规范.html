@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS 常见的 error - 【个人博客】居然是村长
+  自用的 Object-C 代码规范 - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -282,179 +282,704 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS 常见的 error</h1>
+<h1>自用的 Object-C 代码规范</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1 https 支持</a>
-</li>
-<li>
-<a href="#toc_1">2 armv7,armv7s,arm64 相关</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_2">3 search path</a>
+<a href="#toc_0">一、条件语句</a>
 <ul>
 <li>
-<a href="#toc_3">4 other link flag</a>
+<a href="#toc_1">1.1 使用 <code>{}</code> 将条件语句体包围</a>
 </li>
 <li>
-<a href="#toc_4">5 bitcode</a>
+<a href="#toc_2">1.2 用变量与常量比较，不要倒装</a>
 </li>
 <li>
-<a href="#toc_5">6 scheme</a>
+<a href="#toc_3">1.3 nil 和 BOOL 使用 ! 作为运算符</a>
+</li>
+<li>
+<a href="#toc_4">1.4 提前 return，不要嵌套 if 语句</a>
+</li>
+<li>
+<a href="#toc_5">1.5 复杂条件拆分变量，不要写在 if 条件里</a>
+</li>
+<li>
+<a href="#toc_6">1.6 复杂三元运算符拆分变量，不要嵌套</a>
+</li>
+<li>
+<a href="#toc_7">1.7 方法通过参数返回 error 引用的，检查方法返回值，而不是检查 error</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_8">二、Case 语句</a>
+<ul>
+<li>
+<a href="#toc_9">2.1 统一加上括号(*)</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_10">三、命名</a>
+<ul>
+<li>
+<a href="#toc_11">3.1 推荐使用长的、描述性的方法和变量名</a>
+</li>
+<li>
+<a href="#toc_12">3.2 常量，驼峰命名，并加相关类作前缀</a>
+</li>
+<li>
+<a href="#toc_13">3.3 方法，参数都带有描述性关键词，整个方法读起来像句子</a>
+</li>
+<li>
+<a href="#toc_14">3.4 字面值，使用快速创建的方式，不要写的复杂</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_15">四、Class 类</a>
+<ul>
+<li>
+<a href="#toc_16">4.1 类名使用三个大写字母作前缀</a>
+</li>
+<li>
+<a href="#toc_17">4.2 Initializer 使用依赖注入</a>
+</li>
+<li>
+<a href="#toc_18">4.3 属性，使用修饰定义，可选懒加载</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_19">五、Category 分类</a>
+<ul>
+<li>
+<a href="#toc_20">5.1 方法名加小写前缀以及下划线</a>
+</li>
+<li>
+<a href="#toc_21">六、Protocols 协议</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_22">七、NSNotification 通知，通知名词定义成常量</a>
+</li>
+<li>
+<a href="#toc_23">八、美化代码</a>
+<ul>
+<li>
+<a href="#toc_24">8.1 空格</a>
+</li>
+<li>
+<a href="#toc_25">8.2 换行：使用 Xcode 默认（*）</a>
+</li>
+<li>
+<a href="#toc_26">8.3 空行：分类之间空一行</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_27">九、代码组织</a>
+<ul>
+<li>
+<a href="#toc_28">9.1 代码块</a>
+</li>
+<li>
+<a href="#toc_29">9.2 Pragma</a>
+</li>
+<li>
+<a href="#toc_30">9.3 自定义警告与错误</a>
+</li>
+<li>
+<a href="#toc_31">9.4 文档</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_32">十、其他自用</a>
+<ul>
+<li>
+<a href="#toc_33">10.1 UI 类，统一使用完整名称，不要缩写</a>
+</li>
+<li>
+<a href="#toc_34">10.2 数据类，按规定简写</a>
+</li>
+</ul>
 </li>
 </ul>
 
 
-<h3 id="toc_0">1 https 支持</h3>
+<p><a href="https://yourtion.gitbooks.io/objc-zen-book-cn/Chapter01/05-translate.html">禅与 Object-C 编程艺术</a><br/>
+<a href="https://github.com/objc-zen/objc-zen-book">GitHub</a></p>
+
+<h2 id="toc_0">一、条件语句</h2>
+
+<h3 id="toc_1">1.1 使用 <code>{}</code> 将条件语句体包围</h3>
 
 <ul>
-<li><p>系统打印：并不会崩溃 error<br/>
-App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. <br/>
-Temporary exceptions can be configured via your app&#39;s Info.plist file.**</p></li>
-<li><p>提示也非常明确，在 info.plist 中 添加 App Transport Security Settings 并添加 Allow Arbitrary Loads = YES<br/>
-也可以这样添加：Open As Source Code：</p></li>
+<li>推荐</li>
 </ul>
 
-<pre><code> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
- &lt;dict&gt;
-  &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
-  &lt;true/&gt;
- &lt;/dict&gt;
+<pre><code>if (error) {
+    return @&quot;错误&quot;;
+}
 </code></pre>
 
 <ul>
-<li>如果需要对某些网址 http，需要具体分别设置，而不是想上面那样全部http</li>
+<li>不推荐</li>
 </ul>
 
-<h3 id="toc_1">2 armv7,armv7s,arm64 相关</h3>
+<pre><code>if (error) 
+{
+    return @&quot;错误&quot;;
+}
+</code></pre>
+
+<pre><code>if (error) 
+    return @&quot;错误&quot;;
+</code></pre>
+
+<pre><code>if (error) return @&quot;错误&quot;;
+</code></pre>
+
+<h3 id="toc_2">1.2 用变量与常量比较，不要倒装</h3>
 
 <ul>
-<li>arm处理器的指令集，具体深入也并不是很了解，主要是在添加其他库文件是，可能导致编译不通过。可能出现的报错：</li>
+<li>推荐</li>
 </ul>
 
-<pre><code>Undefined symbols for architecture x86_64:
-//x86_64,armv7,arm64..
+<pre><code>if (index == 20) {
+    ...
+}
 </code></pre>
 
 <ul>
-<li>x86_64:模拟器64位，表示添加的文件不支持x86_64,需要重新添加个支持模拟器的，或者直接真机调试吧。</li>
-<li>arm64：真机64位，iphone5S、iPad Air、mini2 以上都是这个吧。</li>
-<li>armv7/armv7s：更早版本。</li>
+<li>不推荐</li>
 </ul>
 
-<p>在Build Srtting 中，Architectures中有一些设置，一般情况下不需要修改，有问题都是因为第三方拖入文件的事。其中Architectures 对打包文件的大小有影响，越多，越大，每一种都要生产对应的指令集的二进制包，因为可以向下兼容，所有对性能不要求的话只要armv7，就能凑活了。</p>
+<pre><code>if (20 == index) {
+    ...
+}
+</code></pre>
 
-<h2 id="toc_2">3 search path</h2>
+<h3 id="toc_3">1.3 nil 和 BOOL 使用 ! 作为运算符</h3>
 
 <ul>
-<li>在添加其他文件例如 .a 时，可能会出现</li>
+<li>推荐</li>
 </ul>
 
-<pre><code>ld: library not found for -XXXXXX
+<pre><code>if (!myObject) {
+    ...
+}
 </code></pre>
 
 <ul>
-<li>主要原因就是路径错误，找不到文件，Build Setting 中 修改 Library Search Path 添加XXX 文件路径。</li>
+<li>不推荐</li>
 </ul>
 
-<pre><code>$(inherited)     一般第一行都是这个，据说是从 framworks 读取，请教大神。
+<pre><code>if (myObject == nil) {
+    ...
+}
+</code></pre>
 
-$(PROJECT_DIR) 对应 /Users/name/somewheres/prejectname（工程包相对路径）/后面还可以跟具体文件夹文件路径XXX.a
-这个相对路径比较重要！
+<pre><code>if (nil == myObject) {
+    ...
+}
+</code></pre>
+
+<h3 id="toc_4">1.4 提前 return，不要嵌套 if 语句</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>- (void)someMethod {
+  if (![someOther boolValue]) {
+      return;
+  }
+
+  //Do something important
+}
 </code></pre>
 
 <ul>
-<li>类似的 framwork/header  Seacrh Path 也是一样的。</li>
+<li>不推荐</li>
 </ul>
 
-<h2 id="toc_3">4 other link flag</h2>
+<pre><code>- (void)someMethod {
+  if ([someOther boolValue]) {
+    //Do something important
+  }
+}
+</code></pre>
+
+<h3 id="toc_5">1.5 复杂条件拆分变量，不要写在 if 条件里</h3>
 
 <ul>
-<li>在添加其他文件例如.a时，编译通过，但是运行时可能出现</li>
+<li>推荐</li>
 </ul>
 
-<pre><code>selector not recognized
+<pre><code>BOOL nameContainsSwift  = [sessionName containsString:@&quot;Swift&quot;];
+BOOL isCurrentYear      = [sessionDateCompontents year] == 2014;
+BOOL isSwiftSession     = nameContainsSwift &amp;&amp; isCurrentYear;
+
+if (isSwiftSession) {
+    // Do something very cool
+}
 </code></pre>
 
 <ul>
-<li>链接器，具体也不是很明白，大致是编译之后，链接目标文件与库形成执行文件。可能会用到下面几个参数</li>
+<li>不推荐</li>
 </ul>
 
-<pre><code>-ObjC：将OC类添加到执行文件，但是可能添加多余没用的文件，但是可以解决很多相关问题。如果还不行就用下面-force_load
--all_load：最好不要用，可能导致重复链接
--force_load ：后面跟相对文件路径，是比较好的方式。
+<pre><code>if ([sessionName containsString:@&quot;Swift&quot;] &amp;&amp; ([sessionDateCompontents year] == 2014)) {
+    // Do something very cool
+}
 </code></pre>
 
-<h2 id="toc_4">5 bitcode</h2>
+<h3 id="toc_6">1.6 复杂三元运算符拆分变量，不要嵌套</h3>
 
 <ul>
-<li>有时候，在添加第三方SDK的时候，模拟器OK，但是真机调试时会遇到</li>
+<li>推荐</li>
 </ul>
 
-<pre><code>does not contain bitcode. 
-You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), 
-obtain an updated library from the vendor, 
-or disable bitcode for this target. 
-for architecture arm64
+<pre><code>result = a &gt; b ? x : y;
 </code></pre>
 
 <ul>
-<li>这个根据翻译很好理解，就是 Build Setting bitcode 设置为 NO。</li>
-<li>这个bitcode，大致用于打包上传appStore是形成中间二进制文件，减少上传时app包大小。一般情况下，很多第三方SDK不支持bitcode，所以设置NO吧，跟https一样。</li>
-<li>iOS是可选YES/NO。而watchOS，必须YES。</li>
+<li>不推荐</li>
 </ul>
 
-<h2 id="toc_5">6 scheme</h2>
+<pre><code>result = a &gt; b ? x = c &gt; d ? c : d : y;
+</code></pre>
+
+<h3 id="toc_7">1.7 方法通过参数返回 error 引用的，检查方法返回值，而不是检查 error</h3>
 
 <ul>
-<li>白名单，调用检查其他App需要添加 NSArray 类：LSApplicationQueriesSchemes 
-添加打印的那些 error，下面一些常见的复制粘贴过来凑数：其他还有很多。一般在继承文档都有说明。</li>
+<li>推荐</li>
 </ul>
 
-<pre><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt; 
-&lt;array&gt; &lt;!-- 微信 URL Scheme 白名单--&gt; 
-&lt;string&gt;wechat&lt;/string&gt; 
-&lt;string&gt;weixin&lt;/string&gt; 
+<pre><code>NSError *error = nil;
+BOOL result = [self trySomethingWithError:&amp;error];
+if (!result) {
+    // Handle Error
+}
+</code></pre>
 
-&lt;!-- 新浪微博 URL Scheme 白名单--&gt; 
-&lt;string&gt;sinaweibohd&lt;/string&gt; 
-&lt;string&gt;sinaweibo&lt;/string&gt; 
-&lt;string&gt;sinaweibosso&lt;/string&gt; 
-&lt;string&gt;weibosdk&lt;/string&gt; 
-&lt;string&gt;weibosdk2.5&lt;/string&gt; 
+<ul>
+<li>不推荐</li>
+</ul>
 
-&lt;!-- QQ、Qzone URL Scheme 白名单--&gt; 
-&lt;string&gt;mqqapi&lt;/string&gt;
- &lt;string&gt;mqq&lt;/string&gt; 
-&lt;string&gt;mqqOpensdkSSoLogin&lt;/string&gt; 
-&lt;string&gt;mqqconnect&lt;/string&gt; 
-&lt;string&gt;mqqopensdkdataline&lt;/string&gt; 
-&lt;string&gt;mqqopensdkgrouptribeshare&lt;/string&gt; 
-&lt;string&gt;mqqopensdkfriend&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV3&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
-&lt;string&gt;wtloginmqq&lt;/string&gt; 
-&lt;string&gt;wtloginmqq2&lt;/string&gt; 
-&lt;string&gt;mqqwpa&lt;/string&gt; 
-&lt;string&gt;mqzone&lt;/string&gt; 
-&lt;string&gt;mqzonev2&lt;/string&gt; 
-&lt;string&gt;mqzoneshare&lt;/string&gt; 
-&lt;string&gt;wtloginqzone&lt;/string&gt; 
-&lt;string&gt;mqzonewx&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi19&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
+<pre><code>NSError *error = nil;
+[self trySomethingWithError:&amp;error];
+if (error) {
+    // Handle Error
+}
+</code></pre>
 
-&lt;!-- 支付宝 URL Scheme 白名单--&gt; 
-&lt;string&gt;alipay&lt;/string&gt; 
-&lt;string&gt;alipayshare&lt;/string&gt;
-&lt;/array&gt;
+<h2 id="toc_8">二、Case 语句</h2>
+
+<h3 id="toc_9">2.1 统一加上括号(*)</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>switch (condition) {
+        case 1: {
+            // ...
+            break;
+        }
+        case 2: {
+            // ...
+            break;
+        }
+        case 3:{
+            // ...
+            break;
+        }
+        default: {
+            // ...
+            break;
+        }
+    }
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>switch (condition) {
+        case 1: 
+            // ...
+            break;
+        case 2:
+            // ...
+            break;
+        case 3:
+            // ...
+            break;
+        default: 
+            // ...
+            break;
+    }
+</code></pre>
+
+<h2 id="toc_10">三、命名</h2>
+
+<h3 id="toc_11">3.1 推荐使用长的、描述性的方法和变量名</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>UIButton *settingsButton;
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>UIButton *setBut;
+</code></pre>
+
+<h3 id="toc_12">3.2 常量，驼峰命名，并加相关类作前缀</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>static const NSTimeInterval ZOCSignInViewControllerFadeOutAnimationDuration = 0.4;
+static NSString * const ZOCCacheControllerDidClearCacheNotification = @&quot;ZOCCacheControllerDidClearCacheNotification&quot;;
+static const CGFloat ZOCImageThumbnailHeight = 50.0f;
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>static const NSTimeInterval fadeOutTime = 0.4;
+#define CompanyName @&quot;Apple Inc.&quot;
+#define magicNumber 42
+</code></pre>
+
+<h3 id="toc_13">3.3 方法，参数都带有描述性关键词，整个方法读起来像句子</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>- (void)setExampleText:(NSString *)text image:(UIImage *)image;
+- (void)sendAction:(SEL)aSelector to:(id)anObject forAllCells:(BOOL)flag;
+- (id)viewWithTag:(NSInteger)tag;
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height;
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>- (void)setT:(NSString *)text i:(UIImage *)image;
+- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;
+- (id)taggedView:(NSInteger)tag;
+- (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
+- (instancetype)initWith:(int)width and:(int)height;  // Never do this.
+</code></pre>
+
+<h3 id="toc_14">3.4 字面值，使用快速创建的方式，不要写的复杂</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>NSArray *names = @[@&quot;Brian&quot;, @&quot;Matt&quot;, @&quot;Chris&quot;, @&quot;Alex&quot;, @&quot;Steve&quot;, @&quot;Paul&quot;];
+NSDictionary *productManagers = @{@&quot;iPhone&quot; : @&quot;Kate&quot;, @&quot;iPad&quot; : @&quot;Kamal&quot;, @&quot;Mobile Web&quot; : @&quot;Bill&quot;};
+NSNumber *shouldUseLiterals = @YES;
+NSNumber *buildingZIPCode = @10018;
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>NSArray *names = [NSArray arrayWithObjects:@&quot;Brian&quot;, @&quot;Matt&quot;, @&quot;Chris&quot;, @&quot;Alex&quot;, @&quot;Steve&quot;, @&quot;Paul&quot;, nil];
+NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @&quot;Kate&quot;, @&quot;iPhone&quot;, @&quot;Kamal&quot;, @&quot;iPad&quot;, @&quot;Bill&quot;, @&quot;Mobile Web&quot;, nil];
+NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
+NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+</code></pre>
+
+<h2 id="toc_15">四、Class 类</h2>
+
+<h3 id="toc_16">4.1 类名使用三个大写字母作前缀</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>ZOCNetworkClient
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>NetworkClient
+</code></pre>
+
+<h3 id="toc_17">4.2 Initializer 使用依赖注入</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>@interface ZOCPerson
++ (instancetype)personWithName:(NSString *)name;
+@end
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>@interface ZOCPerson
+@property (nonatomic, copy) NSString *personName;
+@end
+</code></pre>
+
+<blockquote>
+<p>这里需要补充 designated initializer （指定初始化）相关知识</p>
+</blockquote>
+
+<h3 id="toc_18">4.3 属性，使用修饰定义，可选懒加载</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, assign) CGFloat amount;
+@property (nonatomic, copy) NSString *name;
+
+@property (nonatomic, copy) NSArray *list;// 需要用作可变数据使用时，必须是 copy(其他类似)
+@property (nonatomic, strong) NSArray *list;
+
+@property (nonatomic, strong) NSMutableArray *list;
+</code></pre>
+
+<blockquote>
+<p>默认属性 (atomic, readwrite, assign)<br/>
+默认修饰 readwrite 不写，特殊需求时加入；<br/>
+默认修饰 assign 虽然是默认，也统一写上；</p>
+</blockquote>
+
+<h2 id="toc_19">五、Category 分类</h2>
+
+<h3 id="toc_20">5.1 方法名加小写前缀以及下划线</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>@interface NSDate (ZOCTimeExtensions)
+- (NSString *)zoc_timeAgoShort;
+@end
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>@interface NSDate (ZOCTimeExtensions)
+- (NSString *)timeAgoShort;
+@end
+</code></pre>
+
+<h3 id="toc_21">六、Protocols 协议</h3>
+
+<p>任何在未来可复用的设计，无形当中可以提高代码质量，这也应该一直是程序员的追求。是否这样设计代码，就是大师和菜鸟的区别。</p>
+
+<h2 id="toc_22">七、NSNotification 通知，通知名词定义成常量</h2>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>// Foo.h
+extern NSString * const ZOCFooDidBecomeBarNotification
+// Foo.m
+NSString * const ZOCFooDidBecomeBarNotification = @&quot;ZOCFooDidBecomeBarNotification&quot;;
+</code></pre>
+
+<h2 id="toc_23">八、美化代码</h2>
+
+<h3 id="toc_24">8.1 空格</h3>
+
+<ul>
+<li>4个空格代替 Tab，Xcode 默认设置</li>
+<li><p>方法的大括号和其他的大括号(if/else/switch/while 等) 总是在同一行开始，在新起一行结束。</p></li>
+<li><p>推荐</p></li>
+</ul>
+
+<pre><code>if (user.isHappy) {
+    //Do something
+}
+else {
+    //Do something else
+}
+</code></pre>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>if (user.isHappy)
+{
+  //Do something
+} else {
+  //Do something else
+}
+</code></pre>
+
+<h3 id="toc_25">8.2 换行：使用 Xcode 默认（*）</h3>
+
+<h3 id="toc_26">8.3 空行：分类之间空一行</h3>
+
+<blockquote>
+<p>代码分类：函数体，条件，case，等</p>
+</blockquote>
+
+<h2 id="toc_27">九、代码组织</h2>
+
+<h3 id="toc_28">9.1 代码块</h3>
+
+<ul>
+<li>代码块如果在闭合的圆括号内的话，会返回最后语句的值</li>
+<li>感觉是个骚操作，并不是很推荐使用；</li>
+</ul>
+
+<pre><code>NSURL *url = ({
+    NSString *urlString = [NSString stringWithFormat:@&quot;%@/%@&quot;, baseURLString, endpoint];
+    [NSURL URLWithString:urlString];
+});
+</code></pre>
+
+<h3 id="toc_29">9.2 Pragma</h3>
+
+<pre><code>#pragma mark - Lifecycle
+
+
+
+#pragma mark - Action
+
+
+
+#pragma mark - Methods
+
+
+
+#pragma mark - Delegate And DataSource
+
+
+
+#pragma mark - Getter And Setter
+</code></pre>
+
+<h3 id="toc_30">9.3 自定义警告与错误</h3>
+
+<pre><code>#warning [cz] &lt;#descriptor#&gt;
+
+#error [cz] &lt;#descriptor#&gt;
+</code></pre>
+
+<h3 id="toc_31">9.4 文档</h3>
+
+<pre><code>/**
+title（一句话总结）
+
+detail（详细说明）
+
+ @param index &lt;#index description#&gt;
+ @param length &lt;#length description#&gt;
+ */
+</code></pre>
+
+<blockquote>
+<p>Xcode 10 快捷键【command + option + /】</p>
+</blockquote>
+
+<h2 id="toc_32">十、其他自用</h2>
+
+<h3 id="toc_33">10.1 UI 类，统一使用完整名称，不要缩写</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>    UILabel *nameLabel;
+    UIButton *loginButton;
+    UIImageView *avatarImageView;
+    
+    UIView *contentView;
+    UIScrollView *detailScrollerView;
+    
+    UITableView *orderTableView;
+    UITableViewCell *orderTableViewCell;
+    
+    // 这个特殊处理，省略 View（参考苹果官方的 UIAlertController，不然实在是太长了，因为要加模块-功能前缀）
+    UIViewController *orderController;
+</code></pre>
+
+<blockquote>
+<p>除了 UIViewController 特殊处理，其余全部使用完整命名</p>
+</blockquote>
+
+<ul>
+<li>不推荐</li>
+</ul>
+
+<pre><code>    UILabel *nameLab;
+    UIButton *loginBtn;
+    UIImageView *avatarImgView;
+    
+    UIView *contentV;
+    UIScrollView *detailScroller;
+    
+    UITableView *orderTable;
+    UITableViewCell *orderCell;
+    
+    // 这个特殊处理，省略 View（参考苹果官方的 UIAlertController，不然实在是太长了，因为要加模块-功能前缀）
+    UIViewController *orderVC;
+</code></pre>
+
+<h3 id="toc_34">10.2 数据类，按规定简写</h3>
+
+<ul>
+<li>推荐</li>
+</ul>
+
+<pre><code>// 通用规则：可变类型，使用 M 后缀
+
+// 常用的 4 个，使用缩写：Str、Arr、Dic、AttStr
+    NSString *nameStr;
+    NSMutableString *nameStrM;
+
+    NSArray *nameArr;
+    NSMutableArray *nameArrM;
+    
+    NSDictionary *nameDic;
+    NSMutableDictionary *nameDicM;
+    
+    NSAttributedString *nameAttStr;
+    NSMutableAttributedString *nameAttStrM;
+
+// 以下不常用的或者其他的，统一使用完整名称，不缩写
+    NSSet *nameSet;
+    NSMutableSet *nameSetM;
+        
+    NSDate *nameDate;
+    
+    NSData *nameData;
+    NSMutableData *nameDataM;
 </code></pre>
 
 
@@ -467,15 +992,15 @@ for architecture arm64
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html"  title="Previous Post: iOS 开发调试">&laquo; iOS 开发调试</a>
+	        <a href="2019%20-%20OpenCV%20iOS.html"  title="Previous Post: App 开发考虑周全">&laquo; App 开发考虑周全</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html" 
-	        title="Next Post: OC 代码规范简单整理">OC 代码规范简单整理 &raquo;</a>
+	        <a href="2018%20-%20%E5%8E%9F%E6%9D%A5%E4%BD%9C%E4%B8%AA%20pod%20%E5%BA%93%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95.html" 
+	        title="Next Post: 制作 pod 库">制作 pod 库 &raquo;</a>
 	    
 	</div>
   </div>
@@ -488,7 +1013,7 @@ for architecture arm64
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html';
+		var currentURL = '2019%20-%20%E8%87%AA%E7%94%A8%E7%9A%84%20Object-C%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

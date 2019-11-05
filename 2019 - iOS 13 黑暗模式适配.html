@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS 常见的 error - 【个人博客】居然是村长
+  iOS 13 黑暗模式适配 - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -282,180 +282,182 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS 常见的 error</h1>
+<h1>iOS 13 黑暗模式适配</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1 https 支持</a>
-</li>
-<li>
-<a href="#toc_1">2 armv7,armv7s,arm64 相关</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_2">3 search path</a>
+<a href="#toc_0">一、启用黑暗模式</a>
 <ul>
 <li>
-<a href="#toc_3">4 other link flag</a>
+<a href="#toc_1">1.1 强行不使用</a>
 </li>
 <li>
-<a href="#toc_4">5 bitcode</a>
+<a href="#toc_2">1.2 个别 ViewController 单独配置</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#toc_5">6 scheme</a>
+<a href="#toc_3">二、相关的生命周期</a>
+</li>
+<li>
+<a href="#toc_4">三、颜色</a>
+<ul>
+<li>
+<a href="#toc_5">3.1 UIColor</a>
+</li>
+<li>
+<a href="#toc_6">3.3 Assets Color Set</a>
+</li>
+<li>
+<a href="#toc_7">3.2 CGColor</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_8">四、图片</a>
+<ul>
+<li>
+<a href="#toc_9">4.1 Assets Image Set</a>
+</li>
+<li>
+<a href="#toc_10">4.2 API</a>
+</li>
+</ul>
 </li>
 </ul>
 
 
-<h3 id="toc_0">1 https 支持</h3>
+<p><a href="https://developer.apple.com/documentation/xcode/supporting_dark_mode_in_your_interface?changes=latest_minor&amp;language=objc">官方文档</a></p>
+
+<h2 id="toc_0">一、启用黑暗模式</h2>
+
+<h3 id="toc_1">1.1 强行不使用</h3>
 
 <ul>
-<li><p>系统打印：并不会崩溃 error<br/>
-App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. <br/>
-Temporary exceptions can be configured via your app&#39;s Info.plist file.**</p></li>
-<li><p>提示也非常明确，在 info.plist 中 添加 App Transport Security Settings 并添加 Allow Arbitrary Loads = YES<br/>
-也可以这样添加：Open As Source Code：</p></li>
+<li>不推荐，明年可能就要不过审核，临时用用吧</li>
 </ul>
 
-<pre><code> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
- &lt;dict&gt;
-  &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
-  &lt;true/&gt;
- &lt;/dict&gt;
+<pre><code>Info.plist
+添加 
+UIUserInterfaceStyle = Light
+</code></pre>
+
+<h3 id="toc_2">1.2 个别 ViewController 单独配置</h3>
+
+<pre><code>// 重写
+- (UIUserInterfaceStyle)overrideUserInterfaceStyle {
+    return UIUserInterfaceStyleLight;
+}
+</code></pre>
+
+<h2 id="toc_3">二、相关的生命周期</h2>
+
+<ul>
+<li>并没有变化，iOS 8 就已经有的适配相关事件，只是补充了【黑暗模式】相关的内容</li>
+</ul>
+
+<pre><code>- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection;
+</code></pre>
+
+<pre><code>- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    if (@available(iOS 13, *)) {
+        if (previousTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            // 切换 Dark 模式
+        }
+        else {
+            // 切换 Light 模式
+        }  
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>UITraitCollection 这个是特征集合，适配相关，iOS 8 开始就有了，不仅仅用在黑暗模式</p>
+</blockquote>
+
+<h2 id="toc_4">三、颜色</h2>
+
+<h3 id="toc_5">3.1 UIColor</h3>
+
+<ul>
+<li>新增的颜色 API</li>
+</ul>
+
+<pre><code>+ (UIColor *)colorWithDynamicProvider:(UIColor * (^)(UITraitCollection *traitCollection))dynamicProvider API_AVAILABLE(ios(13.0), tvos(13.0)) API_UNAVAILABLE(watchos);
 </code></pre>
 
 <ul>
-<li>如果需要对某些网址 http，需要具体分别设置，而不是想上面那样全部http</li>
+<li>简单实用</li>
 </ul>
 
-<h3 id="toc_1">2 armv7,armv7s,arm64 相关</h3>
-
-<ul>
-<li>arm处理器的指令集，具体深入也并不是很了解，主要是在添加其他库文件是，可能导致编译不通过。可能出现的报错：</li>
-</ul>
-
-<pre><code>Undefined symbols for architecture x86_64:
-//x86_64,armv7,arm64..
+<pre><code>    UIColor *dynamicColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+          if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+              return [UIColor redColor];
+          } 
+          else {
+              return [UIColor greenColor];
+          }
+    }];
+    self.view.backgroundColor = dynamicColor;
 </code></pre>
 
-<ul>
-<li>x86_64:模拟器64位，表示添加的文件不支持x86_64,需要重新添加个支持模拟器的，或者直接真机调试吧。</li>
-<li>arm64：真机64位，iphone5S、iPad Air、mini2 以上都是这个吧。</li>
-<li>armv7/armv7s：更早版本。</li>
-</ul>
-
-<p>在Build Srtting 中，Architectures中有一些设置，一般情况下不需要修改，有问题都是因为第三方拖入文件的事。其中Architectures 对打包文件的大小有影响，越多，越大，每一种都要生产对应的指令集的二进制包，因为可以向下兼容，所有对性能不要求的话只要armv7，就能凑活了。</p>
-
-<h2 id="toc_2">3 search path</h2>
+<h3 id="toc_6">3.3 Assets Color Set</h3>
 
 <ul>
-<li>在添加其他文件例如 .a 时，可能会出现</li>
+<li>把颜色制作成 Set 素材，指定 Appearances（Any、Light、Dark）</li>
 </ul>
 
-<pre><code>ld: library not found for -XXXXXX
+<h3 id="toc_7">3.2 CGColor</h3>
+
+<ul>
+<li>并不支持直接使用，需要结合生命周期，间接通过 UIColor 使用</li>
+</ul>
+
+<pre><code>- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    // 一：直接使用
+    if (@available(iOS 13, *)) {
+        UIColor *dynamicColor;
+        if (previousTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            dynamicColor = [UIColor redColor];
+        }
+        else {
+            dynamicColor = [UIColor greenColor];
+        }
+        self.messageLabel.layer.borderColor = dynamicColor.CGColor;
+    }
+    
+    // 二：封装一下用起来简单
+    if (@available(iOS 13, *)) {
+         UIColor *dynamicColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+               if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                   return [UIColor redColor];
+               }
+               else {
+                   return [UIColor greenColor];
+               }
+         }];
+         self.messageLabel.layer.borderColor = dynamicColor.CGColor;
+    }
+}
 </code></pre>
 
-<ul>
-<li>主要原因就是路径错误，找不到文件，Build Setting 中 修改 Library Search Path 添加XXX 文件路径。</li>
-</ul>
+<h2 id="toc_8">四、图片</h2>
 
-<pre><code>$(inherited)     一般第一行都是这个，据说是从 framworks 读取，请教大神。
-
-$(PROJECT_DIR) 对应 /Users/name/somewheres/prejectname（工程包相对路径）/后面还可以跟具体文件夹文件路径XXX.a
-这个相对路径比较重要！
-</code></pre>
+<h3 id="toc_9">4.1 Assets Image Set</h3>
 
 <ul>
-<li>类似的 framwork/header  Seacrh Path 也是一样的。</li>
+<li>类似颜色，图片素材一下子乘了 3</li>
 </ul>
 
-<h2 id="toc_3">4 other link flag</h2>
+<blockquote>
+<p>Apple 也推荐使用 Assets 管理素材</p>
+</blockquote>
+
+<h3 id="toc_10">4.2 API</h3>
 
 <ul>
-<li>在添加其他文件例如.a时，编译通过，但是运行时可能出现</li>
+<li>暂时没有 Color 的好用，再看看</li>
 </ul>
-
-<pre><code>selector not recognized
-</code></pre>
-
-<ul>
-<li>链接器，具体也不是很明白，大致是编译之后，链接目标文件与库形成执行文件。可能会用到下面几个参数</li>
-</ul>
-
-<pre><code>-ObjC：将OC类添加到执行文件，但是可能添加多余没用的文件，但是可以解决很多相关问题。如果还不行就用下面-force_load
--all_load：最好不要用，可能导致重复链接
--force_load ：后面跟相对文件路径，是比较好的方式。
-</code></pre>
-
-<h2 id="toc_4">5 bitcode</h2>
-
-<ul>
-<li>有时候，在添加第三方SDK的时候，模拟器OK，但是真机调试时会遇到</li>
-</ul>
-
-<pre><code>does not contain bitcode. 
-You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), 
-obtain an updated library from the vendor, 
-or disable bitcode for this target. 
-for architecture arm64
-</code></pre>
-
-<ul>
-<li>这个根据翻译很好理解，就是 Build Setting bitcode 设置为 NO。</li>
-<li>这个bitcode，大致用于打包上传appStore是形成中间二进制文件，减少上传时app包大小。一般情况下，很多第三方SDK不支持bitcode，所以设置NO吧，跟https一样。</li>
-<li>iOS是可选YES/NO。而watchOS，必须YES。</li>
-</ul>
-
-<h2 id="toc_5">6 scheme</h2>
-
-<ul>
-<li>白名单，调用检查其他App需要添加 NSArray 类：LSApplicationQueriesSchemes 
-添加打印的那些 error，下面一些常见的复制粘贴过来凑数：其他还有很多。一般在继承文档都有说明。</li>
-</ul>
-
-<pre><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt; 
-&lt;array&gt; &lt;!-- 微信 URL Scheme 白名单--&gt; 
-&lt;string&gt;wechat&lt;/string&gt; 
-&lt;string&gt;weixin&lt;/string&gt; 
-
-&lt;!-- 新浪微博 URL Scheme 白名单--&gt; 
-&lt;string&gt;sinaweibohd&lt;/string&gt; 
-&lt;string&gt;sinaweibo&lt;/string&gt; 
-&lt;string&gt;sinaweibosso&lt;/string&gt; 
-&lt;string&gt;weibosdk&lt;/string&gt; 
-&lt;string&gt;weibosdk2.5&lt;/string&gt; 
-
-&lt;!-- QQ、Qzone URL Scheme 白名单--&gt; 
-&lt;string&gt;mqqapi&lt;/string&gt;
- &lt;string&gt;mqq&lt;/string&gt; 
-&lt;string&gt;mqqOpensdkSSoLogin&lt;/string&gt; 
-&lt;string&gt;mqqconnect&lt;/string&gt; 
-&lt;string&gt;mqqopensdkdataline&lt;/string&gt; 
-&lt;string&gt;mqqopensdkgrouptribeshare&lt;/string&gt; 
-&lt;string&gt;mqqopensdkfriend&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV3&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
-&lt;string&gt;wtloginmqq&lt;/string&gt; 
-&lt;string&gt;wtloginmqq2&lt;/string&gt; 
-&lt;string&gt;mqqwpa&lt;/string&gt; 
-&lt;string&gt;mqzone&lt;/string&gt; 
-&lt;string&gt;mqzonev2&lt;/string&gt; 
-&lt;string&gt;mqzoneshare&lt;/string&gt; 
-&lt;string&gt;wtloginqzone&lt;/string&gt; 
-&lt;string&gt;mqzonewx&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi19&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
-
-&lt;!-- 支付宝 URL Scheme 白名单--&gt; 
-&lt;string&gt;alipay&lt;/string&gt; 
-&lt;string&gt;alipayshare&lt;/string&gt;
-&lt;/array&gt;
-</code></pre>
 
 
 </div>
@@ -467,15 +469,15 @@ for architecture arm64
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html"  title="Previous Post: iOS 开发调试">&laquo; iOS 开发调试</a>
+	        <a href="2019%20-%20%E5%8D%87%E7%BA%A7%20Xcode%2011%20%E4%B8%8E%20iOS%2013%20SDK%20%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91.html"  title="Previous Post: 升级 Xcode 11 与 iOS 13 SDK 遇到的一些坑">&laquo; 升级 Xcode 11 与 iOS 13 SDK 遇到的一些坑</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html" 
-	        title="Next Post: OC 代码规范简单整理">OC 代码规范简单整理 &raquo;</a>
+	        <a href="2019%20-%20OpenCV%20iOS.html" 
+	        title="Next Post: App 开发考虑周全">App 开发考虑周全 &raquo;</a>
 	    
 	</div>
   </div>
@@ -488,7 +490,7 @@ for architecture arm64
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html';
+		var currentURL = '2019%20-%20iOS%2013%20%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

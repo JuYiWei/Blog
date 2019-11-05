@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  iOS 常见的 error - 【个人博客】居然是村长
+  搭建 Mac 本地 Web 服务 - 【个人博客】居然是村长
   
   </title>
  <meta name="description" content="">
@@ -282,180 +282,70 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>iOS 常见的 error</h1>
+<h1>搭建 Mac 本地 Web 服务</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1 https 支持</a>
+<a href="#toc_0">一、Apache</a>
 </li>
 <li>
-<a href="#toc_1">2 armv7,armv7s,arm64 相关</a>
-</li>
-</ul>
+<a href="#toc_1">二、PHP</a>
 </li>
 <li>
-<a href="#toc_2">3 search path</a>
-<ul>
-<li>
-<a href="#toc_3">4 other link flag</a>
-</li>
-<li>
-<a href="#toc_4">5 bitcode</a>
-</li>
-<li>
-<a href="#toc_5">6 scheme</a>
+<a href="#toc_2">三、完事？</a>
 </li>
 </ul>
 
 
-<h3 id="toc_0">1 https 支持</h3>
+<p>原先 Mac 自带 Server 应用，搞起来十分方便，之前也写过文章，结果第二年开始就不建议使用，这次更新系统，直接就不能用了，无奈再看看怎么搞。好在 Mac 都有默认的 <code>apache</code> <code>php7</code> 开起来还是很方便的；</p>
+
+<h2 id="toc_0">一、Apache</h2>
 
 <ul>
-<li><p>系统打印：并不会崩溃 error<br/>
-App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. <br/>
-Temporary exceptions can be configured via your app&#39;s Info.plist file.**</p></li>
-<li><p>提示也非常明确，在 info.plist 中 添加 App Transport Security Settings 并添加 Allow Arbitrary Loads = YES<br/>
-也可以这样添加：Open As Source Code：</p></li>
+<li>基础开关</li>
 </ul>
 
-<pre><code> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
- &lt;dict&gt;
-  &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
-  &lt;true/&gt;
- &lt;/dict&gt;
+<pre><code>sudo apachectl start
+sudo apachectl stop
+sudo apachectl restart
 </code></pre>
 
 <ul>
-<li>如果需要对某些网址 http，需要具体分别设置，而不是想上面那样全部http</li>
+<li>配置文件目录</li>
 </ul>
 
-<h3 id="toc_1">2 armv7,armv7s,arm64 相关</h3>
-
-<ul>
-<li>arm处理器的指令集，具体深入也并不是很了解，主要是在添加其他库文件是，可能导致编译不通过。可能出现的报错：</li>
-</ul>
-
-<pre><code>Undefined symbols for architecture x86_64:
-//x86_64,armv7,arm64..
+<pre><code>/etc/apache2
 </code></pre>
 
 <ul>
-<li>x86_64:模拟器64位，表示添加的文件不支持x86_64,需要重新添加个支持模拟器的，或者直接真机调试吧。</li>
-<li>arm64：真机64位，iphone5S、iPad Air、mini2 以上都是这个吧。</li>
-<li>armv7/armv7s：更早版本。</li>
+<li>修改 Web 根目录，默认是 <code>/Library/WebServer/Documents</code></li>
 </ul>
 
-<p>在Build Srtting 中，Architectures中有一些设置，一般情况下不需要修改，有问题都是因为第三方拖入文件的事。其中Architectures 对打包文件的大小有影响，越多，越大，每一种都要生产对应的指令集的二进制包，因为可以向下兼容，所有对性能不要求的话只要armv7，就能凑活了。</p>
+<pre><code>修改 httpd.conf 配置文件
 
-<h2 id="toc_2">3 search path</h2>
-
-<ul>
-<li>在添加其他文件例如 .a 时，可能会出现</li>
-</ul>
-
-<pre><code>ld: library not found for -XXXXXX
+// 这是我自己的，用起来方便
+DocumentRoot &quot;/Users/admin/Sites&quot;
+&lt;Directory &quot;/Users/admin/Sites&quot;&gt;
 </code></pre>
 
+<h2 id="toc_1">二、PHP</h2>
+
 <ul>
-<li>主要原因就是路径错误，找不到文件，Build Setting 中 修改 Library Search Path 添加XXX 文件路径。</li>
+<li>刚好自己写接口玩用的就是 php，很舒服</li>
+<li>系统自带，直接配置就完事</li>
 </ul>
 
-<pre><code>$(inherited)     一般第一行都是这个，据说是从 framworks 读取，请教大神。
+<pre><code>修改 httpd.conf 配置文件
 
-$(PROJECT_DIR) 对应 /Users/name/somewheres/prejectname（工程包相对路径）/后面还可以跟具体文件夹文件路径XXX.a
-这个相对路径比较重要！
+// 开起来就好了
+LoadModule php7_module libexec/apache2/libphp7.so
 </code></pre>
 
-<ul>
-<li>类似的 framwork/header  Seacrh Path 也是一样的。</li>
-</ul>
-
-<h2 id="toc_3">4 other link flag</h2>
+<h2 id="toc_2">三、完事？</h2>
 
 <ul>
-<li>在添加其他文件例如.a时，编译通过，但是运行时可能出现</li>
+<li>重启 OK</li>
 </ul>
-
-<pre><code>selector not recognized
-</code></pre>
-
-<ul>
-<li>链接器，具体也不是很明白，大致是编译之后，链接目标文件与库形成执行文件。可能会用到下面几个参数</li>
-</ul>
-
-<pre><code>-ObjC：将OC类添加到执行文件，但是可能添加多余没用的文件，但是可以解决很多相关问题。如果还不行就用下面-force_load
--all_load：最好不要用，可能导致重复链接
--force_load ：后面跟相对文件路径，是比较好的方式。
-</code></pre>
-
-<h2 id="toc_4">5 bitcode</h2>
-
-<ul>
-<li>有时候，在添加第三方SDK的时候，模拟器OK，但是真机调试时会遇到</li>
-</ul>
-
-<pre><code>does not contain bitcode. 
-You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), 
-obtain an updated library from the vendor, 
-or disable bitcode for this target. 
-for architecture arm64
-</code></pre>
-
-<ul>
-<li>这个根据翻译很好理解，就是 Build Setting bitcode 设置为 NO。</li>
-<li>这个bitcode，大致用于打包上传appStore是形成中间二进制文件，减少上传时app包大小。一般情况下，很多第三方SDK不支持bitcode，所以设置NO吧，跟https一样。</li>
-<li>iOS是可选YES/NO。而watchOS，必须YES。</li>
-</ul>
-
-<h2 id="toc_5">6 scheme</h2>
-
-<ul>
-<li>白名单，调用检查其他App需要添加 NSArray 类：LSApplicationQueriesSchemes 
-添加打印的那些 error，下面一些常见的复制粘贴过来凑数：其他还有很多。一般在继承文档都有说明。</li>
-</ul>
-
-<pre><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt; 
-&lt;array&gt; &lt;!-- 微信 URL Scheme 白名单--&gt; 
-&lt;string&gt;wechat&lt;/string&gt; 
-&lt;string&gt;weixin&lt;/string&gt; 
-
-&lt;!-- 新浪微博 URL Scheme 白名单--&gt; 
-&lt;string&gt;sinaweibohd&lt;/string&gt; 
-&lt;string&gt;sinaweibo&lt;/string&gt; 
-&lt;string&gt;sinaweibosso&lt;/string&gt; 
-&lt;string&gt;weibosdk&lt;/string&gt; 
-&lt;string&gt;weibosdk2.5&lt;/string&gt; 
-
-&lt;!-- QQ、Qzone URL Scheme 白名单--&gt; 
-&lt;string&gt;mqqapi&lt;/string&gt;
- &lt;string&gt;mqq&lt;/string&gt; 
-&lt;string&gt;mqqOpensdkSSoLogin&lt;/string&gt; 
-&lt;string&gt;mqqconnect&lt;/string&gt; 
-&lt;string&gt;mqqopensdkdataline&lt;/string&gt; 
-&lt;string&gt;mqqopensdkgrouptribeshare&lt;/string&gt; 
-&lt;string&gt;mqqopensdkfriend&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqqopensdkapiV3&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
-&lt;string&gt;wtloginmqq&lt;/string&gt; 
-&lt;string&gt;wtloginmqq2&lt;/string&gt; 
-&lt;string&gt;mqqwpa&lt;/string&gt; 
-&lt;string&gt;mqzone&lt;/string&gt; 
-&lt;string&gt;mqzonev2&lt;/string&gt; 
-&lt;string&gt;mqzoneshare&lt;/string&gt; 
-&lt;string&gt;wtloginqzone&lt;/string&gt; 
-&lt;string&gt;mqzonewx&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapiV2&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi19&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdkapi&lt;/string&gt; 
-&lt;string&gt;mqzoneopensdk&lt;/string&gt; 
-
-&lt;!-- 支付宝 URL Scheme 白名单--&gt; 
-&lt;string&gt;alipay&lt;/string&gt; 
-&lt;string&gt;alipayshare&lt;/string&gt;
-&lt;/array&gt;
-</code></pre>
 
 
 </div>
@@ -467,15 +357,13 @@ for architecture arm64
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20iOS%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95.html"  title="Previous Post: iOS 开发调试">&laquo; iOS 开发调试</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="2016%20-%20OC%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E7%AE%80%E5%8D%95%E6%95%B4%E7%90%86.html" 
-	        title="Next Post: OC 代码规范简单整理">OC 代码规范简单整理 &raquo;</a>
+	        <a href="2019%20-%20Apple%20Universal%20Links%20%E9%80%9A%E7%94%A8%E9%93%BE%E6%8E%A5.html" 
+	        title="Next Post: Apple Universal Links 通用链接">Apple Universal Links 通用链接 &raquo;</a>
 	    
 	</div>
   </div>
@@ -488,7 +376,7 @@ for architecture arm64
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '2016%20-%20iOS%20%E5%B8%B8%E8%A7%81%E7%9A%84%20error.html';
+		var currentURL = '2019%20-%20%E6%90%AD%E5%BB%BA%20Mac%20%E6%9C%AC%E5%9C%B0%20Web%20%E6%9C%8D%E5%8A%A1.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
